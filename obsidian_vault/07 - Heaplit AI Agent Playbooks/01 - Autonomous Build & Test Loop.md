@@ -2,7 +2,7 @@
 
 # 🤖 Autonomous Build & Test Loop Playbook
 
-> **Agent Protocol:** Antigravity AI OS Developer Loop
+> **Agent Protocol:** Heaplit AI OS Developer Loop
 
 ---
 

@@ -78,7 +78,7 @@ uint64_t ai_infer_c(uint64_t handle, char* prompt, size_t len, char* output) {
 
 ---
 
-## 3. The "Antigravity" Optimization Secret
+## 3. The "Heaplit" Optimization Secret
 1. By marking inference functions with `__attribute__((hot))` and `__attribute__((target("avx512f")))`, Clang emits native `vaddps` and `vmulps` instructions directly into the kernel memory space.
 2. No Linux userland syscall overhead or glibc abstractions: raw hardware memory throughput.
 
@@ -86,7 +86,7 @@ uint64_t ai_infer_c(uint64_t handle, char* prompt, size_t len, char* output) {
 
 ## 4. Related Notes
 - [[00 - Architecture/Ring 0 - Metal & Scheduler|Ring 0 Scheduler]]
-- [[00 - Architecture/Ring 2 - Antigravity Userland Daemon|Ring 2 Userland Daemon]]
+- [[00 - Architecture/Ring 2 - Heaplit Userland Daemon|Ring 2 Userland Daemon]]
 - [[01 - Planning/Grand Roadmap & Timeline|Roadmap & Timeline]]
 
 ## 🔄 Ring 1 Freestanding C & AI Bridge Pipeline

@@ -2,7 +2,7 @@
 
 # ⚡ AI Syscall Specification (0x600 – 0x6FF)
 
-> **Caller Ring:** Ring 2 / Ring 3 (Userland Process / Antigravity Daemon)  
+> **Caller Ring:** Ring 2 / Ring 3 (Userland Process / Heaplit Daemon)  
 > **Handler Ring:** Ring 0 (Kernel Supervisor) $\rightarrow$ Trampoline to Ring 1 (Freestanding C Inference)  
 > **Instruction:** `syscall` (x86_64 Long Mode)
 

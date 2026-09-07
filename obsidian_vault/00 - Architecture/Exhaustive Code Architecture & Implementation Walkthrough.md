@@ -265,4 +265,4 @@ enable_a20:
 - [[00 - Architecture/Code Quality & Engineering Guidelines|Code Quality & Engineering Guidelines]]
 - [[01 - Ring 0 - Metal Core (Assembly)/01 - Boot Sequence & Staged Loading|Ring 0 Boot & Staged Loading]]
 - [[02 - Ring 1 - The C Overhead (Bridge)/01 - Freestanding C Runtime (liba)|Ring 1 Freestanding C Runtime]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Antigravity Daemon Architecture|Ring 2 / Ring 3 Userland Architecture]]
+- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture|Ring 2 / Ring 3 Userland Architecture]]

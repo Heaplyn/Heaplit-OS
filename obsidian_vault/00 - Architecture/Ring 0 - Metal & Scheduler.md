@@ -10,7 +10,7 @@
 ## 1. Overview & Responsibilities
 Ring 0 operates with full hardware privileges. Its primary duties include:
 1. **Bootstrapping & Staged Loading:** Multi-sector disk loading from `0x7C00` (Sector 1) through Sector 2 (`0x7E00`), Sector 3 (`0x8000`), and beyond.
-2. **AI Syscall Routing:** Intercepting syscall numbers `0x600`–`0x6FF` dedicated to the Antigravity AI Engine.
+2. **AI Syscall Routing:** Intercepting syscall numbers `0x600`–`0x6FF` dedicated to the Heaplit AI Engine.
 3. **SIMD State Preservation:** Managing 512-bit vector registers (`ZMM0`–`ZMM31`) across AI context switches using `xsave` / `xrstor`.
 4. **Huge Page Table Management:** Mapping 2MB and 1GB physical memory regions for AI model weights.
 

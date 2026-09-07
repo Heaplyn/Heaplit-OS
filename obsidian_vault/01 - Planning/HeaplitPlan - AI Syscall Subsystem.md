@@ -4,7 +4,7 @@
 
 Tags: #HeaplitPlan #Ring0 #Ring1 #ASM #MVP
 
-> **Target:** Wire the bare-metal x86_64 Long Mode syscall handler to the dedicated Antigravity AI inference subsystem (`0x600`–`0x6FF`).
+> **Target:** Wire the bare-metal x86_64 Long Mode syscall handler to the dedicated Heaplit AI inference subsystem (`0x600`–`0x6FF`).
 
 ---
 
@@ -31,10 +31,10 @@ Tags: #HeaplitPlan #Ring0 #Ring1 #ASM #MVP
 
 ---
 
-## 2. Antigravity Prompt Directive
+## 2. Heaplit Prompt Directive
 
 ```markdown
-@Antigravity:
+@Heaplit:
 Implement the Long Mode assembly syscall handler in `src/kernel/syscall_ai.asm` that saves AVX-512 state with XSAVE, switches to the kernel stack, and calls `ai_infer_c`.
 ```
 

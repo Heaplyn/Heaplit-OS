@@ -2,13 +2,13 @@
 
 # 📝 Obsidian Markdown Syntax & Directives
 
-> **Antigravity Directive Parser Specification**
+> **Heaplit Directive Parser Specification**
 
 ---
 
 ## 1. Directive Format
 
-When Antigravity parses an Obsidian note tagged `#HeaplitPlan`, it searches for the following syntax:
+When Heaplit parses an Obsidian note tagged `#HeaplitPlan`, it searches for the following syntax:
 
 ```markdown
 # HeaplitPlan: [Task Name]
@@ -16,7 +16,7 @@ Tags: #HeaplitPlan #ASM #Ring0 #MVP
 
 - [ ] [High-level Task Description]
 
-@Antigravity:
+@Heaplit:
 [Detailed natural language instructions for code generation]
 Target: [File path in source tree]
 Language: [NASM | C | C++]
@@ -28,16 +28,16 @@ Language: [NASM | C | C++]
 
 | Tag / Directive | Meaning |
 | :--- | :--- |
-| `@Antigravity:` | Initiates code generation for the subsequent prompt block. |
+| `@Heaplit:` | Initiates code generation for the subsequent prompt block. |
 | `Target: <path>` | Explicit destination file for generated source. |
 | `Language: <lang>` | Assembler / compiler syntax target. |
-| `// @Antigravity` | Inline source code insertion marker. |
-| `## Build Errors` | Target section where Antigravity writes compile failure logs. |
+| `// @Heaplit` | Inline source code insertion marker. |
+| `## Build Errors` | Target section where Heaplit writes compile failure logs. |
 
 ---
 
 ## 3. Related Links
-- [[07 - Antigravity AI Agent Playbooks/01 - Autonomous Build & Test Loop|Build Loop]]
+- [[07 - Heaplit AI Agent Playbooks/01 - Autonomous Build & Test Loop|Build Loop]]
 - [[00 - Architecture/Obsidian Integration & 2-Way Sync|Obsidian 2-Way Sync]]
 
 ## 🔄 Markdown Processing & Tag Indexing Flowchart

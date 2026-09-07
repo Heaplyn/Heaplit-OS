@@ -27,7 +27,7 @@ flowchart TD
     end
 
     subgraph Ring2["Ring 2: Userland & Spatial Environment"]
-        R2_DAEMON["Antigravity Daemon (/system/bin/antigravity)"]
+        R2_DAEMON["Heaplit Daemon (/system/bin/heaplit)"]
         R2_COMPOSITOR["Spatial Window Compositor (Inertia Physics)"]
         R2_LENS["The Lens Graph File Explorer (Vulkan)"]
         R2_LLVM["Resident LLVM JIT & Clang / CoreCLR"]
@@ -67,7 +67,7 @@ flowchart TD
 ### Ring 2: The Userland (Spatial & Compiler Native)
 - **Languages:** Custom high-level language compiled to LLVM Bitcode (`.axf`), native Clang C/C++, and CoreCLR (C# RyuJIT).
 - **Core Responsibilities:**
-  - **Antigravity Daemon:** Watches `~/Documents/Obsidian/` via `SYS_FS_WATCH` (`0x30`), generates kernel code, and triggers automated builds.
+  - **Heaplit Daemon:** Watches `~/Documents/Obsidian/` via `SYS_FS_WATCH` (`0x30`), generates kernel code, and triggers automated builds.
   - **Spatial Window Compositor:** Physics-based window management with inertia and sub-pixel GPU acceleration.
   - **The Lens File Explorer:** Visualizes filesystem nodes as a real-time force-directed graph.
   - **Live Theming:** Watches `~/.config/heaplit/theme.toml` and live-updates UI shaders with zero latency.
@@ -78,4 +78,4 @@ flowchart TD
 - [[01 - Ring 0 - Metal Core (Assembly)/01 - Boot Sequence & Staged Loading|Boot Sequence Specification]]
 - [[01 - Ring 0 - Metal Core (Assembly)/06 - Tickless ASM Scheduler|Tickless Scheduler]]
 - [[02 - Ring 1 - The C Overhead (Bridge)/02 - GGML & Llama.cpp Kernel Port|GGML C Engine]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Antigravity Daemon Architecture|Antigravity Daemon]]
+- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture|Heaplit Daemon]]

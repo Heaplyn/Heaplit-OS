@@ -66,6 +66,6 @@ To compile the entire staged operating system and launch in QEMU:
 ```mermaid
 flowchart TD
     Ring0["Ring 0: Assembly Microkernel Core"] --> Ring1["Ring 1: Freestanding C Bridge & AI Engine"]
-    Ring1 --> Ring2["Ring 2: Spatial UI & Antigravity Daemon"]
+    Ring1 --> Ring2["Ring 2: Spatial UI & Heaplit Daemon"]
     Ring2 --> Ring3["Ring 3: Bootloader & Sandboxed User Applications"]
 ```

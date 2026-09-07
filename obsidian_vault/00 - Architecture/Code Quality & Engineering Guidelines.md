@@ -102,6 +102,6 @@ flowchart TD
     C --> E["Run QEMU Headless Integration Tests"]
     E --> F{"Serial Log Diagnostics"}
     F -->|"Pass: Clean Output"| G["Sync Obsidian Vault & Commit"]
-    F -->|"Fail: Assert Crash"| H["Antigravity AI Agent Diagnosis"]
+    F -->|"Fail: Assert Crash"| H["Heaplit AI Agent Diagnosis"]
     H --> A
 ```

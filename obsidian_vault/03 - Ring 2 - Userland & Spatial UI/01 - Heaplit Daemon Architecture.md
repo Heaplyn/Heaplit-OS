@@ -1,15 +1,15 @@
 > **Status:** #status/future-implementation
 
-# 🤖 Antigravity Userland Daemon Architecture
+# 🤖 Heaplit Userland Daemon Architecture
 
-> **Ring Placement:** `/system/bin/antigravity`  
+> **Ring Placement:** `/system/bin/heaplit`  
 > **Privilege Level:** Ring 2 / Ring 3 ($M \le 3$)
 
 ---
 
 ## 1. Daemon Responsibilities
 
-The **Antigravity Daemon** is the background autonomous intelligence orchestrator operating within userland:
+The **Heaplit Daemon** is the background autonomous intelligence orchestrator operating within userland:
 
 1. **Obsidian Vault Watcher:** Monitors Markdown files in the Obsidian vault via `SYS_FS_WATCH` (`0x30`) for changes to `#HeaplitPlan` directives.
 2. **AI Inference Syscall Dispatch:** Crafts prompts and triggers local LLM inference via `SYS_AI_INFER` (`0x601`).
@@ -18,7 +18,7 @@ The **Antigravity Daemon** is the background autonomous intelligence orchestrato
 
 ---
 
-## 2. Unix Domain Socket Interface (`/tmp/antigravity.sock`)
+## 2. Unix Domain Socket Interface (`/tmp/heaplit.sock`)
 
 Applications and UI components communicate with the daemon via local sockets:
 
@@ -27,10 +27,10 @@ typedef struct {
     uint32_t msg_type;     // 1=STATUS, 2=COMPILE, 3=INFER_PROMPT, 4=BUILD_LOG
     uint32_t payload_len;  // Length of raw payload bytes
     uint8_t payload[];     // Message payload
-} antigravity_ipc_header_t;
+} heaplit_ipc_header_t;
 ```
 
-## 🔄 Antigravity Agent Execution Loop Flowchart
+## 🔄 Heaplit Agent Execution Loop Flowchart
 
 ```mermaid
 flowchart TD

@@ -5,7 +5,7 @@
 Tags: #HeaplitPlan #Phase1 #Ring0 #Ring1 #MVP
 
 > **Target Phase:** Phase 1 (Months 4–6)  
-> **Goal:** Run local quantized LLM inside Ring 1 and wire `SYS_AI_INFER` syscall to Antigravity daemon.
+> **Goal:** Run local quantized LLM inside Ring 1 and wire `SYS_AI_INFER` syscall to Heaplit daemon.
 
 ---
 

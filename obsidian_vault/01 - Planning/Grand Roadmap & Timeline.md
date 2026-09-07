@@ -53,8 +53,8 @@ gantt
 - [ ] Implement safe zero-copy string buffer passing across rings.
 
 ### Phase 3 (Weeks 9–10): Ring 2 Daemon Skeleton
-- [ ] Create `/system/bin/antigravity` daemon process.
-- [ ] Expose `/tmp/antigravity.sock` IPC endpoint.
+- [ ] Create `/system/bin/heaplit` daemon process.
+- [ ] Expose `/tmp/heaplit.sock` IPC endpoint.
 - [ ] Hook into `SYS_FS_WATCH` (`0x30`) to monitor `~/Documents/Obsidian/`.
 
 ### Phase 4 (Weeks 11–14): Autonomous Code Generation
@@ -68,7 +68,7 @@ gantt
 - [ ] Two-way writeback to Obsidian note `## Build Errors` section.
 
 ### Phase 6 (Weeks 17–20): Complete Self-Hosting Loop
-- [ ] Antigravity reads `#HeaplitPlan`, writes kernel code, compiles ISO, and tests inside QEMU.
+- [ ] Heaplit reads `#HeaplitPlan`, writes kernel code, compiles ISO, and tests inside QEMU.
 - [ ] Automatic rollback on panic or triple fault.
 
 ---

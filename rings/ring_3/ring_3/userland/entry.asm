@@ -20,4 +20,4 @@ ring_3_userland_entry:
     jmp .userland_loop
 
 msg_ring3_active: db 'Heaplit OS: Hardware Ring 3 (Userland CPL=3) Active!', 0
-msg_ring3_shell:  db 'Userland Shell: Listening for Antigravity Daemon IPC...', 0
+msg_ring3_shell:  db 'Userland Shell: Listening for Heaplit Daemon IPC...', 0

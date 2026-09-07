@@ -36,10 +36,10 @@ Tags: #HeaplitPlan #ASM #Ring0 #MVP
 
 ---
 
-## 2. Antigravity Prompt Directive
+## 2. Heaplit Prompt Directive
 
 ```markdown
-@Antigravity:
+@Heaplit:
 Generate the assembly module `rings/ring_0/ring_1/a20.asm` with full A20 line testing, fast BIOS INT 0x15 enable, and 8042 keyboard controller fallback routine.
 ```
 

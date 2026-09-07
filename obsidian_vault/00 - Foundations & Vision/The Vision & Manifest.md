@@ -10,7 +10,7 @@
 Heaplit OS is a **consent-first, compiler-native, spatial operating system** where:
 1. **The user owns the data:** No telemetry, no cloud dependencies, no surveillance.
 2. **The kernel speaks assembly directly to the metal:** Sub-100-cycle microkernel context switching.
-3. **The AI works for you:** An autonomous, local LLM agent (**Antigravity**) embedded in the OS hierarchy that writes code from your Obsidian plans.
+3. **The AI works for you:** An autonomous, local LLM agent (**Heaplit**) embedded in the OS hierarchy that writes code from your Obsidian plans.
 
 ---
 
@@ -36,7 +36,7 @@ mindmap
       Force-Directed UI
       Inodes as Relational Nodes
     Autonomy
-      Antigravity AI Agent
+      Heaplit AI Agent
       Obsidian 2-Way Sync
       Self-Building Kernel Loop
 ```
@@ -47,15 +47,15 @@ mindmap
 | **2. Performance** | Software should get faster over time, not slower. | Stateless boot options. Microkernel context switches written in pure Assembly (< 100 CPU cycles). |
 | **3. Architecture-Neutrality** | You shouldn't care if you're on x86, ARM, or RISC-V. | Applications are distributed as LLVM Bitcode (`.axf`). The OS JIT-compiles them for your exact CPU on install. |
 | **4. Spatial Logic** | Files aren't just a rigid tree; they are a living graph. | The **Lens** app visualizes semantic and spatial relationships. Folders are merely filter views on a graph database. |
-| **5. Autonomy** | The operating system helps you build itself. | The **Antigravity** agent reads your Obsidian markdown plans and generates the Assembly/C code to implement features. |
+| **5. Autonomy** | The operating system helps you build itself. | The **Heaplit** agent reads your Obsidian markdown plans and generates the Assembly/C code to implement features. |
 
 ---
 
 ## 3. The Comparison: Why Heaplit Wins
 
-| Feature | Windows 11 | macOS Sonoma | Heaplit OS (The Antigravity Way) |
+| Feature | Windows 11 | macOS Sonoma | Heaplit OS (The Heaplit Way) |
 | :--- | :--- | :--- | :--- |
-| **AI Assistant** | Copilot (Cloud telemetry, ad-supported). | Siri (Cloud-dependent, locked down). | **Antigravity (Ring 1 Local LLM). Writes kernel code from Obsidian notes.** |
+| **AI Assistant** | Copilot (Cloud telemetry, ad-supported). | Siri (Cloud-dependent, locked down). | **Heaplit (Ring 1 Local LLM). Writes kernel code from Obsidian notes.** |
 | **File System** | NTFS (30-year-old tree, fragmented). | APFS (Tree, closed-source). | **Graph + POSIX Hybrid (Lens app). Files are interconnected graph nodes.** |
 | **Window Manager** | DWM (Static, heavy, tearing). | Quartz (Static, non-customizable). | **Spatial Compositor (Inertia physics, GPU-accelerated frosted glass).** |
 | **Compiler** | MSVC (Gigabytes of installer bloat). | Xcode (Locked to Apple platform). | **Built-in LLVM JIT. Apps are Bitcode; compile natively on install.** |

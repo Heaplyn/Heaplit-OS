@@ -1,15 +1,15 @@
 > **Status:** #status/future-implementation
 
-# 🤖 Ring 2 – Antigravity Userland Daemon
+# 🤖 Ring 2 – Heaplit Userland Daemon
 
-> **Binary Path:** `/system/bin/antigravity`  
-> **IPC Endpoint:** `/tmp/antigravity.sock`  
+> **Binary Path:** `/system/bin/heaplit`  
+> **IPC Endpoint:** `/tmp/heaplit.sock`  
 > **Source Language:** C++ / Custom Language (compiled with LLVM)
 
 ---
 
 ## 1. Role & Architectural Responsibilities
-The **Antigravity Daemon** is the primary autonomous agent process inside Heaplit OS. It runs in userland (Ring 2/3) and acts as the developer's pair-programmer and autonomous co-architect.
+The **Heaplit Daemon** is the primary autonomous agent process inside Heaplit OS. It runs in userland (Ring 2/3) and acts as the developer's pair-programmer and autonomous co-architect.
 
 ```mermaid
 flowchart LR
@@ -29,7 +29,7 @@ flowchart LR
 ### 2.1. Obsidian Vault Watcher
 - Listens on kernel filesystem events using `SYS_FS_WATCH` (`0x30`).
 - Monitors markdown files tagged with `#HeaplitPlan`.
-- Parses unfinished checkbox items: `- [ ] ...` and `@Antigravity:` directives.
+- Parses unfinished checkbox items: `- [ ] ...` and `@Heaplit:` directives.
 
 ### 2.2. Code Generator & Prompt Synthesizer
 - Builds structured contextual prompts with existing kernel headers and registers.
@@ -43,7 +43,7 @@ flowchart LR
 
 ---
 
-## 3. Daemon IPC API (`/tmp/antigravity.sock`)
+## 3. Daemon IPC API (`/tmp/heaplit.sock`)
 
 The daemon provides a JSON-over-socket interface for the OS GUI/shell:
 
@@ -61,7 +61,7 @@ The daemon provides a JSON-over-socket interface for the OS GUI/shell:
 ---
 
 ## 4. 24/7 Autonomous Execution Loop
-1. **Boot Initialization:** Kernel launches `/system/bin/antigravity` as the first user process.
+1. **Boot Initialization:** Kernel launches `/system/bin/heaplit` as the first user process.
 2. **Model Loading:** Calls `SYS_AI_LOAD_MODEL` (`0x600`) to cache the quantized GGUF weights.
 3. **Idle State:** Enters zero-CPU sleep via `hlt` loop in the ASM scheduler until awakened by `SYS_FS_NOTIFY`.
 4. **Think & Act:** Generates code, compiles, executes QEMU test, and records the transcript in Obsidian.

@@ -2,7 +2,7 @@
 
 # 🌌 Heaplit OS: The Sovereign AI-Native Operating System
 
-> **A consent-first, compiler-native, spatial operating system where the kernel speaks assembly directly to the metal, the AI runs locally in Ring 1, and the Antigravity agent builds the OS directly from your Obsidian notes.**
+> **A consent-first, compiler-native, spatial operating system where the kernel speaks assembly directly to the metal, the AI runs locally in Ring 1, and the Heaplit agent builds the OS directly from your Obsidian notes.**
 
 ---
 

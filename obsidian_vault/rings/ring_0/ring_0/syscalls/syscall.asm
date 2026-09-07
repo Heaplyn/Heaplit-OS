@@ -69,7 +69,7 @@ syscall_entry:
     push r8
     push r9
 
-    ; 3. Route Antigravity AI Syscalls (0x600 - 0x6FF)
+    ; 3. Route Heaplit AI Syscalls (0x600 - 0x6FF)
     cmp rax, 0x600
     jge .handle_ai_syscall
 

@@ -1,5 +1,5 @@
 ; src/kernel/syscall_ai.asm
-; Antigravity AI Syscall Interface & XSAVE State Management (0x600 - 0x6FF)
+; Heaplit AI Syscall Interface & XSAVE State Management (0x600 - 0x6FF)
 [bits 64]
 
 global ai_dispatcher

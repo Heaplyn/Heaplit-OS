@@ -37,7 +37,7 @@ Heaplit OS uses hardware fast syscall instructions (`syscall` and `sysretq`) rat
 | `0x003` | `SYS_READ` | `sys_read` | Reads bytes from VFS node file descriptor. |
 | `0x004` | `SYS_WRITE` | `sys_write` | Writes bytes to VFS node file descriptor. |
 | `0x018` | `SYS_YIELD` | `sys_yield` | Yields remaining time quantum to next ready thread. |
-| `0x030` | `SYS_FS_WATCH`| `sys_fs_watch` | Registers filesystem watch notify queue for Antigravity daemon. |
+| `0x030` | `SYS_FS_WATCH`| `sys_fs_watch` | Registers filesystem watch notify queue for Heaplit daemon. |
 | `0x600` | `SYS_AI_LOAD_MODEL` | `sys_ai_load` | Memory-maps GGUF model weights into physical cache. |
 | `0x601` | `SYS_AI_INFER` | `sys_ai_infer` | Invokes Ring 1 SIMD transformer forward pass. |
 | `0x602` | `SYS_AI_UNLOAD` | `sys_ai_unload`| Unmaps neural network weights from RAM. |

@@ -4,7 +4,7 @@
 ### *Autonomous Planning, Architecture & Knowledge Graph*
 
 > **"Heaplit is the escape hatch."**  
-> A consent-first, compiler-native, spatial operating system where the kernel speaks assembly directly to the metal, the AI runs locally in Ring 1, and the Antigravity agent builds the OS directly from your Obsidian notes.
+> A consent-first, compiler-native, spatial operating system where the kernel speaks assembly directly to the metal, the AI runs locally in Ring 1, and the Heaplit agent builds the OS directly from your Obsidian notes.
 
 ---
 
@@ -13,7 +13,7 @@
 ```mermaid
 graph TD
     subgraph Ring3["Ring 3: Boot Orchestration & Userland Applications"]
-        A["Obsidian Vault (Markdown Plans)"] -->|"SYS_FS_WATCH (0x30)"| B["Antigravity Daemon (/system/bin/antigravity)"]
+        A["Obsidian Vault (Markdown Plans)"] -->|"SYS_FS_WATCH (0x30)"| B["Heaplit Daemon (/system/bin/heaplit)"]
         B --> C["The Lens Graph File Explorer (Vulkan)"]
         B --> D["Spatial Window Compositor (Inertia Physics)"]
         B --> E["Live Theming Engine (~/.config/heaplit/theme.toml)"]
@@ -62,7 +62,7 @@ graph TD
 - [[00 - Architecture/Code Quality & Engineering Guidelines|Code Quality & Engineering Guidelines]] — Naming rules, scaffolding rules, register preservation contracts
 - [[00 - Architecture/Ring 0 - Metal & Scheduler|Ring 0 - Metal & Scheduler]] — Assembly kernel core & scheduler design
 - [[00 - Architecture/Ring 1 - The C Inference Engine|Ring 1 - The C Inference Engine]] — GGML bridge & C overhead layer
-- [[00 - Architecture/Ring 2 - Antigravity Userland Daemon|Ring 2 - Antigravity Userland Daemon]] — Userland watcher and daemon architecture
+- [[00 - Architecture/Ring 2 - Heaplit Userland Daemon|Ring 2 - Heaplit Userland Daemon]] — Userland watcher and daemon architecture
 
 ### 3. [[01 - Ring 0 - Metal Core (Assembly)/01 - Boot Sequence & Staged Loading|01 - Ring 0: The Metal Core (Assembly)]]
 - [[01 - Ring 0 - Metal Core (Assembly)/01 - Boot Sequence & Staged Loading|01 - Boot Sequence & Staged Loading]] — Multi-sector MBR (`0x7C00` $
@@ -84,8 +84,8 @@ ightarrow$ `0x8200`)
 - [[02 - Ring 1 - The C Overhead (Bridge)/04 - FAT32 & EXT4 Drivers|04 - FAT32 & EXT4 Drivers]] — Boot partition and block storage drivers
 - [[02 - Ring 1 - The C Overhead (Bridge)/05 - Device Drivers (PCIe, NVMe, USB)|05 - Device Drivers (PCIe, NVMe, USB)]] — PCIe enumeration, NVMe DMA queues, xHCI
 
-### 5. [[03 - Ring 2 - Userland & Spatial UI/01 - Antigravity Daemon Architecture|03 - Ring 2: Userland & Spatial UI]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Antigravity Daemon Architecture|01 - Antigravity Daemon Architecture]] — `/system/bin/antigravity` daemon, `/tmp/antigravity.sock`
+### 5. [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture|03 - Ring 2: Userland & Spatial UI]]
+- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture|01 - Heaplit Daemon Architecture]] — `/system/bin/heaplit` daemon, `/tmp/heaplit.sock`
 - [[03 - Ring 2 - Userland & Spatial UI/02 - The Lens Graph File Explorer|02 - The Lens Graph File Explorer]] — Force-directed graph UI (Vulkan compute shader)
 - [[03 - Ring 2 - Userland & Spatial UI/03 - Spatial Window Compositor|03 - Spatial Window Compositor]] — Window physics engine (inertia, mass, friction, velocity)
 - [[03 - Ring 2 - Userland & Spatial UI/04 - GPU Rendering & SDF Fonts|04 - GPU Rendering & SDF Fonts]] — Multi-channel signed distance field font rasterization
@@ -115,13 +115,13 @@ ightarrow$ `0x8200`)
 - [[06 - Master Planning & Roadmaps/06 - HeaplitPlan - Spatial Compositor & UI Shell|06 - HeaplitPlan: Spatial Compositor & UI Shell]] — Phase 3 Action Checklist
 - [[06 - Master Planning & Roadmaps/07 - HeaplitPlan - Developer Toolchain|07 - HeaplitPlan: Developer Toolchain]] — Phase 4 Action Checklist
 
-### 9. [[07 - Antigravity AI Agent Playbooks/01 - Autonomous Build & Test Loop|07 - Antigravity AI Agent Playbooks]]
-- [[07 - Antigravity AI Agent Playbooks/01 - Autonomous Build & Test Loop|01 - Autonomous Build & Test Loop]] — Obsidian note $
+### 9. [[07 - Heaplit AI Agent Playbooks/01 - Autonomous Build & Test Loop|07 - Heaplit AI Agent Playbooks]]
+- [[07 - Heaplit AI Agent Playbooks/01 - Autonomous Build & Test Loop|01 - Autonomous Build & Test Loop]] — Obsidian note $
 ightarrow$ Prompt $
 ightarrow$ NASM $
 ightarrow$ QEMU loop
-- [[07 - Antigravity AI Agent Playbooks/02 - Obsidian Markdown Syntax & Directives|02 - Obsidian Markdown Syntax & Directives]] — Directives (`#HeaplitPlan`, `@Antigravity:`)
-- [[07 - Antigravity AI Agent Playbooks/03 - Crash Diagnostics & Rollback Playbook|03 - Crash Diagnostics & Rollback Playbook]] — Watchdog, register dumps, ZFS rollback
+- [[07 - Heaplit AI Agent Playbooks/02 - Obsidian Markdown Syntax & Directives|02 - Obsidian Markdown Syntax & Directives]] — Directives (`#HeaplitPlan`, `@Heaplit:`)
+- [[07 - Heaplit AI Agent Playbooks/03 - Crash Diagnostics & Rollback Playbook|03 - Crash Diagnostics & Rollback Playbook]] — Watchdog, register dumps, ZFS rollback
 
 ---
-*Created and maintained autonomously by Antigravity AI Agent for Heaplit OS.*
+*Created and maintained autonomously by Heaplit AI Agent for Heaplit OS.*

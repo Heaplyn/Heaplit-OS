@@ -2,7 +2,7 @@
 
 # 🏛️ Heaplit OS System Architecture
 
-Heaplit OS is designed from first principles as a **Sovereign, Compiler-Native, AI-Embedded Operating System**. Rather than treating the AI Agent (**Antigravity**) as an untrusted, heavy userland web app, the AI engine is integrated directly into the ring execution hierarchy of the OS, while the bare-metal kernel speaks pure assembly directly to the hardware.
+Heaplit OS is designed from first principles as a **Sovereign, Compiler-Native, AI-Embedded Operating System**. Rather than treating the AI Agent (**Heaplit**) as an untrusted, heavy userland web app, the AI engine is integrated directly into the ring execution hierarchy of the OS, while the bare-metal kernel speaks pure assembly directly to the hardware.
 
 ---
 
@@ -62,7 +62,7 @@ graph TD
 | **Ring 0** | `rings/ring_0/` | **Ring 0 only ($M \le 0$)** | Independent metal utilities, dynamic variable type system, string/math functions, memory block operations, PMM bitmap allocator, GDT/IDT/Paging tables, tickless scheduler, fast MSR LSTAR syscall dispatcher, AVX-512 XSAVE engine. **MUST NOT require Ring 1, 2, or 3.** |
 | **Ring 1** | `rings/ring_1/` | **Ring 0, Ring 1 ($M \le 1$)** | Hardware lines (A20 gate), freestanding C runtime (`liba`), device drivers (PCIe enumeration, VFS with xattr graph hooks, GGML inference bridge). **MUST NOT require Ring 2 or 3.** |
 | **Ring 2** | `rings/ring_2/` | **Ring 0, Ring 1, Ring 2 ($M \le 2$)** | Presentation and input services: VGA video mode control, cursor management, hex/string printers, interactive keyboard reader, line buffer editor with backspace handling. **MUST NOT require Ring 3.** |
-| **Ring 3** | `rings/ring_3/` | **Ring 0, Ring 1, Ring 2, Ring 3 ($M \le 3$)** | Top-level staged boot orchestrator (`base.asm`), MBR bootstrap (`mbr.asm`), stage diagnostics (`stage2.asm`), interactive shell stage (`stage4_console.asm`), userland CPL=3 entrypoint (`entry.asm`), and Antigravity userland daemon. |
+| **Ring 3** | `rings/ring_3/` | **Ring 0, Ring 1, Ring 2, Ring 3 ($M \le 3$)** | Top-level staged boot orchestrator (`base.asm`), MBR bootstrap (`mbr.asm`), stage diagnostics (`stage2.asm`), interactive shell stage (`stage4_console.asm`), userland CPL=3 entrypoint (`entry.asm`), and Heaplit userland daemon. |
 
 ---
 
@@ -110,4 +110,4 @@ sequenceDiagram
 - [[00 - Architecture/Code Quality & Engineering Guidelines|Code Quality & Engineering Guidelines]]
 - [[01 - Ring 0 - Metal Core (Assembly)/01 - Boot Sequence & Staged Loading|Ring 0 Boot & Staged Loading]]
 - [[02 - Ring 1 - The C Overhead (Bridge)/01 - Freestanding C Runtime (liba)|Ring 1 Freestanding C Runtime]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Antigravity Daemon Architecture|Ring 2 / Ring 3 Userland Architecture]]
+- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture|Ring 2 / Ring 3 Userland Architecture]]

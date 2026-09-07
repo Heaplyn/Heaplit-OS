@@ -33,10 +33,10 @@ Tags: #HeaplitPlan #ASM #Ring0 #MVP
 
 ---
 
-## 2. Antigravity Prompt Directive
+## 2. Heaplit Prompt Directive
 
 ```markdown
-@Antigravity:
+@Heaplit:
 Expand `rings/ring_0/ring_0/variable.asm` to support subtraction, multiplication, division, string variable initialization, and typed printing via `print_variable`.
 ```
 

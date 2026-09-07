@@ -8,7 +8,7 @@
 
 ## 1. Local AI Sandbox (No Cloud Telemetry)
 Traditional operating systems send telemetry, telemetry hashes, diagnostic logs, and prompt tokens to remote servers. Heaplit OS guarantees complete local execution:
-- **Offline-Only Inference:** The Antigravity inference engine runs in Ring 1 memory using local quantized weights (`.gguf`).
+- **Offline-Only Inference:** The Heaplit inference engine runs in Ring 1 memory using local quantized weights (`.gguf`).
 - **Network Isolation:** Ring 1 AI weights memory regions are mapped without network socket permissions.
 - **Hardware Ring Enforced:** Even if a userland process attempts to establish a remote connection, all socket operations must traverse the Ring 0 packet filter.
 
@@ -42,5 +42,5 @@ graph LR
 
 ## 4. Related Links
 - [[00 - Foundations & Vision/The Vision & Manifest|Vision & Manifest]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Antigravity Daemon Architecture|Antigravity Daemon]]
-- [[07 - Antigravity AI Agent Playbooks/03 - Crash Diagnostics & Rollback Playbook|Rollback Playbook]]
+- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture|Heaplit Daemon]]
+- [[07 - Heaplit AI Agent Playbooks/03 - Crash Diagnostics & Rollback Playbook|Rollback Playbook]]

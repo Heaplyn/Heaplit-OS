@@ -31,7 +31,7 @@
 #define SYS_CURSOR_MOVE         0x202
 #define SYS_THEME_NOTIFY        0x203
 
-// --- Antigravity AI Engine (0x600 - 0x6FF) ---
+// --- Heaplit AI Engine (0x600 - 0x6FF) ---
 #define SYS_AI_LOAD_MODEL       0x600
 #define SYS_AI_INFER            0x601
 #define SYS_AI_SCHEDULE_TASK    0x602
