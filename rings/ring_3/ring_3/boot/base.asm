@@ -47,6 +47,8 @@ times (512 * 4) - ($ - $$) db 0         ; Execute instruction
 %include "ring_0/cpu/protected_mode.asm" ; Execute instruction
 %include "ring_0/cpu/paging.asm"        ; Execute instruction
 %include "ring_0/cpu/long_mode.asm"     ; Execute instruction
+%include "userland/ring3_transition.asm" ; Execute instruction
+%include "userland/entry.asm"            ; Execute instruction
 
 ; Pad final kernel image to clean 4096-byte boundary (8 sectors total)
 times (512 * 8) - ($ - $$) db 0         ; Execute instruction

@@ -19,29 +19,29 @@ setup_paging_32:
     xor eax, eax                        ; Zero out EAX register
     rep stosd                           ; Execute instruction
 
-    ; 2. Link PML4 entry 0 (Identity Map) and entry 511 (Higher Half) to PDPT
-    mov eax, pdpt_table                 ; Copy value from pdpt_table to eax
-    or eax, 0x03                        ; Present(1) | Read/Write(1)
-    mov [pml4_table], eax               ; PML4[0] -> PDPT
-    mov [pml4_table + 511 * 8], eax     ; PML4[511] -> PDPT (Higher-Half 0xFFFFFFFF80000000)
-
-    ; 3. Link PDPT entry 0 and entry 510 to Page Directory (PD)
-    mov eax, pd_table                   ; Copy value from pd_table to eax
-    or eax, 0x03                        ; Present(1) | Read/Write(1)
-    mov [pdpt_table], eax               ; PDPT[0] -> PD
-    mov [pdpt_table + 510 * 8], eax     ; PDPT[510] -> PD
+        ; 2. Link PML4 entry 0 (Identity Map) and entry 511 (Higher Half) to PDPT
+    mov eax, pdpt_table
+    or eax, 0x07                        ; Present(1) | Read/Write(1) | User(1)  <-- Changed from 0x03 to 0x07
+    mov [pml4_table], eax
+    mov [pml4_table + 511 * 8], eax
+        ; 3. Link PDPT entry 0 and entry 510 to Page Directory (PD)
+    mov eax, pd_table
+    or eax, 0x07                        ; Present(1) | Read/Write(1) | User(1)  <-- Changed from 0x03 to 0x07
+    mov [pdpt_table], eax
+    mov [pdpt_table + 510 * 8], eax
 
     ; 4. Identity map first 1GB of physical RAM using 512 2MB huge pages
-    mov ecx, 0                          ; Entry index (0..511)
+        ; 4. Identity map first 1GB of physical RAM using 512 2MB huge pages
+    mov ecx, 0
 .map_pd_loop:
     mov eax, 0x200000                   ; 2MB per page
-    mul ecx                             ; EAX = ecx * 2MB physical base address
-    or eax, 0x83                        ; Present(1) | Read/Write(1) | PageSize_2MB(1)
-    mov [pd_table + ecx * 8], eax       ; Copy value from eax to [pd_table + ecx * 8]
-    mov dword [pd_table + ecx * 8 + 4], 0 ; Upper 32 bits = 0
-    inc ecx                             ; Increment ecx by 1
-    cmp ecx, 512                        ; Compare ecx with 512 and update CPU EFLAGS
-    jne .map_pd_loop                    ; Jump to .map_pd_loop if condition 'ne' is met
+    mul ecx
+    or eax, 0x87                        ; Present(1) | Read/Write(1) | User(1) | PageSize_2MB(1) <-- Changed 0x83 to 0x87
+    mov [pd_table + ecx * 8], eax
+    mov dword [pd_table + ecx * 8 + 4], 0
+    inc ecx
+    cmp ecx, 512
+    jne .map_pd_loop
 
     ; 5. Load CR3 with PML4 Base Address (0x1000)
     mov eax, pml4_table                 ; Copy value from pml4_table to eax

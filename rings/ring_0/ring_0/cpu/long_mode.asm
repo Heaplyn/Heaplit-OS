@@ -60,7 +60,3 @@ print_string_64:
 
 msg_lm64_active:         db 'Heaplit OS: 64-bit Long Mode Successfully Entered!', 0 ; Execute instruction
 msg_kernel_supervisor:   db 'Supervisor: Ring 0 Metal Core Online. Preparing Ring 3...', 0 ; Execute instruction
-
-; Include Dedicated Ring 3 Transition Module and Userland Entrypoint
-%include "../../ring_3/userland/ring3_transition.asm" ; Execute instruction
-%include "../../ring_3/userland/entry.asm"            ; Execute instruction
