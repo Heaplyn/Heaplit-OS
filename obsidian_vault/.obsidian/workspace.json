@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "06 - Master Planning & Roadmaps/07 - HeaplitPlan - Developer Toolchain.md",
+                "file": "02 - Ring 1 - The C Overhead (Bridge)/02 - GGML & Llama.cpp Kernel Port.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07 - HeaplitPlan - Developer Toolchain"
+              "title": "02 - GGML & Llama.cpp Kernel Port"
             }
           }
         ]
@@ -188,13 +188,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "5ec182f8501caf99",
+  "active": "3023e069efd19909",
   "lastOpenFiles": [
+    "06 - Master Planning & Roadmaps/02 - HeaplitPlan - Bootloader & Long Mode Switch.md",
+    "06 - Master Planning & Roadmaps/01 - 5-Year Vision & Phased Timeline.md",
     "06 - Master Planning & Roadmaps/06 - HeaplitPlan - Spatial Compositor & UI Shell.md",
+    "07 - Heaplit AI Agent Playbooks/02 - Obsidian Markdown Syntax & Directives.md",
+    "06 - Master Planning & Roadmaps/07 - HeaplitPlan - Developer Toolchain.md",
     "06 - Master Planning & Roadmaps/04 - HeaplitPlan - AI Subsystem & Ring 1 Bridge.md",
     "06 - Master Planning & Roadmaps/03 - HeaplitPlan - Microkernel & ASM Scheduler.md",
-    "06 - Master Planning & Roadmaps/01 - 5-Year Vision & Phased Timeline.md",
-    "06 - Master Planning & Roadmaps/02 - HeaplitPlan - Bootloader & Long Mode Switch.md",
     "include/README.md",
     "rings/ring_1/ring_1/hardware/README.md",
     "02 - Ring 1 - The C Overhead (Bridge)/06 - VFS Journaling & Exception Translation Pipeline.md",
@@ -207,7 +209,6 @@
     "03 - Ring 2 - Userland & Spatial UI/09 - The Forge Tool Installer GUI.md",
     "00 - Architecture/00 - Comprehensive Project Handover & Architecture Specification.md",
     "07 - Heaplit AI Agent Playbooks/03 - Crash Diagnostics & Rollback Playbook.md",
-    "07 - Heaplit AI Agent Playbooks/02 - Obsidian Markdown Syntax & Directives.md",
     "07 - Heaplit AI Agent Playbooks/01 - Autonomous Build & Test Loop.md",
     "07 - Heaplit AI Agent Playbooks",
     "03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture.md",
@@ -216,7 +217,6 @@
     "rings/ring_0/ring_0/memory/README.md",
     "03 - Ring 2 - Userland & Spatial UI/08 - Keyboard & Interactive Editor Subsystem.md",
     "03 - Ring 2 - Userland & Spatial UI/07 - Console & Display Subsystem.md",
-    "01 - Ring 0 - Metal Core (Assembly)/11 - Real-Mode Memory & Block Utilities.md",
     "loader",
     "include",
     "rings/ring_3/ring_3/userland/entry.asm",
