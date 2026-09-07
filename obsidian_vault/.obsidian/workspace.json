@@ -190,6 +190,7 @@
   },
   "active": "3023e069efd19909",
   "lastOpenFiles": [
+    "06 - Master Planning & Roadmaps/08 - The Complete Production OS Implementation Blueprint & Gap Analysis.md",
     "06 - Master Planning & Roadmaps/02 - HeaplitPlan - Bootloader & Long Mode Switch.md",
     "06 - Master Planning & Roadmaps/01 - 5-Year Vision & Phased Timeline.md",
     "06 - Master Planning & Roadmaps/06 - HeaplitPlan - Spatial Compositor & UI Shell.md",
@@ -216,7 +217,6 @@
     "rings/ring_1/ring_1/drivers/README.md",
     "rings/ring_0/ring_0/memory/README.md",
     "03 - Ring 2 - Userland & Spatial UI/08 - Keyboard & Interactive Editor Subsystem.md",
-    "03 - Ring 2 - Userland & Spatial UI/07 - Console & Display Subsystem.md",
     "loader",
     "include",
     "rings/ring_3/ring_3/userland/entry.asm",
