@@ -47,6 +47,7 @@ times (512 * 4) - ($ - $$) db 0         ; Execute instruction
 %include "../../../ring_0/ring_0/cpu/protected_mode.asm" ; Execute instruction
 %include "../../../ring_0/ring_0/cpu/paging.asm"        ; Execute instruction
 %include "../../../ring_0/ring_0/cpu/long_mode.asm"     ; Execute instruction
+%include "../../../ring_1/ring_1/hardware/thread.asm"   ; Execute instruction
 %include "../userland/ring3_transition.asm" ; Execute instruction
 %include "../userland/entry.asm"            ; Execute instruction
 

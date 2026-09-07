@@ -2,7 +2,7 @@
 ; =============================================================================
 ; Sectors 2 & 3: Extended Loader & Diagnostics (0x7E00 - 0x81FF)
 ; =============================================================================
-[bits 16]                               ; Execute instruction
+[bits 16]                               ; 16-bit Real Mode Execution
 
 stage2_entry:
     mov si, msg_sector_2                ; Copy value from msg_sector_2 to si
@@ -48,6 +48,13 @@ stage2_entry:
 
     mov si, msg_a20_success             ; Copy value from msg_a20_success to si
     call print_string_16                ; Execute instruction
+
+    ; 16-bit BIOS Wait Delay (500ms = 0x0007A120 microseconds)
+    mov ah, 0x86
+    mov cx, 0x0007
+    mov dx, 0xA120
+    int 0x15
+
     jmp .continue_boot                  ; Unconditional jump to target label .continue_boot
 
 .a20_failed:
