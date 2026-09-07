@@ -41,13 +41,13 @@ graph TD
         R0_5["syscalls (syscall.asm MSR LSTAR dispatcher, syscall_ai.asm XSAVE)"]
     end
 
-    Ring3 -->|Can Require Ring 0, 1, 2, 3| Ring2
-    Ring3 -->|Can Require Ring 0, 1, 2, 3| Ring1
-    Ring3 -->|Can Require Ring 0, 1, 2, 3| Ring0
-    Ring2 -->|Can Require Ring 0, 1, 2| Ring1
-    Ring2 -->|Can Require Ring 0, 1, 2| Ring0
-    Ring1 -->|Can Require Ring 0, 1| Ring0
-    Ring0 -->|Strictly Independent (M = 0)| Ring0
+    Ring3 -->|"Can Require Ring 0, 1, 2, 3"| Ring2
+    Ring3 -->|"Can Require Ring 0, 1, 2, 3"| Ring1
+    Ring3 -->|"Can Require Ring 0, 1, 2, 3"| Ring0
+    Ring2 -->|"Can Require Ring 0, 1, 2"| Ring1
+    Ring2 -->|"Can Require Ring 0, 1, 2"| Ring0
+    Ring1 -->|"Can Require Ring 0, 1"| Ring0
+    Ring0 -->|"Strictly Independent (M = 0)"| Ring0
 ```
 
 ---

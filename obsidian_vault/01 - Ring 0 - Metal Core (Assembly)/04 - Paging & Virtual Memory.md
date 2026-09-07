@@ -13,9 +13,9 @@
 ```mermaid
 graph LR
     CR3["CR3 Register (0x1000)"] --> PML4["PML4 Table (0x1000)"]
-    PML4 -->|Index bits 47..39| PDPT["PDPT Table (0x2000)"]
-    PDPT -->|Index bits 38..30| PD["Page Directory (0x3000)"]
-    PD -->|Index bits 29..21 (2MB Huge Page)| Phys["Physical 2MB RAM Frame"]
+    PML4 -->|"Index bits 47..39"| PDPT["PDPT Table (0x2000)"]
+    PDPT -->|"Index bits 38..30"| PD["Page Directory (0x3000)"]
+    PD -->|"Index bits 29..21 (2MB Huge Page)"| Phys["Physical 2MB RAM Frame"]
 ```
 
 ### Fixed Page Table Placement in Low Memory

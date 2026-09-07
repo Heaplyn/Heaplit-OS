@@ -34,12 +34,12 @@ flowchart TD
         R2_HPKG["hpkg Package Manager & ZFS Snapshot Engine"]
     end
 
-    Ring2 -->|SYS_AI_INFER (0x601)| R0_SYSCALL
-    R0_SYSCALL -->|xsave & CPU Turbo Boost| R0_XSAVE
-    R0_SYSCALL -->|Trampoline| R1_TRAMP
-    R1_TRAMP -->|Vectorized Inference (AVX-512)| R1_GGML
-    R1_GGML -->|Raw Generated Code| R2_DAEMON
-    R2_DAEMON -->|SYS_EXEC (0x3B)| R0_SYSCALL
+    Ring2 -->|"SYS_AI_INFER (0x601)"| R0_SYSCALL
+    R0_SYSCALL -->|"xsave & CPU Turbo Boost"| R0_XSAVE
+    R0_SYSCALL -->|"Trampoline"| R1_TRAMP
+    R1_TRAMP -->|"Vectorized Inference (AVX-512)"| R1_GGML
+    R1_GGML -->|"Raw Generated Code"| R2_DAEMON
+    R2_DAEMON -->|"SYS_EXEC (0x3B)"| R0_SYSCALL
 ```
 
 ---

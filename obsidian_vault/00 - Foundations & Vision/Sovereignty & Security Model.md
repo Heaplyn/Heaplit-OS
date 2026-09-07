@@ -26,9 +26,9 @@ The kernel compositor draws an interactive, GPU-rendered **Data-Flow Graph** dir
 
 ```mermaid
 graph LR
-    App["App: /system/bin/editor"] -->|Socket Connect| Filter["Kernel Packet Filter"]
-    Filter -->|Draws Alert Node| UI["Visual Compositor (Red Glowing Node)"]
-    UI -->|User Clicks 'Approve' / 'Deny'| Action["Hardware Grant / Kill Process"]
+    App["App: /system/bin/editor"] -->|"Socket Connect"| Filter["Kernel Packet Filter"]
+    Filter -->|"Draws Alert Node"| UI["Visual Compositor (Red Glowing Node)"]
+    UI -->|"User Clicks 'Approve' / 'Deny'"| Action["Hardware Grant / Kill Process"]
 ```
 
 ---

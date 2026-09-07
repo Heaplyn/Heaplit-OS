@@ -14,11 +14,11 @@ Heaplit OS integrates local LLM inference into Ring 1 as a kernel driver rather 
 
 ```mermaid
 graph TD
-    Daemon["Ring 3 / Ring 2 Daemon"] -->|SYS_AI_INFER (0x601)| Dispatcher["Ring 0 Syscall Dispatcher"]
-    Dispatcher -->|XSAVE & Trampoline| Engine["Ring 1 ai_engine.c"]
-    Engine -->|Memory-Mapped GGUF Weights| Cache["2MB/1GB Huge Page Model Cache"]
-    Engine -->|AVX-512 Tensor Kernel| SIMD["ZMM Vector Registers (512-bit)"]
-    SIMD -->|Generated Tokens| Daemon
+    Daemon["Ring 3 / Ring 2 Daemon"] -->|"SYS_AI_INFER (0x601)"| Dispatcher["Ring 0 Syscall Dispatcher"]
+    Dispatcher -->|"XSAVE & Trampoline"| Engine["Ring 1 ai_engine.c"]
+    Engine -->|"Memory-Mapped GGUF Weights"| Cache["2MB/1GB Huge Page Model Cache"]
+    Engine -->|"AVX-512 Tensor Kernel"| SIMD["ZMM Vector Registers (512-bit)"]
+    SIMD -->|"Generated Tokens"| Daemon
 ```
 
 ---

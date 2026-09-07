@@ -13,7 +13,7 @@
 ```mermaid
 graph TD
     subgraph Ring3["Ring 3: Boot Orchestration & Userland Applications"]
-        A["Obsidian Vault (Markdown Plans)"] -->|SYS_FS_WATCH (0x30)| B["Antigravity Daemon (/system/bin/antigravity)"]
+        A["Obsidian Vault (Markdown Plans)"] -->|"SYS_FS_WATCH (0x30)"| B["Antigravity Daemon (/system/bin/antigravity)"]
         B --> C["The Lens Graph File Explorer (Vulkan)"]
         B --> D["Spatial Window Compositor (Inertia Physics)"]
         B --> E["Live Theming Engine (~/.config/heaplit/theme.toml)"]
@@ -40,11 +40,11 @@ graph TD
         Q["Fast Syscall Dispatcher (MSR LSTAR) & AVX-512 XSAVE"]
     end
 
-    G -->|Initializes & Composes| Ring0
-    G -->|Initializes & Composes| Ring1
-    G -->|Initializes & Composes| Ring2
-    B -->|SYS_AI_INFER (0x601)| Q
-    Q -->|XSAVE & Turbo Boost| L
+    G -->|"Initializes & Composes"| Ring0
+    G -->|"Initializes & Composes"| Ring1
+    G -->|"Initializes & Composes"| Ring2
+    B -->|"SYS_AI_INFER (0x601)"| Q
+    Q -->|"XSAVE & Turbo Boost"| L
 ```
 
 ---

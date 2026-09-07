@@ -22,17 +22,17 @@ Heaplit OS uses a 4-step failover sequence to guarantee A20 activation across re
 
 ```mermaid
 graph TD
-    A["check_a20 (Memory Wrap Check)"] -->|Already Enabled?| Done["A20 Active (AX = 1)"]
-    A -->|Disabled| B["Method 1: BIOS Fast A20 (INT 0x15, AX=0x2401)"]
+    A["check_a20 (Memory Wrap Check)"] -->|"Already Enabled?"| Done["A20 Active (AX = 1)"]
+    A -->|"Disabled"| B["Method 1: BIOS Fast A20 (INT 0x15, AX=0x2401)"]
     B --> C["check_a20"]
-    C -->|Success| Done
-    C -->|Failed| D["Method 2: Fast A20 Gate (Port 0x92 Bit 1)"]
+    C -->|"Success"| Done
+    C -->|"Failed"| D["Method 2: Fast A20 Gate (Port 0x92 Bit 1)"]
     D --> E["check_a20"]
-    E -->|Success| Done
-    E -->|Failed| F["Method 3: 8042 Keyboard Controller (Port 0x64/0x60)"]
+    E -->|"Success"| Done
+    E -->|"Failed"| F["Method 3: 8042 Keyboard Controller (Port 0x64/0x60)"]
     F --> G["check_a20"]
-    G -->|Success| Done
-    G -->|Failed| Fail["Fatal: A20 Gate Activation Failed (AX = 0)"]
+    G -->|"Success"| Done
+    G -->|"Failed"| Fail["Fatal: A20 Gate Activation Failed (AX = 0)"]
 ```
 
 ### Memory Wrap Detection Algorithm (`check_a20`)

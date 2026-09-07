@@ -13,13 +13,13 @@ The **Antigravity Daemon** is the primary autonomous agent process inside Heapli
 
 ```mermaid
 flowchart LR
-    Obsidian["Obsidian Vault<br>~/Documents/Obsidian/"] -->|SYS_FS_WATCH (0x30)| Watcher["Vault Watcher"]
+    Obsidian["Obsidian Vault<br>~/Documents/Obsidian/"] -->|"SYS_FS_WATCH (0x30)"| Watcher["Vault Watcher"]
     Watcher --> TaskParser["Task Parser (#HeaplitPlan)"]
     TaskParser --> CodeGen["Code Generator Engine"]
-    CodeGen -->|SYS_AI_INFER (0x601)| Inference["Ring 0/1 Inference Engine"]
-    Inference -->|ASM/C Code| Assembler["NASM / LLVM Compiler"]
-    Assembler -->|SYS_EXEC (0x3B)| KernelBuild["Kernel Build & Test"]
-    KernelBuild -->|Success / Error Feedback| Obsidian
+    CodeGen -->|"SYS_AI_INFER (0x601)"| Inference["Ring 0/1 Inference Engine"]
+    Inference -->|"ASM/C Code"| Assembler["NASM / LLVM Compiler"]
+    Assembler -->|"SYS_EXEC (0x3B)"| KernelBuild["Kernel Build & Test"]
+    KernelBuild -->|"Success / Error Feedback"| Obsidian
 ```
 
 ---
