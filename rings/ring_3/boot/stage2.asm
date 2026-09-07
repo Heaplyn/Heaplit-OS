@@ -2,78 +2,78 @@
 ; =============================================================================
 ; Sectors 2 & 3: Extended Loader & Diagnostics (0x7E00 - 0x81FF)
 ; =============================================================================
-[bits 16]                               ; 16-bit Real Mode Execution
+[bits 16]                               ;16-bit Real Mode Execution
 
 stage2_entry:
-    mov si, msg_sector_2                ; Copy value from msg_sector_2 to si
-    call print_string_16                ; Execute instruction
-    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
+    mov si, msg_sector_2                ; Load memory address of string 'msg_sector_2' into SI argument register
+    call print_string_16                ; Call subroutine 'print_string_16'
+    call sleep_500ms_16                 ;0.5s visual diagnostic sleep
 
     ; 1. Test Ring 0 Dynamic Variable System: Integer Creation & Addition
-    mov di, var_num1                    ; Copy value from var_num1 to di
+    mov di, var_num1                    ; Load memory address of buffer 'var_num1' into DI destination register
     mov al, type_int                    ; Copy value from type_int to al
     mov dx, 120                         ; Copy value from 120 to dx
-    call create_variable                ; Execute instruction
+    call create_variable                ; Call subroutine 'create_variable'
 
-    mov di, var_num2                    ; Copy value from var_num2 to di
+    mov di, var_num2                    ; Load memory address of buffer 'var_num2' into DI destination register
     mov al, type_int                    ; Copy value from type_int to al
     mov dx, 35                          ; Copy value from 35 to dx
-    call create_variable                ; Execute instruction
+    call create_variable                ; Call subroutine 'create_variable'
 
     ; Add var_num2 into var_num1 (120 + 35 = 155)
-    mov di, var_num1                    ; Copy value from var_num1 to di
-    mov si, var_num2                    ; Copy value from var_num2 to si
-    call add_variables                  ; Execute instruction
+    mov di, var_num1                    ; Load memory address of buffer 'var_num1' into DI destination register
+    mov si, var_num2                    ; Load memory address of string 'var_num2' into SI argument register
+    call add_variables                  ; Call subroutine 'add_variables'
 
-    mov si, msg_calc_label              ; Copy value from msg_calc_label to si
-    call print_string_16                ; Execute instruction
-    mov di, var_num1                    ; Copy value from var_num1 to di
-    call print_variable                 ; Execute instruction
-    call print_newline                  ; Execute instruction
-    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
+    mov si, msg_calc_label              ; Load memory address of string 'msg_calc_label' into SI argument register
+    call print_string_16                ; Call subroutine 'print_string_16'
+    mov di, var_num1                    ; Load memory address of buffer 'var_num1' into DI destination register
+    call print_variable                 ; Call subroutine 'print_variable'
+    call print_newline                  ; Call subroutine 'print_newline'
+    call sleep_500ms_16                 ;0.5s visual diagnostic sleep
 
     ; 2. Test Ring 0 String Variable Creation & Printing
-    mov di, var_title                   ; Copy value from var_title to di
-    mov si, str_os_name                 ; Copy value from str_os_name to si
-    call create_string_variable         ; Execute instruction
+    mov di, var_title                   ; Load memory address of buffer 'var_title' into DI destination register
+    mov si, str_os_name                 ; Load memory address of string 'str_os_name' into SI argument register
+    call create_string_variable         ; Call subroutine 'create_string_variable'
 
-    mov si, msg_str_label               ; Copy value from msg_str_label to si
-    call print_string_16                ; Execute instruction
-    mov di, var_title                   ; Copy value from var_title to di
-    call print_variable                 ; Execute instruction
-    call print_newline                  ; Execute instruction
-    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
+    mov si, msg_str_label               ; Load memory address of string 'msg_str_label' into SI argument register
+    call print_string_16                ; Call subroutine 'print_string_16'
+    mov di, var_title                   ; Load memory address of buffer 'var_title' into DI destination register
+    call print_variable                 ; Call subroutine 'print_variable'
+    call print_newline                  ; Call subroutine 'print_newline'
+    call sleep_500ms_16                 ;0.5s visual diagnostic sleep
 
     ; 3. Test Ring 1 Hardware A20 Gate Activation
-    call enable_a20                     ; Execute instruction
+    call enable_a20                     ; Call subroutine 'enable_a20'
     test ax, ax                         ; Execute instruction
-    jz .a20_failed                      ; Jump to .a20_failed if condition 'z' is met
+    jz .a20_failed                      ;Jump to .a20_failed if condition 'z' is met
 
-    mov si, msg_a20_success             ; Copy value from msg_a20_success to si
-    call print_string_16                ; Execute instruction
-    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
+    mov si, msg_a20_success             ; Load memory address of string 'msg_a20_success' into SI argument register
+    call print_string_16                ; Call subroutine 'print_string_16'
+    call sleep_500ms_16                 ;0.5s visual diagnostic sleep
 
-    jmp .continue_boot                  ; Unconditional jump to target label .continue_boot
+    jmp .continue_boot                  ;Unconditional jump to target label .continue_boot
 
 .a20_failed:
-    mov si, msg_a20_error               ; Copy value from msg_a20_error to si
-    call print_string_16                ; Execute instruction
-    cli                                 ; Disable hardware interrupts (clear IF bit in EFLAGS)
-    hlt                                 ; Halt CPU execution until next hardware interrupt
+    mov si, msg_a20_error               ; Load memory address of string 'msg_a20_error' into SI argument register
+    call print_string_16                ; Call subroutine 'print_string_16'
+    cli                                 ;Disable hardware interrupts (clear IF bit in EFLAGS)
+    hlt                                 ;Halt CPU execution until next hardware interrupt
     jmp $                               ; Execute instruction
 
 .continue_boot:
     ; Transfer control to Sector 4 (Interactive Console)
-    jmp stage4_console_entry            ; Unconditional jump to target label stage4_console_entry
+    jmp stage4_console_entry            ;Unconditional jump to target label stage4_console_entry
 
 sleep_500ms_16:
-    pusha
-    mov ah, 0x86
-    mov cx, 0x0007                      ; 500,000 microseconds = 0x0007A120
-    mov dx, 0xA120
-    int 0x15
-    popa
-    ret
+    pusha                               ; Push all 16-bit general purpose registers (AX, CX, DX, BX, SP, BP, SI, DI) onto stack
+    mov ah, 0x86                        ; Set BIOS function 0x86 (Microsecond Sleep Delay)
+    mov cx, 0x0007                      ;500,000 microseconds = 0x0007A120
+    mov dx, 0xA120                      ; Copy value from 0xA120 to dx
+    int 0x15                            ; Trigger BIOS System Services / Wait interrupt
+    popa                                ; Restore all 16-bit general purpose registers from stack
+    ret                                 ; Return control to caller instruction pointer
 
 msg_sector_2:     db 'Sectors 2-3 Executing (0x7E00): Initializing Subsystems...', 0x0D, 0x0A, 0 ; Execute instruction
 msg_calc_label:   db '  [Ring 0 Variable] 120 + 35 = ', 0 ; Execute instruction

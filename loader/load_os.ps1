@@ -6,7 +6,7 @@ Write-Host "==================================================" -ForegroundColor
 Write-Host "  Heaplit OS: Staged Assembly Build Pipeline" -ForegroundColor Cyan
 Write-Host "==================================================" -ForegroundColor Cyan
 
-$BootPath = Join-Path $PSScriptRoot "..\rings\ring_3\ring_3\boot"
+$BootPath = Join-Path $PSScriptRoot "..\rings\ring_3\boot"
 $SourceFile = Join-Path $BootPath "base.asm"
 $OutputFile = Join-Path $BootPath "base.bin"
 

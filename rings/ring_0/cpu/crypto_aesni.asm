@@ -18,14 +18,14 @@ bits 64
 ; ----------------------------------------------------------------------------
 align 16
 aesni_supported:
-    push rbx                            ; Preserve non-volatile RBX register on stack
-    mov eax, 1                          ; Query CPUID feature flags
+    push rbx                            ;Preserve non-volatile RBX register on stack
+    mov eax, 1                          ;Query CPUID feature flags
     cpuid                               ; Execute instruction
-    bt ecx, 25                          ; ECX Bit 25 = AES-NI support
+    bt ecx, 25                          ;ECX Bit 25 = AES-NI support
     setc al                             ; Execute instruction
     movzx rax, al                       ; Execute instruction
-    pop rbx                             ; Restore non-volatile RBX register from stack
-    ret                                 ; Return control to caller instruction pointer
+    pop rbx                             ;Restore non-volatile RBX register from stack
+    ret                                 ;Return control to caller instruction pointer
 
 ; ----------------------------------------------------------------------------
 ; aesni_encrypt_block: Encrypts a 16-byte block using 128-bit AES key
@@ -36,9 +36,9 @@ aesni_supported:
 ; ----------------------------------------------------------------------------
 align 16
 aesni_encrypt_block:
-    movdqu xmm0, [rdi]                  ; Load Plaintext block
-    movdqu xmm1, [rdx]                  ; Load Round Key 0
-    pxor xmm0, xmm1                     ; Initial XOR whitening
+    movdqu xmm0, [rdi]                  ;Load Plaintext block
+    movdqu xmm1, [rdx]                  ;Load Round Key 0
+    pxor xmm0, xmm1                     ;Initial XOR whitening
 
     ; Rounds 1 through 9
     movdqu xmm1, [rdx + 16]             ; Execute instruction
@@ -64,5 +64,5 @@ aesni_encrypt_block:
     movdqu xmm1, [rdx + 160]            ; Execute instruction
     aesenclast xmm0, xmm1               ; Execute instruction
 
-    movdqu [rsi], xmm0                  ; Store Ciphertext block
-    ret                                 ; Return control to caller instruction pointer
+    movdqu [rsi], xmm0                  ;Store Ciphertext block
+    ret                                 ;Return control to caller instruction pointer

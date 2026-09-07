@@ -5,7 +5,7 @@
 ; Description: 64-bit Assembly wrapper invoking sys_nanosleep (syscall 35).
 ; =============================================================================
 
-[bits 64]                               ; 64-bit Long Mode Execution
+[bits 64]                               ;64-bit Long Mode Execution
 
 global sleep_for_nanoseconds
 
@@ -18,7 +18,7 @@ section .text
 ; -----------------------------------------------------------------------------
 align 16
 sleep_for_nanoseconds:
-    mov rax, 35                         ; Copy syscall number 35 (sys_nanosleep) to RAX
-    xor rsi, rsi                        ; Zero out RSI (NULL pointer for remaining time)
-    syscall                             ; Fast hardware syscall invocation into Ring 0 microkernel
-    ret                                 ; Return control to caller instruction pointer
+    mov rax, 35                         ;Copy syscall number 35 (sys_nanosleep) to RAX
+    xor rsi, rsi                        ;Zero out RSI (NULL pointer for remaining time)
+    syscall                             ;Fast hardware syscall invocation into Ring 0 microkernel
+    ret                                 ;Return control to caller instruction pointer
