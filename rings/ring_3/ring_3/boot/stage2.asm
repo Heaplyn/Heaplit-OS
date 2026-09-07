@@ -60,7 +60,7 @@ stage2_entry:
 .continue_boot:
     ; Transfer control to Sector 4 (Interactive Console)
     jmp stage4_console_entry            ; Unconditional jump to target label stage4_console_entry
-%include "ring_3/ring_3/boot/stage4_console.asm"
+
 msg_sector_2:     db 'Sectors 2-3 Executing (0x7E00): Initializing Subsystems...', 0x0D, 0x0A, 0 ; Execute instruction
 msg_calc_label:   db '  [Ring 0 Variable] 120 + 35 = ', 0 ; Execute instruction
 msg_str_label:    db '  [Ring 0 Variable] Loaded: ', 0 ; Execute instruction

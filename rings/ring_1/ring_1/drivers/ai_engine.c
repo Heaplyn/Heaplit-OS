@@ -7,6 +7,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <heaplit/types.h>
 
 #define GGUF_MAGIC 0x46554747 /* "GGUF" */
 #define MAX_VECTOR_DIM 512
