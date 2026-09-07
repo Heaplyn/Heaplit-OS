@@ -1,7 +1,7 @@
-; rings/ring_0/long_mode.asm
+; rings/ring_0/cpu/long_mode.asm
 ; 64-bit Long Mode Entry Point & Hardware Ring 3 Transition
-
 [bits 64]
+
 long_mode_entry_64:
     ; 1. Reload 64-bit kernel data segment registers (0x20)
     mov ax, DATA_SEG_64
@@ -46,19 +46,6 @@ enter_ring_3:
     iretq
 
 ; -----------------------------------------------------------------------------
-; ring_3_userland_entry: First code executing with CPL = 3 (Ring 3 Userland)
-; -----------------------------------------------------------------------------
-ring_3_userland_entry:
-    ; Display confirmation that Ring 3 Userland is active
-    mov rsi, msg_ring3_active
-    mov rdi, 0xB8000 + (15 * 80 * 2) ; Row 15, Col 0
-    call print_string_64
-
-.userland_loop:
-    pause
-    jmp .userland_loop
-
-; -----------------------------------------------------------------------------
 ; print_string_64: Writes null-terminated ASCII string to VGA text buffer.
 ; Inputs: RSI = String pointer, RDI = Framebuffer offset (e.g. 0xB8000)
 ; -----------------------------------------------------------------------------
@@ -88,4 +75,6 @@ print_string_64:
 
 msg_lm64_active:         db 'Heaplit OS: 64-bit Long Mode Successfully Entered!', 0
 msg_kernel_supervisor:   db 'Supervisor: Ring 0 Metal Core Online. Preparing Ring 3...', 0
-msg_ring3_active:        db 'Heaplit OS: Hardware Ring 3 (Userland CPL=3) Active!', 0
+
+; Include Ring 3 Userland Entrypoint Module
+%include "../../ring_3/userland/entry.asm"

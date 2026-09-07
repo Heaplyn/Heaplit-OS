@@ -6,18 +6,18 @@ Write-Host "==================================================" -ForegroundColor
 Write-Host "  Heaplit OS: Staged Assembly Build Pipeline" -ForegroundColor Cyan
 Write-Host "==================================================" -ForegroundColor Cyan
 
-$Ring0Path = Join-Path $PSScriptRoot "..\rings\ring_0"
-$SourceFile = Join-Path $Ring0Path "base.asm"
-$OutputFile = Join-Path $Ring0Path "base.bin"
+$BootPath = Join-Path $PSScriptRoot "..\rings\ring_3\ring_3\boot"
+$SourceFile = Join-Path $BootPath "base.asm"
+$OutputFile = Join-Path $BootPath "base.bin"
 
 if (-not (Test-Path $SourceFile)) {
     Write-Host "[ERROR] Cannot find source file: $SourceFile" -ForegroundColor Red
     exit 1
 }
 
-Write-Host "[1/3] Compiling Ring 0 Bootloader with NASM..." -ForegroundColor Yellow
-Set-Location $Ring0Path
-nasm -I./ -I../ -f bin base.asm -o base.bin
+Write-Host "[1/3] Compiling Staged Bootloader with NASM..." -ForegroundColor Yellow
+Set-Location $BootPath
+nasm -I./ -I../../../ring_0/ -I../../../ring_1/ -I../../../ring_2/ -I../../../ring_3/ -f bin base.asm -o base.bin
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[FAILED] NASM compilation failed with exit code $LASTEXITCODE" -ForegroundColor Red
