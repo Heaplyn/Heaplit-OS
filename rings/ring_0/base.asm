@@ -1,6 +1,6 @@
 ; =============================================================================
 ; Heaplit OS - Staged Bare-Metal Bootloader
-; Architecture: 16-bit Real Mode -> 32-bit Protected Mode -> 64-bit Long Mode
+; Architecture: 16-bit Real Mode -> 32-bit Protected Mode -> 64-bit Long Mode -> Ring 3
 ; Ring Placement: rings/ring_0/base.asm
 ; =============================================================================
 [org 0x7c00]
@@ -25,9 +25,14 @@ start:
 
     call clear_screen
 
-    ; Read 16 extended sectors from disk into RAM starting at 0x7E00 (8KB)
+    ; Reset disk system (Drive DL)
+    xor ax, ax
+    mov dl, [boot_drive]
+    int 0x13
+
+    ; Read 7 extended sectors (Sectors 2 through 8 = 3584 bytes) to 0x7E00
     mov ah, 0x02                ; BIOS read sector function
-    mov al, 16                  ; Number of sectors to read
+    mov al, 7                   ; Read 7 sectors (exactly matching 4KB disk size)
     mov ch, 0                   ; Cylinder 0
     mov cl, 2                   ; Sector 2 (1-based index)
     mov dh, 0                   ; Head 0
@@ -184,13 +189,13 @@ sector_4_start:
     mov si, msg_switching_mode
     call print_string_16
 
-    ; Advance to Sector 5: Protected Mode & Long Mode switch!
+    ; Advance to Sector 5: Protected Mode & Long Mode switch to Ring 3!
     jmp enter_protected_mode
 
 msg_sector_4:       db 'Sector 4 Executing (0x8200): Ring 2 Console Online.', 0x0D, 0x0A, 0
-msg_prompt:         db 'HeaplitOS> Press Enter to launch Protected & Long Mode: ', 0
+msg_prompt:         db 'HeaplitOS> Press Enter to launch Long Mode & Ring 3: ', 0
 msg_cmd_received:   db '  [Boot Command]: Launching -> ', 0
-msg_switching_mode: db 'Transitioning: Real Mode -> 32-bit PM -> 64-bit Long Mode...', 0x0D, 0x0A, 0
+msg_switching_mode: db 'Transitioning: Real Mode -> 32-bit PM -> 64-bit LM -> Ring 3...', 0x0D, 0x0A, 0
 
 input_buffer:       times 64 db 0
 
@@ -205,5 +210,5 @@ times (512 * 4) - ($ - $$) db 0
 %include "paging.asm"
 %include "long_mode.asm"
 
-; Pad final kernel image to clean 4096-byte boundary
+; Pad final kernel image to clean 4096-byte boundary (8 sectors total)
 times 4096 - ($ - $$) db 0
