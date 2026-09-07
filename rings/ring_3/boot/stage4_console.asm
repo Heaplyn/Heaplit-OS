@@ -7,9 +7,9 @@
 stage4_console_entry:
     ; Set video cursor position at Row 7, Col 0
     mov ah, 0x02                        ; Set BIOS function 0x02 (Set Video Cursor Position)
-    mov bh, 0                           ; Copy value from 0 to bh
-    mov dh, 7                           ; Copy value from 7 to dh
-    mov dl, 0                           ; Copy value from 0 to dl
+    mov bh, 0                           ; Set bh = 0
+    mov dh, 7                           ; Set dh = 7
+    mov dl, 0                           ; Set dl = 0
     int 0x10                            ; Trigger BIOS Video Services interrupt
 
     mov si, msg_sector_4                ; Load memory address of string 'msg_sector_4' into SI argument register
@@ -22,7 +22,7 @@ stage4_console_entry:
 
     ; Read interactive line with Backspace handling (Ring 2 keyboard service)
     mov di, input_buffer                ; Load memory address of buffer 'input_buffer' into DI destination register
-    mov cx, 48                          ; Copy value from 48 to cx
+    mov cx, 48                          ; Set cx = 48
     call read_line                      ; Call subroutine 'read_line'
 
     call sleep_500ms_16                 ;0.5s visual diagnostic sleep
@@ -40,9 +40,9 @@ stage4_console_entry:
     ; Advance to Protected Mode & Long Mode switch
     jmp enter_protected_mode            ;Unconditional jump to target label enter_protected_mode
 
-msg_sector_4:       db 'Sector 4 Executing (0x8200): Ring 2 Console Online.', 0x0D, 0x0A, 0 ; Execute instruction
-msg_prompt:         db 'HeaplitOS> Press Enter to launch Long Mode & Ring 3: ', 0 ; Execute instruction
-msg_cmd_received:   db '  [Boot Command]: Launching -> ', 0 ; Execute instruction
-msg_switching_mode: db 'Transitioning: Real Mode -> 32-bit PM -> 64-bit LM -> Ring 3...', 0x0D, 0x0A, 0 ; Execute instruction
+msg_sector_4:       db 'Sector 4 Executing (0x8200): Ring 2 Console Online.', 0x0D, 0x0A, 0 ; ASCII text string for Sector 4 console banner
+msg_prompt:         db 'HeaplitOS> Press Enter to launch Long Mode & Ring 3: ', 0 ; ASCII text string for user command prompt
+msg_cmd_received:   db '  [Boot Command]: Launching -> ', 0 ; ASCII text string confirming command execution
+msg_switching_mode: db 'Transitioning: Real Mode -> 32-bit PM -> 64-bit LM -> Ring 3...', 0x0D, 0x0A, 0 ; ASCII text string logging CPU mode transition
 
-input_buffer:       times 64 db 0       ; Execute instruction
+input_buffer:       times 64 db 0       ; Reserve 64 zeroed bytes in RAM for user command input

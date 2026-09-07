@@ -1,7 +1,7 @@
 ; src/kernel/syscall.asm
 ; Fast x86_64 Syscall Entry & Dispatcher for Heaplit OS
-[bits 64]                               ; Execute instruction
-default rel                             ; Execute instruction
+[bits 64]                               ; Set assembler target mode to 64-bit Long Mode
+default rel                             ; Execute hardware step
 
 global init_syscalls
 global syscall_entry
@@ -15,28 +15,28 @@ init_syscalls:
     mov rbp, rsp                        ;Establish new stack frame base address
 
     ; 1. Enable SCE (System Call Enable) bit 0 in IA32_EFER (0xC0000080)
-    mov ecx, 0xC0000080                 ; Copy value from 0xC0000080 to ecx
+    mov ecx, 0xC0000080                 ; Set ecx = 0xC0000080
     rdmsr                               ;Read Model Specific Register (ECX -> EDX:EAX)
-    or eax, 1                           ; Execute instruction
+    or eax, 1                           ; Execute hardware step
     wrmsr                               ;Write Model Specific Register (EDX:EAX -> ECX)
 
     ; 2. Configure Segment Selectors in IA32_STAR (0xC0000081)
     ; Bits 47:32 = User CS (0x28) / User SS (0x20)
     ; Bits 31:16 = Kernel CS (0x18) / Kernel SS (0x10)
-    mov ecx, 0xC0000081                 ; Copy value from 0xC0000081 to ecx
+    mov ecx, 0xC0000081                 ; Set ecx = 0xC0000081
     rdmsr                               ;Read Model Specific Register (ECX -> EDX:EAX)
-    mov edx, (0x28 << 16) | 0x18        ; Execute instruction
+    mov edx, (0x28 << 16) | 0x18        ; Move value into target register/memory
     wrmsr                               ;Write Model Specific Register (EDX:EAX -> ECX)
 
     ; 3. Set Target Entry Point in IA32_LSTAR (0xC0000082)
-    mov ecx, 0xC0000082                 ; Copy value from 0xC0000082 to ecx
-    mov rax, syscall_entry              ; Copy value from syscall_entry to rax
-    mov rdx, rax                        ; Copy value from rax to rdx
+    mov ecx, 0xC0000082                 ; Set ecx = 0xC0000082
+    mov rax, syscall_entry              ; Set rax = syscall_entry
+    mov rdx, rax                        ; Set rdx = rax
     shr rdx, 32                         ;High 32 bits in EDX
     wrmsr                               ;Write Model Specific Register (EDX:EAX -> ECX)
 
     ; 4. Mask RFLAGS in IA32_SFMASK (0xC0000084) (Disable interrupts on entry)
-    mov ecx, 0xC0000084                 ; Copy value from 0xC0000084 to ecx
+    mov ecx, 0xC0000084                 ; Set ecx = 0xC0000084
     mov eax, 0x200                      ;Clear IF (Interrupt Flag)
     xor edx, edx                        ;Zero out EDX register
     wrmsr                               ;Write Model Specific Register (EDX:EAX -> ECX)
@@ -50,7 +50,7 @@ init_syscalls:
 align 16
 syscall_entry:
     ; 1. Switch to Kernel Stack via GS Base
-    swapgs                              ; Execute instruction
+    swapgs                              ; Execute hardware step
     mov [gs:0x10], rsp                  ;Save user stack pointer
     mov rsp, [gs:0x08]                  ;Load kernel stack pointer
 
@@ -70,14 +70,14 @@ syscall_entry:
     push r9                             ;Push R9 register onto memory stack
 
     ; 3. Route Heaplit AI Syscalls (0x600 - 0x6FF)
-    cmp rax, 0x600                      ;Compare rax with 0x600 and update CPU EFLAGS
-    jge .handle_ai_syscall              ;Jump to .handle_ai_syscall if condition 'ge' is met
+    cmp rax, 0x600                      ; Execute hardware step
+    jge .handle_ai_syscall              ; Branch to '.handle_ai_syscall' if Greater or Equal
 
-    cmp rax, MAX_SYSCALL_NUM            ;Compare rax with MAX_SYSCALL_NUM and update CPU EFLAGS
-    jae .invalid_syscall                ;Jump to .invalid_syscall if condition 'ae' is met
+    cmp rax, MAX_SYSCALL_NUM            ; Execute hardware step
+    jae .invalid_syscall                ; Execute hardware step
 
     ; Dispatch POSIX / Kernel Syscall
-    call [syscall_table + rax * 8]      ; Execute instruction
+    call [syscall_table + rax * 8]      ; Call helper function '[syscall_table'
     jmp .syscall_return                 ;Unconditional jump to target label .syscall_return
 
 .handle_ai_syscall:
@@ -85,7 +85,7 @@ syscall_entry:
     jmp .syscall_return                 ;Unconditional jump to target label .syscall_return
 
 .invalid_syscall:
-    mov rax, -1                         ; Copy value from -1 to rax
+    mov rax, -1                         ; Set rax = -1
 
 .syscall_return:
     ; 4. Restore user registers
@@ -104,11 +104,11 @@ syscall_entry:
     pop r11                             ;Restore return RFLAGS
 
     mov rsp, [gs:0x10]                  ;Restore user stack pointer
-    swapgs                              ; Execute instruction
-    o64 sysret                          ; Execute instruction
+    swapgs                              ; Execute hardware step
+    o64 sysret                          ; Execute hardware step
 
-MAX_SYSCALL_NUM equ 64                  ; Execute instruction
+MAX_SYSCALL_NUM equ 64                  ; Execute hardware step
 
 align 8
 syscall_table:
-    times MAX_SYSCALL_NUM dq 0          ; Execute instruction
+    times MAX_SYSCALL_NUM dq 0          ; Execute hardware step

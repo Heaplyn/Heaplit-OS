@@ -4,7 +4,7 @@
 ; -----------------------------------------------------------------------------
 ; 16-bit Real Mode Console Functions
 ; -----------------------------------------------------------------------------
-[bits 16]                               ; Execute instruction
+[bits 16]                               ; Set assembler target mode to 16-bit Real Mode
 
 ; Initialize Stack safely at 0x9000 (grows down, safely above 0x7C00)
 init_stack:
@@ -36,9 +36,9 @@ print_char:
 print_newline:
     push ax                             ;Push AX register onto memory stack
     mov ah, 0x0E                        ; Set BIOS function 0x0E (Teletype Output ASCII character)
-    mov al, 0x0D                        ; Copy value from 0x0D to al
+    mov al, 0x0D                        ; Set al = 0x0D
     int 0x10                            ; Trigger BIOS Video Services interrupt
-    mov al, 0x0A                        ; Copy value from 0x0A to al
+    mov al, 0x0A                        ; Set al = 0x0A
     int 0x10                            ; Trigger BIOS Video Services interrupt
     pop ax                              ;Pop top stack value into AX register
     ret                                 ;Return control to caller instruction pointer
@@ -48,9 +48,9 @@ print_string_16:
     pusha                               ; Push all 16-bit general purpose registers (AX, CX, DX, BX, SP, BP, SI, DI) onto stack
     mov ah, 0x0E                        ; Set BIOS function 0x0E (Teletype Output ASCII character)
 .loop:
-    lodsb                               ; Execute instruction
-    test al, al                         ; Execute instruction
-    jz .done                            ;Jump to .done if condition 'z' is met
+    lodsb                               ; Execute hardware step
+    test al, al                         ; Test AL byte for zero (null-terminator)
+    jz .done                            ; Branch to '.done' if Zero Flag is set (ZF=1)
     int 0x10                            ; Trigger BIOS Video Services interrupt
     jmp .loop                           ;Unconditional jump to target label .loop
 .done:
@@ -69,20 +69,20 @@ set_cursor:
 print_hex_byte:
     push ax                             ;Push AX register onto memory stack
     push bx                             ;Push BX register onto memory stack
-    mov bl, al                          ; Copy value from al to bl
+    mov bl, al                          ; Set bl = al
     shr al, 4                           ;High nibble
-    call .print_nibble                  ; Execute instruction
+    call .print_nibble                  ; Call helper function '.print_nibble'
     mov al, bl                          ;Low nibble
-    and al, 0x0F                        ; Execute instruction
-    call .print_nibble                  ; Execute instruction
+    and al, 0x0F                        ; Execute hardware step
+    call .print_nibble                  ; Call helper function '.print_nibble'
     pop bx                              ;Pop top stack value into BX register
     pop ax                              ;Pop top stack value into AX register
     ret                                 ;Return control to caller instruction pointer
 
 .print_nibble:
-    add al, '0'                         ; Execute instruction
-    cmp al, '9'                         ; Execute instruction
-    jle .ok                             ;Jump to .ok if condition 'le' is met
+    add al, '0'                         ; Execute hardware step
+    cmp al, '9'                         ; Execute hardware step
+    jle .ok                             ; Execute hardware step
     add al, 7                           ;Convert to 'A'..'F'
 .ok:
     mov ah, 0x0E                        ; Set BIOS function 0x0E (Teletype Output ASCII character)
@@ -92,9 +92,9 @@ print_hex_byte:
 ; Print word in AX as 4 hexadecimal characters
 print_hex_word:
     push ax                             ;Push AX register onto memory stack
-    xchg al, ah                         ; Execute instruction
+    xchg al, ah                         ; Execute hardware step
     call print_hex_byte                 ;Print high byte
-    xchg al, ah                         ; Execute instruction
+    xchg al, ah                         ; Execute hardware step
     call print_hex_byte                 ;Print low byte
     pop ax                              ;Pop top stack value into AX register
     ret                                 ;Return control to caller instruction pointer
@@ -102,20 +102,20 @@ print_hex_word:
 ; -----------------------------------------------------------------------------
 ; 32-bit Protected Mode Console Functions
 ; -----------------------------------------------------------------------------
-[bits 32]                               ; Execute instruction
+[bits 32]                               ; Set assembler target mode to 32-bit Protected Mode
 ; VGA Text Mode Buffer: 0xB8000 (Row * 80 + Col) * 2
 ; Arguments: ESI = String Pointer, EDI = Video Memory Offset (e.g. 0xB8000)
 print_string_32:
     pusha                               ; Push all 16-bit general purpose registers (AX, CX, DX, BX, SP, BP, SI, DI) onto stack
     mov edx, 0x0f                       ;White text on Black background attribute
 .loop:
-    mov al, byte [esi]                  ; Copy value from byte [esi] to al
-    test al, al                         ; Execute instruction
-    jz .done                            ;Jump to .done if condition 'z' is met
+    mov al, byte [esi]                  ; Set al = byte [esi]
+    test al, al                         ; Test AL byte for zero (null-terminator)
+    jz .done                            ; Branch to '.done' if Zero Flag is set (ZF=1)
     mov byte [edi], al                  ;Character byte
     mov byte [edi + 1], dl              ;Color attribute byte
     inc esi                             ;Increment esi by 1
-    add edi, 2                          ; Execute instruction
+    add edi, 2                          ; Execute hardware step
     jmp .loop                           ;Unconditional jump to target label .loop
 .done:
     popa                                ; Restore all 16-bit general purpose registers from stack

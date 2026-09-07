@@ -1,7 +1,7 @@
 ; ring_1/memory.asm
-[bits 16]                               ; Execute instruction
+[bits 16]                               ; Set assembler target mode to 16-bit Real Mode
 
-segment_times: db 0                     ; Execute instruction
+segment_times: db 0                     ; Execute hardware step
 
 ; -----------------------------------------------------------------------------
 ; Memory Utilities
@@ -31,28 +31,28 @@ mem_set:
 .handle_odd:
     ; 4. Handle remaining single byte if original count was odd
     test    bx, 1                       ;Test if the lowest bit of original count was set
-    jz      .done                       ;Jump to .done if condition 'z' is met
+    jz      .done                       ; Branch to '.done' if Zero Flag is set (ZF=1)
     stosb                               ;Write the last odd byte using al
 
 .done:
     pop     di                          ;Restore original destination offset
     ret                                 ;Return control to caller instruction pointer
 .loop:
-    mov byte [di], al                   ; Copy value from al to byte [di]
+    mov byte [di], al                   ; Set byte [di] = al
     inc di                              ;Increment di by 1
     dec cx                              ;Decrement cx by 1
-    jnz short .loop                     ; Execute instruction
+    jnz short .loop                     ; Branch to 'short' if Zero Flag is clear (ZF=0)
 
 mem_copy:
-    test cx, cx                         ; Execute instruction
-    jz short .done                      ; Execute instruction
+    test cx, cx                         ; Execute hardware step
+    jz short .done                      ; Branch to 'short' if Zero Flag is set (ZF=1)
 .loop:
-    mov al, byte [si]                   ; Copy value from byte [si] to al
-    mov byte [di], al                   ; Copy value from al to byte [di]
+    mov al, byte [si]                   ; Set al = byte [si]
+    mov byte [di], al                   ; Set byte [di] = al
     inc di                              ;Increment di by 1
     inc si                              ;Increment si by 1
     dec cx                              ;Decrement cx by 1
-    jnz short .loop                     ; Execute instruction
+    jnz short .loop                     ; Branch to 'short' if Zero Flag is clear (ZF=0)
 .done:
     ret                                 ;Return control to caller instruction pointer
 

@@ -1,7 +1,7 @@
 ; rings/ring_0/idt.asm
 ; 64-bit Interrupt Descriptor Table (IDT) & ISR Templates
 
-struc idt_entry_64                      ; Execute instruction
+struc idt_entry_64                      ; Execute hardware step
     .offset_low  resw 1                 ;Offset bits 0..15
     .selector    resw 1                 ;Kernel code segment selector (0x18)
     .ist         resb 1                 ;Interrupt Stack Table offset (0..7)
@@ -9,11 +9,11 @@ struc idt_entry_64                      ; Execute instruction
     .offset_mid  resw 1                 ;Offset bits 16..31
     .offset_high resd 1                 ;Offset bits 32..63
     .zero        resd 1                 ;Reserved (must be 0)
-endstruc                                ; Execute instruction
+endstruc                                ; Execute hardware step
 
 align 16
 idt_start:
-    times 256 * idt_entry_64_size db 0  ; Execute instruction
+    times 256 * idt_entry_64_size db 0  ; Execute hardware step
 idt_end:
 
 idt_descriptor_64:

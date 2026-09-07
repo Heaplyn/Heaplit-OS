@@ -1,32 +1,32 @@
 ; rings/ring_0/variable.asm
 ; Typed Dynamic Variable System for Heaplit OS (16-bit Real Mode)
-[bits 16]                               ; Execute instruction
+[bits 16]                               ; Set assembler target mode to 16-bit Real Mode
 
 ; -----------------------------
 ; Variable Type Identifiers (Type Tags)
 ; -----------------------------
-type_null   equ 0                       ; Execute instruction
-type_bool   equ 1                       ; Execute instruction
-type_i4     equ 2                       ; Execute instruction
-type_i8     equ 3                       ; Execute instruction
-type_i16    equ 4                       ; Execute instruction
-type_i32    equ 5                       ; Execute instruction
-type_i64    equ 6                       ; Execute instruction
+type_null   equ 0                       ; Execute hardware step
+type_bool   equ 1                       ; Execute hardware step
+type_i4     equ 2                       ; Execute hardware step
+type_i8     equ 3                       ; Execute hardware step
+type_i16    equ 4                       ; Execute hardware step
+type_i32    equ 5                       ; Execute hardware step
+type_i64    equ 6                       ; Execute hardware step
 type_int    equ 6                       ;Default integer alias
-type_double equ 7                       ; Execute instruction
-type_string equ 8                       ; Execute instruction
+type_double equ 7                       ; Execute hardware step
+type_string equ 8                       ; Execute hardware step
 
 ; -----------------------------
 ; Variable Struct Definition (6 bytes aligned)
 ; -----------------------------
-struc variable                          ; Execute instruction
+struc variable                          ; Execute hardware step
     .type     resb 1                    ;1 byte: Holds the type_* constant
     .value    resw 1                    ;2 bytes: Holds integer / bool / data
     .pointer  resw 1                    ;2 bytes: Optional pointer or string buffer offset
     .padding  resb 1                    ;1 byte padding for 16-bit alignment
-endstruc                                ; Execute instruction
+endstruc                                ; Execute hardware step
 
-sizeof_variable equ variable_size       ; Execute instruction
+sizeof_variable equ variable_size       ; Execute hardware step
 
 ; -----------------------------------------------------------------------------
 ; create_variable: Initializes a typed variable struct in memory.
@@ -39,10 +39,10 @@ sizeof_variable equ variable_size       ; Execute instruction
 ; -----------------------------------------------------------------------------
 create_variable:
     push di                             ;Push DI register onto memory stack
-    mov byte [di + variable.type], al   ; Execute instruction
-    mov byte [di + variable.padding], 0 ; Execute instruction
-    mov word [di + variable.value], dx  ; Execute instruction
-    mov word [di + variable.pointer], 0 ; Execute instruction
+    mov byte [di + variable.type], al   ; Move value into target register/memory
+    mov byte [di + variable.padding], 0 ; Move value into target register/memory
+    mov word [di + variable.value], dx  ; Move value into target register/memory
+    mov word [di + variable.pointer], 0 ; Move value into target register/memory
     pop di                              ;Pop top stack value into DI register
     ret                                 ;Return control to caller instruction pointer
 
@@ -56,10 +56,10 @@ create_variable:
 ; -----------------------------------------------------------------------------
 create_string_variable:
     push di                             ;Push DI register onto memory stack
-    mov byte [di + variable.type], type_string ; Execute instruction
-    mov byte [di + variable.padding], 0 ; Execute instruction
-    mov word [di + variable.value], 0   ; Execute instruction
-    mov word [di + variable.pointer], si ; Execute instruction
+    mov byte [di + variable.type], type_string ; Move value into target register/memory
+    mov byte [di + variable.padding], 0 ; Move value into target register/memory
+    mov word [di + variable.value], 0   ; Move value into target register/memory
+    mov word [di + variable.pointer], si ; Move value into target register/memory
     pop di                              ;Pop top stack value into DI register
     ret                                 ;Return control to caller instruction pointer
 
@@ -68,7 +68,7 @@ create_string_variable:
 ; Returns: AX = Value
 ; -----------------------------------------------------------------------------
 get_variable_value:
-    mov ax, [di + variable.value]       ; Execute instruction
+    mov ax, [di + variable.value]       ; Move value into target register/memory
     ret                                 ;Return control to caller instruction pointer
 
 ; -----------------------------------------------------------------------------
@@ -76,7 +76,7 @@ get_variable_value:
 ; Inputs: AX = Value
 ; -----------------------------------------------------------------------------
 set_variable_value:
-    mov [di + variable.value], ax       ; Execute instruction
+    mov [di + variable.value], ax       ; Move value into target register/memory
     ret                                 ;Return control to caller instruction pointer
 
 ; -----------------------------------------------------------------------------
@@ -84,7 +84,7 @@ set_variable_value:
 ; Returns: AL = Type ID
 ; -----------------------------------------------------------------------------
 get_variable_type:
-    mov al, byte [di + variable.type]   ; Execute instruction
+    mov al, byte [di + variable.type]   ; Move value into target register/memory
     ret                                 ;Return control to caller instruction pointer
 
 ; -----------------------------------------------------------------------------
@@ -95,7 +95,7 @@ copy_variable:
     push di                             ;Push DI register onto memory stack
     push si                             ;Push SI register onto memory stack
     push cx                             ;Push CX register onto memory stack
-    mov cx, sizeof_variable             ; Copy value from sizeof_variable to cx
+    mov cx, sizeof_variable             ; Set cx = sizeof_variable
     rep movsb                           ;Repeat MOVSB to copy string bytes from RSI to RDI
     pop cx                              ;Pop top stack value into CX register
     pop si                              ;Pop top stack value into SI register
@@ -109,9 +109,9 @@ copy_variable:
 compare_variables:
     push ax                             ;Push AX register onto memory stack
     push bx                             ;Push BX register onto memory stack
-    mov ax, [di + variable.value]       ; Execute instruction
-    mov bx, [si + variable.value]       ; Execute instruction
-    cmp ax, bx                          ;Compare ax with bx and update CPU EFLAGS
+    mov ax, [di + variable.value]       ; Move value into target register/memory
+    mov bx, [si + variable.value]       ; Move value into target register/memory
+    cmp ax, bx                          ; Execute hardware step
     pop bx                              ;Pop top stack value into BX register
     pop ax                              ;Pop top stack value into AX register
     ret                                 ;Return control to caller instruction pointer
@@ -122,8 +122,8 @@ compare_variables:
 ; -----------------------------------------------------------------------------
 add_variables:
     push ax                             ;Push AX register onto memory stack
-    mov ax, [si + variable.value]       ; Execute instruction
-    add [di + variable.value], ax       ; Execute instruction
+    mov ax, [si + variable.value]       ; Move value into target register/memory
+    add [di + variable.value], ax       ; Execute hardware step
     pop ax                              ;Pop top stack value into AX register
     ret                                 ;Return control to caller instruction pointer
 
@@ -133,8 +133,8 @@ add_variables:
 ; -----------------------------------------------------------------------------
 sub_variables:
     push ax                             ;Push AX register onto memory stack
-    mov ax, [si + variable.value]       ; Execute instruction
-    sub [di + variable.value], ax       ; Execute instruction
+    mov ax, [si + variable.value]       ; Move value into target register/memory
+    sub [di + variable.value], ax       ; Execute hardware step
     pop ax                              ;Pop top stack value into AX register
     ret                                 ;Return control to caller instruction pointer
 
@@ -146,10 +146,10 @@ mul_variables:
     push ax                             ;Push AX register onto memory stack
     push bx                             ;Push BX register onto memory stack
     push dx                             ;Push DX register onto memory stack
-    mov ax, [di + variable.value]       ; Execute instruction
-    mov bx, [si + variable.value]       ; Execute instruction
+    mov ax, [di + variable.value]       ; Move value into target register/memory
+    mov bx, [si + variable.value]       ; Move value into target register/memory
     mul bx                              ;AX = AX * BX
-    mov [di + variable.value], ax       ; Execute instruction
+    mov [di + variable.value], ax       ; Move value into target register/memory
     pop dx                              ;Pop top stack value into DX register
     pop bx                              ;Pop top stack value into BX register
     pop ax                              ;Pop top stack value into AX register
@@ -163,13 +163,13 @@ div_variables:
     push ax                             ;Push AX register onto memory stack
     push bx                             ;Push BX register onto memory stack
     push dx                             ;Push DX register onto memory stack
-    mov bx, [si + variable.value]       ; Execute instruction
-    test bx, bx                         ; Execute instruction
-    jz .div_zero                        ;Jump to .div_zero if condition 'z' is met
-    mov ax, [di + variable.value]       ; Execute instruction
+    mov bx, [si + variable.value]       ; Move value into target register/memory
+    test bx, bx                         ; Test base register for zero
+    jz .div_zero                        ; Branch to '.div_zero' if Zero Flag is set (ZF=1)
+    mov ax, [di + variable.value]       ; Move value into target register/memory
     xor dx, dx                          ;Zero out DX register
     div bx                              ;AX = quotient, DX = remainder
-    mov [di + variable.value], ax       ; Execute instruction
+    mov [di + variable.value], ax       ; Move value into target register/memory
 .div_zero:
     pop dx                              ;Pop top stack value into DX register
     pop bx                              ;Pop top stack value into BX register
@@ -182,42 +182,42 @@ div_variables:
 ; -----------------------------------------------------------------------------
 print_variable:
     pusha                               ; Push all 16-bit general purpose registers (AX, CX, DX, BX, SP, BP, SI, DI) onto stack
-    mov al, byte [di + variable.type]   ; Execute instruction
+    mov al, byte [di + variable.type]   ; Move value into target register/memory
 
-    cmp al, type_null                   ;Compare al with type_null and update CPU EFLAGS
-    je .print_null                      ;Jump to .print_null if condition 'e' is met
-    cmp al, type_bool                   ;Compare al with type_bool and update CPU EFLAGS
-    je .print_bool                      ;Jump to .print_bool if condition 'e' is met
-    cmp al, type_string                 ;Compare al with type_string and update CPU EFLAGS
-    je .print_string                    ;Jump to .print_string if condition 'e' is met
+    cmp al, type_null                   ; Execute hardware step
+    je .print_null                      ; Branch to '.print_null' if Zero Flag is set (ZF=1)
+    cmp al, type_bool                   ; Execute hardware step
+    je .print_bool                      ; Branch to '.print_bool' if Zero Flag is set (ZF=1)
+    cmp al, type_string                 ; Execute hardware step
+    je .print_string                    ; Branch to '.print_string' if Zero Flag is set (ZF=1)
 
     ; Default: Numeric integer output
-    mov ax, [di + variable.value]       ; Execute instruction
-    mov di, .num_buf                    ; Execute instruction
+    mov ax, [di + variable.value]       ; Move value into target register/memory
+    mov di, .num_buf                    ; Move value into target register/memory
     call int_to_string                  ; Call subroutine 'int_to_string'
-    mov si, .num_buf                    ; Execute instruction
+    mov si, .num_buf                    ; Move value into target register/memory
     call print_string_16                ; Call subroutine 'print_string_16'
     jmp .done                           ;Unconditional jump to target label .done
 
 .print_null:
-    mov si, .str_null                   ; Execute instruction
+    mov si, .str_null                   ; Move value into target register/memory
     call print_string_16                ; Call subroutine 'print_string_16'
     jmp .done                           ;Unconditional jump to target label .done
 
 .print_bool:
-    mov ax, [di + variable.value]       ; Execute instruction
-    test ax, ax                         ; Execute instruction
-    jz .bool_false                      ;Jump to .bool_false if condition 'z' is met
-    mov si, .str_true                   ; Execute instruction
+    mov ax, [di + variable.value]       ; Move value into target register/memory
+    test ax, ax                         ; Test accumulator register for zero / error status
+    jz .bool_false                      ; Branch to '.bool_false' if Zero Flag is set (ZF=1)
+    mov si, .str_true                   ; Move value into target register/memory
     call print_string_16                ; Call subroutine 'print_string_16'
     jmp .done                           ;Unconditional jump to target label .done
 .bool_false:
-    mov si, .str_false                  ; Execute instruction
+    mov si, .str_false                  ; Move value into target register/memory
     call print_string_16                ; Call subroutine 'print_string_16'
     jmp .done                           ;Unconditional jump to target label .done
 
 .print_string:
-    mov si, [di + variable.pointer]     ; Execute instruction
+    mov si, [di + variable.pointer]     ; Move value into target register/memory
     call print_string_16                ; Call subroutine 'print_string_16'
     jmp .done                           ;Unconditional jump to target label .done
 
@@ -225,7 +225,7 @@ print_variable:
     popa                                ; Restore all 16-bit general purpose registers from stack
     ret                                 ;Return control to caller instruction pointer
 
-.str_null:   db '<null>', 0             ; Execute instruction
-.str_true:   db 'true', 0               ; Execute instruction
-.str_false:  db 'false', 0              ; Execute instruction
-.num_buf:    times 8 db 0               ; Execute instruction
+.str_null:   db '<null>', 0             ; Execute hardware step
+.str_true:   db 'true', 0               ; Execute hardware step
+.str_false:  db 'false', 0              ; Execute hardware step
+.num_buf:    times 8 db 0               ; Execute hardware step

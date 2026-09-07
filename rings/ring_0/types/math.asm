@@ -1,6 +1,6 @@
 ; rings/ring_0/math.asm
 ; Math and Arithmetic Utilities for Heaplit OS (16-bit Real Mode)
-[bits 16]                               ; Execute instruction
+[bits 16]                               ; Set assembler target mode to 16-bit Real Mode
 
 ; -----------------------------------------------------------------------------
 ; int_to_string: Converts a 16-bit unsigned integer in AX to an ASCII string.
@@ -27,15 +27,15 @@ int_to_string:
     div bx                              ;AX = quotient, DX = remainder (0..9)
     push dx                             ;Save remainder digit on stack
     inc cx                              ;Increment cx by 1
-    test ax, ax                         ; Execute instruction
-    jnz .divide_loop                    ;Jump to .divide_loop if condition 'nz' is met
+    test ax, ax                         ; Test accumulator register for zero / error status
+    jnz .divide_loop                    ; Branch to '.divide_loop' if Zero Flag is clear (ZF=0)
 
 .write_digits:
     pop dx                              ;Pop top stack value into DX register
     add dl, '0'                         ;Convert binary 0..9 to ASCII '0'..'9'
-    mov [di], dl                        ; Copy value from dl to [di]
+    mov [di], dl                        ; Set [di] = dl
     inc di                              ;Increment di by 1
-    loop .write_digits                  ; Execute instruction
+    loop .write_digits                  ; Execute hardware step
 
     mov byte [di], 0                    ;Null terminator
     pop di                              ;Pop top stack value into DI register
@@ -64,13 +64,13 @@ string_to_int:
     mov bx, 10                          ;Base 10 multiplier
 
 .parse_loop:
-    movzx cx, byte [si]                 ; Execute instruction
-    test cl, cl                         ; Execute instruction
-    jz .done                            ;Jump to .done if condition 'z' is met
-    cmp cl, '0'                         ; Execute instruction
-    jb .done                            ;Jump to .done if condition 'b' is met
-    cmp cl, '9'                         ; Execute instruction
-    ja .done                            ;Jump to .done if condition 'a' is met
+    movzx cx, byte [si]                 ; Execute hardware step
+    test cl, cl                         ; Execute hardware step
+    jz .done                            ; Branch to '.done' if Zero Flag is set (ZF=1)
+    cmp cl, '0'                         ; Execute hardware step
+    jb .done                            ; Execute hardware step
+    cmp cl, '9'                         ; Execute hardware step
+    ja .done                            ; Execute hardware step
 
     sub cl, '0'                         ;Convert ASCII char to binary number
     mul bx                              ;AX = AX * 10
@@ -95,8 +95,8 @@ string_to_int:
 abs16:
     push dx                             ;Push DX register onto memory stack
     cwd                                 ;Sign-extend AX into DX (0 if positive, 0xFFFF if negative)
-    xor ax, dx                          ; Execute instruction
-    sub ax, dx                          ; Execute instruction
+    xor ax, dx                          ; Clear AX register to 0
+    sub ax, dx                          ; Execute hardware step
     pop dx                              ;Pop top stack value into DX register
     ret                                 ;Return control to caller instruction pointer
 
@@ -106,9 +106,9 @@ abs16:
 ; Outputs: AX = min(AX, BX)
 ; -----------------------------------------------------------------------------
 min16:
-    cmp ax, bx                          ;Compare ax with bx and update CPU EFLAGS
-    jle .done                           ;Jump to .done if condition 'le' is met
-    mov ax, bx                          ; Copy value from bx to ax
+    cmp ax, bx                          ; Execute hardware step
+    jle .done                           ; Execute hardware step
+    mov ax, bx                          ; Set ax = bx
 .done:
     ret                                 ;Return control to caller instruction pointer
 
@@ -118,8 +118,8 @@ min16:
 ; Outputs: AX = max(AX, BX)
 ; -----------------------------------------------------------------------------
 max16:
-    cmp ax, bx                          ;Compare ax with bx and update CPU EFLAGS
-    jge .done                           ;Jump to .done if condition 'ge' is met
-    mov ax, bx                          ; Copy value from bx to ax
+    cmp ax, bx                          ; Execute hardware step
+    jge .done                           ; Branch to '.done' if Greater or Equal
+    mov ax, bx                          ; Set ax = bx
 .done:
     ret                                 ;Return control to caller instruction pointer

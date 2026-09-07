@@ -32,5 +32,5 @@ ring_3_userland_entry:
     pause                               ;Emit CPU pause hint to optimize spinlock pipeline stalls
     jmp .userland_loop                  ;Unconditional jump to target label .userland_loop
 
-msg_ring3_active: db 'Heaplit OS: Hardware Ring 3 (Userland CPL=3) Active!', 0 ; Execute instruction
-msg_ring3_shell:  db 'Userland Shell: Listening for Heaplit Daemon IPC...', 0 ; Execute instruction
+msg_ring3_active: db 'Heaplit OS: Hardware Ring 3 (Userland CPL=3) Active!', 0 ; ASCII text string confirming active Ring 3 Userland execution
+msg_ring3_shell:  db 'Userland Shell: Listening for Heaplit Daemon IPC...', 0 ; ASCII text string for Userland IPC listener shell

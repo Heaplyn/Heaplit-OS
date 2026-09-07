@@ -2,7 +2,7 @@
 ; =============================================================================
 ; Sector 1: Master Boot Record Bootstrap (0x7C00 - 0x7DFF)
 ; =============================================================================
-[bits 16]                               ; Execute instruction
+[bits 16]                               ; Set assembler target mode to 16-bit Real Mode
 
 mbr_entry:
     cli                                 ;Disable interrupts during CPU initialization
@@ -20,7 +20,7 @@ mbr_entry:
 
     ; Reset disk system (Drive DL)
     xor ax, ax                          ;Zero out AX register
-    mov dl, [boot_drive]                ; Copy value from [boot_drive] to dl
+    mov dl, [boot_drive]                ; Set dl = [boot_drive]
     int 0x13                            ; Trigger BIOS Disk I/O interrupt
 
     ; Read 7 extended sectors (Sectors 2 through 8 = 3584 bytes) to 0x7E00
@@ -34,10 +34,10 @@ mbr_entry:
     ; Target buffer: ES:BX = 0x0000:0x7E00
     xor bx, bx                          ;Zero out BX register
     mov es, bx                          ; Set ES segment selector to match BX
-    mov bx, 0x7e00                      ; Copy value from 0x7e00 to bx
+    mov bx, 0x7e00                      ; Set bx = 0x7e00
 
     int 0x13                            ; Trigger BIOS Disk I/O interrupt
-    jc mbr_disk_error                   ;Jump to mbr_disk_error if condition 'c' is met
+    jc mbr_disk_error                   ; Branch to 'mbr_disk_error' if Carry Flag is set (CF=1) on error
 
     ; Success message from Sector 1
     mov si, msg_sector_1                ; Load memory address of string 'msg_sector_1' into SI argument register
@@ -51,9 +51,9 @@ mbr_disk_error:
     call print_string_16                ; Call subroutine 'print_string_16'
     cli                                 ;Disable hardware interrupts (clear IF bit in EFLAGS)
     hlt                                 ;Halt CPU execution until next hardware interrupt
-    jmp $                               ; Execute instruction
+    jmp $                               ; Infinite spin loop to halt CPU on fatal error
 
 ; Sector 1 Data
-boot_drive:      db 0                   ; Execute instruction
-msg_sector_1:    db 'Heaplit OS Sector 1 Loaded (MBR 0x7C00)', 0x0D, 0x0A, 0 ; Execute instruction
-msg_disk_error:  db 'FATAL: Disk Read Failed!', 0x0D, 0x0A, 0 ; Execute instruction
+boot_drive:      db 0                   ; Byte variable storing BIOS boot drive ID passed in DL
+msg_sector_1:    db 'Heaplit OS Sector 1 Loaded (MBR 0x7C00)', 0x0D, 0x0A, 0 ; ASCII text string confirming MBR sector 1 boot
+msg_disk_error:  db 'FATAL: Disk Read Failed!', 0x0D, 0x0A, 0 ; Fatal disk read error string

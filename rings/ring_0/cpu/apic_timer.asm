@@ -12,11 +12,11 @@ global apic_timer_stop
 section .text
 bits 64
 
-%define APIC_DEFAULT_BASE    0xFEE00000 ; Execute instruction
-%define APIC_TIMER_LVT       0x0320     ; Execute instruction
-%define APIC_TIMER_INITCNT   0x0380     ; Execute instruction
-%define APIC_TIMER_CURRCNT   0x0390     ; Execute instruction
-%define APIC_TIMER_DIVCONF   0x03E0     ; Execute instruction
+%define APIC_DEFAULT_BASE    0xFEE00000 ; Execute hardware step
+%define APIC_TIMER_LVT       0x0320     ; Execute hardware step
+%define APIC_TIMER_INITCNT   0x0380     ; Execute hardware step
+%define APIC_TIMER_CURRCNT   0x0390     ; Execute hardware step
+%define APIC_TIMER_DIVCONF   0x03E0     ; Execute hardware step
 
 ; LVT Timer Modes
 %define APIC_LVT_INT_VECTOR  0x40       ;IRQ vector 0x40 for APIC timer interrupts
@@ -31,22 +31,22 @@ bits 64
 ; ----------------------------------------------------------------------------
 align 16
 apic_timer_init:
-    test rdi, rdi                       ; Execute instruction
-    jnz .has_base                       ;Jump to .has_base if condition 'nz' is met
+    test rdi, rdi                       ; Execute hardware step
+    jnz .has_base                       ; Branch to '.has_base' if Zero Flag is clear (ZF=0)
     mov rdi, APIC_DEFAULT_BASE          ; Pass destination memory address 'APIC_DEFAULT_BASE' in RDI (System V ABI Arg 1)
 .has_base:
 
     ; 1. Set Divide Configuration Register (Divide by 16: Bit 3 = 1, Bit 1:0 = 3)
-    mov dword [rdi + APIC_TIMER_DIVCONF], 0x03 ; Copy value from 0x03 to dword [rdi + APIC_TIMER_DIVCONF]
+    mov dword [rdi + APIC_TIMER_DIVCONF], 0x03 ; Set dword [rdi + APIC_TIMER_DIVCONF] = 0x03
 
     ; 2. Configure LVT Timer Register (Vector 0x40, Unmasked, Periodic)
-    mov eax, APIC_LVT_INT_VECTOR | APIC_LVT_PERIODIC ; Execute instruction
-    mov [rdi + APIC_TIMER_LVT], eax     ; Copy value from eax to [rdi + APIC_TIMER_LVT]
+    mov eax, APIC_LVT_INT_VECTOR | APIC_LVT_PERIODIC ; Move value into target register/memory
+    mov [rdi + APIC_TIMER_LVT], eax     ; Set [rdi + APIC_TIMER_LVT] = eax
 
     ; 3. Set Initial Counter Value to start timer ticking
     mov eax, esid                       ;RSI = Initial Count
-    mov eax, esi                        ; Copy value from esi to eax
-    mov [rdi + APIC_TIMER_INITCNT], eax ; Copy value from eax to [rdi + APIC_TIMER_INITCNT]
+    mov eax, esi                        ; Set eax = esi
+    mov [rdi + APIC_TIMER_INITCNT], eax ; Set [rdi + APIC_TIMER_INITCNT] = eax
 
     xor rax, rax                        ;Zero out RAX register
     ret                                 ;Return control to caller instruction pointer
@@ -59,17 +59,17 @@ apic_timer_init:
 ; ----------------------------------------------------------------------------
 align 16
 apic_timer_oneshot:
-    test rdi, rdi                       ; Execute instruction
-    jnz .has_base_oneshot               ;Jump to .has_base_oneshot if condition 'nz' is met
+    test rdi, rdi                       ; Execute hardware step
+    jnz .has_base_oneshot               ; Branch to '.has_base_oneshot' if Zero Flag is clear (ZF=0)
     mov rdi, APIC_DEFAULT_BASE          ; Pass destination memory address 'APIC_DEFAULT_BASE' in RDI (System V ABI Arg 1)
 .has_base_oneshot:
 
     ; Configure LVT for One-Shot Mode (Periodic bit cleared)
-    mov eax, APIC_LVT_INT_VECTOR        ; Copy value from APIC_LVT_INT_VECTOR to eax
-    mov [rdi + APIC_TIMER_LVT], eax     ; Copy value from eax to [rdi + APIC_TIMER_LVT]
+    mov eax, APIC_LVT_INT_VECTOR        ; Set eax = APIC_LVT_INT_VECTOR
+    mov [rdi + APIC_TIMER_LVT], eax     ; Set [rdi + APIC_TIMER_LVT] = eax
 
     ; Load deadline count
-    mov [rdi + APIC_TIMER_INITCNT], esi ; Copy value from esi to [rdi + APIC_TIMER_INITCNT]
+    mov [rdi + APIC_TIMER_INITCNT], esi ; Set [rdi + APIC_TIMER_INITCNT] = esi
     ret                                 ;Return control to caller instruction pointer
 
 ; ----------------------------------------------------------------------------
@@ -78,11 +78,11 @@ apic_timer_oneshot:
 ; ----------------------------------------------------------------------------
 align 16
 apic_timer_stop:
-    test rdi, rdi                       ; Execute instruction
-    jnz .has_base_stop                  ;Jump to .has_base_stop if condition 'nz' is met
+    test rdi, rdi                       ; Execute hardware step
+    jnz .has_base_stop                  ; Branch to '.has_base_stop' if Zero Flag is clear (ZF=0)
     mov rdi, APIC_DEFAULT_BASE          ; Pass destination memory address 'APIC_DEFAULT_BASE' in RDI (System V ABI Arg 1)
 .has_base_stop:
 
-    mov dword [rdi + APIC_TIMER_LVT], APIC_LVT_MASKED ; Copy value from APIC_LVT_MASKED to dword [rdi + APIC_TIMER_LVT]
-    mov dword [rdi + APIC_TIMER_INITCNT], 0 ; Copy value from 0 to dword [rdi + APIC_TIMER_INITCNT]
+    mov dword [rdi + APIC_TIMER_LVT], APIC_LVT_MASKED ; Set dword [rdi + APIC_TIMER_LVT] = APIC_LVT_MASKED
+    mov dword [rdi + APIC_TIMER_INITCNT], 0 ; Set dword [rdi + APIC_TIMER_INITCNT] = 0
     ret                                 ;Return control to caller instruction pointer

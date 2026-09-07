@@ -26,8 +26,8 @@ spinlock_acquire:
     jnc .acquired                       ;If carry was 0, we acquired the lock
 .loop:
     pause                               ;Reduce power and pipeline stalls
-    test qword [rdi], 1                 ; Execute instruction
-    jnz .loop                           ;Jump to .loop if condition 'nz' is met
+    test qword [rdi], 1                 ; Execute hardware step
+    jnz .loop                           ; Branch to '.loop' if Zero Flag is clear (ZF=0)
     jmp .spin                           ;Unconditional jump to target label .spin
 .acquired:
     ret                                 ;Return control to caller instruction pointer
@@ -49,7 +49,7 @@ spinlock_release:
 ; ----------------------------------------------------------------------------
 align 16
 atomic_add64:
-    mov rax, rsi                        ; Copy value from rsi to rax
+    mov rax, rsi                        ; Set rax = rsi
     lock xadd [rdi], rax                ;Atomic Exchange and Add
     ret                                 ;Return control to caller instruction pointer
 
@@ -63,9 +63,9 @@ atomic_cmpxchg16b:
     push rbx                            ;Preserve non-volatile RBX register on stack
     mov rbx, rcx                        ;Move lower 64-bit new value to RBX
     mov rcx, r8                         ;Move upper 64-bit new value to RCX
-    lock cmpxchg16b [rdi]               ; Execute instruction
+    lock cmpxchg16b [rdi]               ; Execute hardware step
     setz al                             ;Return 1 if equal, 0 if not
-    movzx rax, al                       ; Execute instruction
+    movzx rax, al                       ; Execute hardware step
     pop rbx                             ;Restore non-volatile RBX register from stack
     ret                                 ;Return control to caller instruction pointer
 

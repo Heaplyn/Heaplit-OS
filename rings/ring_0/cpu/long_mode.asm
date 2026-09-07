@@ -9,7 +9,7 @@ extern enter_ring_3_transition
 
 long_mode_entry_64:
     ; 1. Reload 64-bit kernel data segment registers (0x20)
-    mov ax, DATA_SEG_64                 ; Copy value from DATA_SEG_64 to ax
+    mov ax, DATA_SEG_64                 ; Set ax = DATA_SEG_64
     mov ds, ax                          ;Set DS = 0x20 (Kernel Data)
     mov es, ax                          ;Set ES = 0x20 (Kernel Data)
     mov ss, ax                          ;Set SS = 0x20 (Kernel Data)
@@ -28,7 +28,7 @@ long_mode_entry_64:
     call print_string_64                ; Call subroutine 'print_string_64'
 
     ; 4. Transition CPU privilege level to Ring 3 via dedicated Ring 3 transition module
-    jmp enter_ring_3_transition         ;Jump to enter_ring_3_transition in ring3_transition.asm
+    jmp enter_ring_3_transition         ; Jump to label 'enter_ring_3_transition'
 
 ; -----------------------------------------------------------------------------
 ; print_string_64: Writes null-terminated ASCII string to VGA text buffer.
@@ -42,9 +42,9 @@ print_string_64:
     mov rdx, 0x0F                       ;White on black color attribute
 
 .loop:
-    mov al, byte [rsi]                  ; Copy value from byte [rsi] to al
+    mov al, byte [rsi]                  ; Set al = byte [rsi]
     test al, al                         ;Test if AL == 0 (null terminator)
-    jz .done                            ;Jump to .done if zero
+    jz .done                            ; Branch to '.done' if Zero Flag is set (ZF=1)
     mov byte [rdi], al                  ;Write character byte to VGA memory
     mov byte [rdi + 1], dl              ;Write color attribute byte to VGA memory
     inc rsi                             ;Advance string pointer
@@ -58,5 +58,5 @@ print_string_64:
     pop rax                             ;Restore RAX accumulator register from stack
     ret                                 ;Return control to caller instruction pointer
 
-msg_lm64_active:         db 'Heaplit OS: 64-bit Long Mode Successfully Entered!', 0 ; Execute instruction
-msg_kernel_supervisor:   db 'Supervisor: Ring 0 Metal Core Online. Preparing Ring 3...', 0 ; Execute instruction
+msg_lm64_active:         db 'Heaplit OS: 64-bit Long Mode Successfully Entered!', 0 ; Execute hardware step
+msg_kernel_supervisor:   db 'Supervisor: Ring 0 Metal Core Online. Preparing Ring 3...', 0 ; Execute hardware step

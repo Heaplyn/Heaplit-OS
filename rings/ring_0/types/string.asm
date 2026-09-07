@@ -1,6 +1,6 @@
 ; rings/ring_0/string.asm
 ; String Manipulation Utilities for Heaplit OS (16-bit Real Mode)
-[bits 16]                               ; Execute instruction
+[bits 16]                               ; Set assembler target mode to 16-bit Real Mode
 
 ; -----------------------------------------------------------------------------
 ; strlen16: Measures length of a null-terminated ASCII string.
@@ -15,8 +15,8 @@ strlen16:
     push si                             ;Push SI register onto memory stack
     xor cx, cx                          ;Zero out CX register
 .loop:
-    cmp byte [si], 0                    ;Compare byte [si] with 0 and update CPU EFLAGS
-    je .done                            ;Jump to .done if condition 'e' is met
+    cmp byte [si], 0                    ; Execute hardware step
+    je .done                            ; Branch to '.done' if Zero Flag is set (ZF=1)
     inc si                              ;Increment si by 1
     inc cx                              ;Increment cx by 1
     jmp .loop                           ;Unconditional jump to target label .loop
@@ -41,20 +41,20 @@ strcmp16:
     push bx                             ;Push BX register onto memory stack
 
 .loop:
-    mov al, byte [si]                   ; Copy value from byte [si] to al
-    mov bl, byte [di]                   ; Copy value from byte [di] to bl
-    cmp al, bl                          ;Compare al with bl and update CPU EFLAGS
-    jne .diff                           ;Jump to .diff if condition 'ne' is met
-    test al, al                         ; Execute instruction
-    jz .equal                           ;Jump to .equal if condition 'z' is met
+    mov al, byte [si]                   ; Set al = byte [si]
+    mov bl, byte [di]                   ; Set bl = byte [di]
+    cmp al, bl                          ; Execute hardware step
+    jne .diff                           ; Branch to '.diff' if Zero Flag is clear (ZF=0)
+    test al, al                         ; Test AL byte for zero (null-terminator)
+    jz .equal                           ; Branch to '.equal' if Zero Flag is set (ZF=1)
     inc si                              ;Increment si by 1
     inc di                              ;Increment di by 1
     jmp .loop                           ;Unconditional jump to target label .loop
 
 .diff:
-    movzx ax, al                        ; Execute instruction
-    movzx bx, bl                        ; Execute instruction
-    sub ax, bx                          ; Execute instruction
+    movzx ax, al                        ; Execute hardware step
+    movzx bx, bl                        ; Execute hardware step
+    sub ax, bx                          ; Execute hardware step
     pop bx                              ;Pop top stack value into BX register
     pop di                              ;Pop top stack value into DI register
     pop si                              ;Pop top stack value into SI register
@@ -80,10 +80,10 @@ strcpy16:
     push di                             ;Push DI register onto memory stack
     push ax                             ;Push AX register onto memory stack
 .loop:
-    mov al, [si]                        ; Copy value from [si] to al
-    mov [di], al                        ; Copy value from al to [di]
-    test al, al                         ; Execute instruction
-    jz .done                            ;Jump to .done if condition 'z' is met
+    mov al, [si]                        ; Set al = [si]
+    mov [di], al                        ; Set [di] = al
+    test al, al                         ; Test AL byte for zero (null-terminator)
+    jz .done                            ; Branch to '.done' if Zero Flag is set (ZF=1)
     inc si                              ;Increment si by 1
     inc di                              ;Increment di by 1
     jmp .loop                           ;Unconditional jump to target label .loop
@@ -108,17 +108,17 @@ strcat16:
 
     ; 1. Find end of destination string
 .find_end:
-    cmp byte [di], 0                    ;Compare byte [di] with 0 and update CPU EFLAGS
-    je .copy_source                     ;Jump to .copy_source if condition 'e' is met
+    cmp byte [di], 0                    ; Execute hardware step
+    je .copy_source                     ; Branch to '.copy_source' if Zero Flag is set (ZF=1)
     inc di                              ;Increment di by 1
     jmp .find_end                       ;Unconditional jump to target label .find_end
 
     ; 2. Copy source into end of destination
 .copy_source:
-    mov al, [si]                        ; Copy value from [si] to al
-    mov [di], al                        ; Copy value from al to [di]
-    test al, al                         ; Execute instruction
-    jz .done                            ;Jump to .done if condition 'z' is met
+    mov al, [si]                        ; Set al = [si]
+    mov [di], al                        ; Set [di] = al
+    test al, al                         ; Test AL byte for zero (null-terminator)
+    jz .done                            ; Branch to '.done' if Zero Flag is set (ZF=1)
     inc si                              ;Increment si by 1
     inc di                              ;Increment di by 1
     jmp .copy_source                    ;Unconditional jump to target label .copy_source
@@ -138,15 +138,15 @@ to_upper16:
     push di                             ;Push DI register onto memory stack
     push ax                             ;Push AX register onto memory stack
 .loop:
-    mov al, [di]                        ; Copy value from [di] to al
-    test al, al                         ; Execute instruction
-    jz .done                            ;Jump to .done if condition 'z' is met
-    cmp al, 'a'                         ; Execute instruction
-    jb .next                            ;Jump to .next if condition 'b' is met
-    cmp al, 'z'                         ; Execute instruction
-    ja .next                            ;Jump to .next if condition 'a' is met
+    mov al, [di]                        ; Set al = [di]
+    test al, al                         ; Test AL byte for zero (null-terminator)
+    jz .done                            ; Branch to '.done' if Zero Flag is set (ZF=1)
+    cmp al, 'a'                         ; Execute hardware step
+    jb .next                            ; Execute hardware step
+    cmp al, 'z'                         ; Execute hardware step
+    ja .next                            ; Execute hardware step
     sub al, 32                          ;Convert 'a'..'z' to 'A'..'Z'
-    mov [di], al                        ; Copy value from al to [di]
+    mov [di], al                        ; Set [di] = al
 .next:
     inc di                              ;Increment di by 1
     jmp .loop                           ;Unconditional jump to target label .loop
