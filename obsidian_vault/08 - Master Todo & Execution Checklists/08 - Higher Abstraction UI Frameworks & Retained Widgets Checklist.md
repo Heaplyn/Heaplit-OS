@@ -18,18 +18,73 @@ flowchart TD
 
 ## 1. High-Level Retained Widget Components
 - [ ] **Button & Clickable Controls**: Retained-mode push buttons, toggle switches, radio groups, and icon triggers #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Button & Clickable Controls: Retained-mode push buttons, toggle switches, radio groups, and icon triggers status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Text Input & Multi-Line Editors**: Interactive text fields with caret positioning, text selection, undo/redo buffers, and copy/paste clipboard integration #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Text Input & Multi-Line Editors: Interactive text fields with caret positioning, text selection, undo/redo buffers, and copy/paste clipboard integration status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Dropdowns & Context Menus**: Floating context menus, popover dropdown lists, and hierarchical sub-menus with smooth spatial animations #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Dropdowns & Context Menus: Floating context menus, popover dropdown lists, and hierarchical sub-menus with smooth spatial animations status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Modal Dialogs & Alerts**: System notification overlays, confirmation prompts, file pickers, and color pickers #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Modal Dialogs & Alerts: System notification overlays, confirmation prompts, file pickers, and color pickers status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Tree Views & Data Grids**: High-performance virtualized tree controls for VFS directory exploration and tabular data grids #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Tree Views & Data Grids: High-performance virtualized tree controls for VFS directory exploration and tabular data grids status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Scrollbars & Smooth Inertia Panes**: Virtualized scroll viewports with inertial momentum panning and gesture support #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Scrollbars & Smooth Inertia Panes: Virtualized scroll viewports with inertial momentum panning and gesture support status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ## 2. Higher Abstraction Spatial Layout & Styling Engine
 - [ ] **Flexbox & Grid Layout Engine**: Declarative flexbox and CSS-like grid auto-layout parser for automatic component sizing #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Flexbox & Grid Layout Engine: Declarative flexbox and CSS-like grid auto-layout parser for automatic component sizing status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Signed Distance Field (SDF) Typography**: Scale-invariant, sub-pixel anti-aliased vector font rendering for multi-lingual text #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Signed Distance Field (SDF) Typography: Scale-invariant, sub-pixel anti-aliased vector font rendering for multi-lingual text status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Glassmorphism & Material Shaders**: Real-time Gaussian blur, backdrop alpha blending, dynamic shadows, and glowing accent borders #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Glassmorphism & Material Shaders: Real-time Gaussian blur, backdrop alpha blending, dynamic shadows, and glowing accent borders status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Live TOML & CSS-Style Theming Engine**: Dynamic reloading of color schemes, font sizes, border radii, and widget styles from `/sys/theme.toml` #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Live TOML & CSS-Style Theming Engine: Dynamic reloading of color schemes, font sizes, border radii, and widget styles from /sys/theme.toml status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Multimodal Touch & Spatial Pointer Engine**: Universal gesture decoder supporting mouse cursors, touchscreens, stylus pressure, and VR spatial pointer rays #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Multimodal Touch & Spatial Pointer Engine: Universal gesture decoder supporting mouse cursors, touchscreens, stylus pressure, and VR spatial pointer rays status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ---
 

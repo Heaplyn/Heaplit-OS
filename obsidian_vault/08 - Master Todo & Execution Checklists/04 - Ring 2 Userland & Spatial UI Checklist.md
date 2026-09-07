@@ -1,193 +1,94 @@
 > **Status:** #status/future-implementation
 
-# 🖥️ Ring 2 Userland & Spatial UI Checklist (Exhaustive)
+# 🖥️ Ring 2 Userland & Spatial UI Checklist (Exhaustive Implementation Protocol)
 
 > **Target Components:** `rings/ring_2/ring_2/` (`console`, `input`, `spatial_ui`, `applications`)
 
 ---
 
 ## 1. Userland Services & Console Subsystem
+
 - [x] **Heaplit Userland Agent Daemon (`heaplit_daemon`)**: Architecture for VFS watcher & background perception loop #status/implemented
+  > 🛠️ **Implementation Protocol**:
+  > 1. **VFS File Watcher**: Registers event listener on VFS `/system/config/` and workspace directories via `sys_fs_watch` (syscall `0x30`).
+  > 2. **Perception Loop**: Reads modified file paths, formats context prompt, and submits prompt to Ring 1 GGML AI engine via `sys_ai_infer` (`0xA1`).
+
 - [x] **Console Output Subsystem (`console.asm`)**: VGA text mode `0xB8000` & ANSI escape code parser #status/implemented
+  > 🛠️ **Implementation Protocol**:
+  > 1. **VGA Direct Write**: Writes ASCII character byte + color attribute byte to physical memory `0xB8000` (80x25 characters).
+  > 2. **ANSI Parsing**: Intercepts `[` escape sequences; parses foreground/background SGR color codes (`[31m` Red) and cursor movements (`[2J` Clear).
+
 - [x] **Keyboard Input Subsystem (`keyboard.asm`)**: PS/2 scancode decoder & line buffer editor with backspace handling #status/implemented
+  > 🛠️ **Implementation Protocol**:
+  > 1. **IRQ 1 Handler**: Reads raw scancode from Port `0x60` on keyboard interrupt.
+  > 2. **Scancode Translation**: Maps Set 1 scancodes to ASCII characters, handling Shift (`0x2A`/`0x36`) and Ctrl keys.
+  > 3. **Line Buffer Editor**: Appends characters to prompt buffer, handles Backspace (`0x0E`) by erasing character and shifting caret.
+
+---
 
 ## 2. Spatial UI & Retained Graphics Core
+
 - [ ] **The Lens 3D Graph File Explorer**: Vulkan compute shader spring-embedder force layout engine #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Node Construction**: Instantiates 3D sphere node per VFS inode. Edges represent parent-child and `xattr` tag relationships.
+  > 2. **Coulomb Repulsion**: Compute shader computes pairwise node repulsion $F_{rep} = rac{k_r}{d^2}$.
+  > 3. **Hooke Attraction**: Compute shader computes edge attraction $F_{att} = k_a \cdot (d - d_0)$.
+  > 4. **Euler Integration**: Updates node 3D coordinates via velocity vector integration ($v = v + a \cdot dt$, $p = p + v \cdot dt$).
+
 - [ ] **Spatial Window Compositor**: Window surface Z-ordering, inertia physics, velocity, friction calculations #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Retained Window Queue**: Maintains sorted array of window surface pointers ordered by Z-depth.
+  > 2. **Inertia Physics**: On mouse drag release, applies initial velocity vector $(v_x, v_y)$; applies frictional deceleration ($v = v \cdot 0.92$) each frame until velocity < 0.1.
+
 - [ ] **GPU Retained SDF Font Engine**: Multi-channel Signed Distance Field glyph font rasterizer #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Texture Atlas**: Generates 512x512 multi-channel SDF (MSDF) font atlas texture.
+  > 2. **Fragment Shader Thresholding**: Vulkan fragment shader evaluates median distance field value (`median(r, g, b)`) to render sharp vector text at any zoom level.
+
 - [ ] **Zero-Latency Hardware Cursor**: Hardware DRM plane overlay & Vulkan swapchain double buffering #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Hardware Cursor Plane**: Maps cursor sprite to dedicated DRM hardware cursor plane (`DRM_PLANE_TYPE_CURSOR`).
+  > 2. **Register Movement**: Updates cursor position via direct GPU register write without re-compositing background window buffers.
+
 - [ ] **Live TOML Theming Engine**: Hot-reloading interface parameters from `/sys/theme.toml` #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **TOML Parser**: Parses key-value color hex codes, font sizes, and window corner radii from `/sys/theme.toml`.
+  > 2. **Uniform Buffer Update**: Flushes updated theme parameters to GPU constant uniform buffers on file modification events.
+
+---
 
 ## 3. Native Application Suite (Mid-Term)
+
 - [ ] **The Forge Tool Installer GUI (`forge.axf`)**: One-click fetcher & provisioner for VS, MinGW, Node, Rust, Browsers #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Package Fetching**: Issues HTTP GET request to package repository via network stack.
+  > 2. **SHA-256 Integrity Verification**: Computes SHA-256 digest of downloaded `.hpkg` archive and checks against signed manifest.
+  > 3. **Atomic Extraction**: Unpacks binaries into `/sys/toolchains/<name>/` and registers VFS PATH variables.
+
 - [ ] **Multi-Language Compiler Studio (`studio.axf`)**: Native IDE interfacing directly with in-kernel LLVM service #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Editor Buffer**: Multi-tab text editor with syntax highlighting for C, C++, Assembly, C#, Rust.
+  > 2. **In-Kernel Compilation**: Passes source text buffer to Ring 1 LLVM service (`sys_compile_code` 0xC1); receives JIT compiled `.axf` handle.
+  > 3. **Hot-Patching**: Swaps active process machine code instructions in RAM without destroying process heap state.
+
 - [ ] **Custom Calendar & Time Service (`calendar.axf`)**: RTC IRQ 8 clock & event-to-file temporal cross-referencing #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **RTC Timekeeper**: Reads RTC CMOS ports (`0x70`/`0x71`) on IRQ 8 to maintain nanosecond UTC timestamp.
+  > 2. **Temporal Linkage**: Automatically attaches event metadata tags to any file created or modified during a scheduled calendar event window.
+
 - [ ] **Kernel-Level Antivirus & Integrity Guard (`integrity_guard.c`)**: `.axf` LLVM IR bitcode validator & W^X page protection #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **IR Static Analysis**: Scans LLVM IR instructions prior to JIT compilation; blocks unauthorized raw assembly injection or ring escalation.
+  > 2. **W^X Page Protection**: Enforces Write XOR Execute page table bits; revokes write privileges before JIT memory pages are executed.
+
+---
 
 ## 4. Far-Future Spatial UI & Input Innovations
+
 - [ ] **3D Spatial Audio Engine**: Position application sounds in 3D space corresponding to window positions #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **HRTF Audio Panning**: Applies Head-Related Transfer Function (HRTF) filtering to 3D audio streams based on window $(x, y, z)$ coordinates relative to user camera.
+
 - [ ] **Gaze & Gesture Tracking Driver**: Sub-millisecond webcam/VR spatial input tracking #status/future-implementation
-- [ ] **Holographic Spatial Compositor Pass**: Stereoscopic 3D rendering pass for AR/VR headsets #status/future-implementation
-
----
-
-## 🔬 In-Depth Architectural & Technical Specifications
-
-### Hardware & Processor Register Contract
-Heaplit OS enforces strict register management conventions for **04 - Ring 2 Userland & Spatial UI Checklist** across all x86-64 execution contexts:
-
-| Register | CPU Role | Volatility / Preservation | Subsystem Function |
-| :--- | :--- | :--- | :--- |
-| `RAX` | Primary Accumulator | Volatile | Syscall ID entry, return status code, ALU calculation destination. |
-| `RBX` | Base Register | Non-Volatile (Preserved) | Pointer to active TCB (Thread Control Block) / Data structure handle. |
-| `RCX` | Counter / Syscall RIP | Volatile | Hardware `syscall` saves userland instruction pointer (`RIP`) into `RCX`. |
-| `RDX` | Data Register | Volatile | Secondary return value, I/O port address, memory block size parameter. |
-| `RSI` | Source Index | Volatile | Pointer to source memory buffer / string payload / argument 2. |
-| `RDI` | Destination Index | Volatile | Pointer to destination memory buffer / argument 1 (`System V ABI`). |
-| `RBP` | Frame Pointer | Non-Volatile (Preserved) | Stack frame base pointer for debug backtraces and stack unwinding. |
-| `RSP` | Stack Pointer | Non-Volatile (Preserved) | Top of 16-byte aligned kernel/user execution stack. |
-| `R8 - R11` | Scratch Registers | Volatile | Function parameters 5-6 (`R8`, `R9`), temporary scrap calculations. |
-| `R12 - R15` | General Purpose | Non-Volatile (Preserved) | Long-lived kernel state registers preserved across C and ASM boundaries. |
-| `CR0` | Control Register 0 | System Control | Toggles Protected Mode (`PE` bit 0), Paging (`PG` bit 31), Write Protect (`WP` bit 16). |
-| `CR3` | Control Register 3 | Page Directory Root | Physical address pointer to PML4 root page table (4KB aligned). |
-| `CR4` | Control Register 4 | Architectural Extension | Toggles PAE (`bit 5`), OSXSAVE (`bit 18`), SMEP/SMAP ring security flags. |
-| `MSR LSTAR` | 0xC0000082 | Hardware Entry Point | Stores 64-bit virtual memory target address for the `syscall` handler. |
-
----
-
-## 📐 Memory Map & Address Layout
-
-The virtual address space for **04 - Ring 2 Userland & Spatial UI Checklist** adheres to Heaplit OS's canonical higher-half memory layout:
-
-```
-+-------------------------------------------------------------------+ 0xFFFFFFFFFFFFFFFF
-| Higher-Half Kernel Direct Physical Map (Identity Mapped 512 GB)   |
-| Virtual Address Range: 0xFFFF800000000000 - 0xFFFFFFFFFFFFFFFF     |
-+-------------------------------------------------------------------+ 0xFFFF800000000000
-| Unmapped Canonical Memory Hole (Non-Canonical Address Space)     |
-+-------------------------------------------------------------------+ 0x00007FFFFFFFFFFF
-| Ring 3 Sandboxed Application Execution Space (.axf JIT Memory)   |
-| Virtual Address Range: 0x0000000040000000 - 0x00007FFFFFFFFFFF     |
-+-------------------------------------------------------------------+ 0x0000000040000000
-| Ring 2 Spatial UI & Compositor Framebuffers (VBE / GPU BARs)      |
-| Virtual Address Range: 0x000000000FD00000 - 0x0000000010000000     |
-+-------------------------------------------------------------------+ 0x0000000007E00000
-| Ring 0 Microkernel Staged Execution Load Target (0x7C00 - 0x8F00) |
-+-------------------------------------------------------------------+ 0x0000000000000000
-```
-
----
-
-## 🛠️ Step-by-Step Execution State Machine
-
-```mermaid
-flowchart TD
-    subgraph State_Init["1. Initialization State"]
-        S1["Load Subsystem Descriptors & Verify CPU Feature Flags"] --> S2["Allocate Initial Memory Blocks via PMM Bitmap"]
-    end
-
-    subgraph State_Exec["2. Active Execution State"]
-        S2 --> S3["Setup Assembly Register Parameters (RDI, RSI, RDX)"]
-        S3 --> S4["Issue Fast Syscall / Subsystem Function Call"]
-        S4 --> S5["Execute Atomic ALU / SIMD Operations"]
-    end
-
-    subgraph State_Validation["3. Validation & Exception Handling"]
-        S5 --> S6Check Status Code in RAX
-        S6 -->|"RAX == 0 (Success)"| S7["Update System TCB & Commit Memory Writes"]
-        S6 -->|"RAX < 0 (Error)"| S8["Capture Register Frame & Dispatch Debug Signal"]
-    end
-
-    S7 --> S9["Resume Parent Process Context via sysretq / iretq"]
-    S8 --> S9
-```
-
----
-
-## 💻 Assembly Code Blueprint & Low-Level Implementation Examples
-
-The low-level assembly implementation of **04 - Ring 2 Userland & Spatial UI Checklist** uses canonical NASM syntax optimized for x86-64 execution:
-
-```nasm
-; ============================================================================
-; Heaplit OS Low-Level Core Blueprint - 04 - Ring 2 Userland & Spatial UI Checklist
-; ============================================================================
-%include "ring_0/types/variable.asm"
-
-global 04___ring_2_userland___spatial_ui_checklist_entry
-extern pmm_alloc_page
-extern kprintf
-
-section .text
-bits 64
-
-align 16
-04___ring_2_userland___spatial_ui_checklist_entry:
-    push rbp
-    mov rbp, rsp
-    sub rsp, 32                    ; Align stack to 16 bytes for System V ABI
-
-    ; Preserve non-volatile registers
-    mov [rsp + 0], rbx
-    mov [rsp + 8], r12
-    mov [rsp + 16], r13
-
-    ; Execute core subsystem operational logic
-    mov rdi, 1                     ; Parameter 1: Allocation page count
-    call pmm_alloc_page            ; Call Ring 0 Physical Memory Allocator
-    test rax, rax
-    jz .allocation_failed          ; Trap NULL pointer returns
-
-    mov rbx, rax                   ; Store allocated physical page address in RBX
-    
-    ; Perform atomic register verification
-    mov rsi, rbx
-    mov rdi, msg_success
-    call kprintf
-
-    mov rax, 0                     ; Set success exit status code in RAX
-    jmp .exit_clean
-
-.allocation_failed:
-    mov rax, -1                    ; Set error code in RAX (-1 = Out of Memory)
-    
-.exit_clean:
-    ; Restore non-volatile registers
-    mov rbx, [rsp + 0]
-    mov r12, [rsp + 8]
-    mov r13, [rsp + 16]
-
-    add rsp, 32
-    pop rbp
-    ret
-
-section .rodata
-msg_success: db "[HEAPLIT] 04 - Ring 2 Userland & Spatial UI Checklist Subsystem initialized at physical address: 0x%x", 10, 0
-```
-
----
-
-## 🔍 Verification, QEMU Testing & Diagnostics
-
-### Headless QEMU Emulation Verification
-To test **04 - Ring 2 Userland & Spatial UI Checklist** within the Heaplit OS kernel binary (`base.bin`), execute the host automated build script:
-
-```powershell
-# Execute build and launch QEMU emulator with serial debugging
-.\loader\load_os.ps1
-```
-
-### Serial Log Verification Protocol
-During execution, **04 - Ring 2 Userland & Spatial UI Checklist** outputs diagnostic traces to COM1 Serial Port (`0x3F8`). Verified serial outputs must confirm:
-1. Zero stack pointer misalignment warnings (`RSP % 16 == 0`).
-2. Successful page table mapping without triggering CR2 Page Faults.
-3. Clean return of RAX status codes prior to CPU state resumption.
-
----
-
-## 📑 Related Architecture Notes & References
-- [[00 - Architecture/overview/System Overview|System Overview]]
-- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/syscalls/07 - Syscall Dispatcher & ABI|07 - Syscall Dispatcher & ABI]]
-- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/cpu/04 - Paging & Virtual Memory|04 - Paging & Virtual Memory]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/liba/01 - Freestanding C Runtime (liba)|01 - Freestanding C Runtime (liba)]]
-- [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|01 - Heaplit Daemon Architecture]]
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Pupil & Hand Tracking**: Processes camera video frame tensor to detect pupil gaze point and hand pinch gestures for hands-free UI control.

@@ -8,18 +8,63 @@
 
 ## 1. Binary Container & Runtime Formats
 - [x] **LLVM Bitcode (`.axf`) Application Format**: Architecture-neutral container header specification #status/implemented
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `LLVM Bitcode (.axf) Application Format: Architecture-neutral container header specification status/implemented`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Completed & Verified).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [x] **CoreCLR .NET 8 Runtime Support**: Managed C# assembly loading & NuGet package mapping #status/implemented
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `CoreCLR .NET 8 Runtime Support: Managed C assembly loading & NuGet package mapping status/implemented`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Completed & Verified).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Built-in Clang / LLD Target**: Native target triple `x86_64-heaplit-elf` configuration #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Built-in Clang / LLD Target: Native target triple x86_64-heaplit-elf configuration status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ## 2. Inter-Process Communication & Packaging (Mid-Term)
 - [ ] **High-Speed Zero-Copy IPC Message Bus**: Shared PMM physical frames & lock-free ASM ring gates (`lock cmpxchg`) #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `High-Speed Zero-Copy IPC Message Bus: Shared PMM physical frames & lock-free ASM ring gates (lock cmpxchg) status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Dynamic Bitcode Linker (`axf_linker.c`)**: Runtime symbol resolution, relocation binding, JIT trampolines #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Dynamic Bitcode Linker (axf_linker.c): Runtime symbol resolution, relocation binding, JIT trampolines status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **`hpkg` Package Manager**: Cryptographic SHA-256 package verification & atomic extraction into VFS `/sys/bin/` #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `hpkg Package Manager: Cryptographic SHA-256 package verification & atomic extraction into VFS /sys/bin/ status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ## 3. Far-Future Toolchain & Cryptographic Innovations
 - [ ] **Zero-Knowledge (ZK) Application Sandbox**: Generate and verify ZK execution proofs for `.axf` binaries #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Zero-Knowledge (ZK) Application Sandbox: Generate and verify ZK execution proofs for .axf binaries status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Cross-Language Binding Generator**: Automated FFI generator between C, Assembly, C#, Rust, and Wasm #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Cross-Language Binding Generator: Automated FFI generator between C, Assembly, C, Rust, and Wasm status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Distributed Neural IPC Mesh**: Zero-copy RPC bus extending across network cluster nodes #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Distributed Neural IPC Mesh: Zero-copy RPC bus extending across network cluster nodes status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ---
 

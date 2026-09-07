@@ -20,18 +20,73 @@ flowchart TD
 
 ## 1. Managed Language Runtimes & Frameworks
 - [x] **CoreCLR .NET 8 Runtime Integration**: Managed assembly loading (`.dll`) and NuGet package mapping specification #status/implemented
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `CoreCLR .NET 8 Runtime Integration: Managed assembly loading (.dll) and NuGet package mapping specification status/implemented`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Completed & Verified).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **C# WinUI / Avalonia Compatibility Layer**: High-level C# XAML UI bindings mapping directly to Heaplit spatial retained widgets #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `C WinUI / Avalonia Compatibility Layer: High-level C XAML UI bindings mapping directly to Heaplit spatial retained widgets status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Node.js & V8 Engine Port**: Full JavaScript/TypeScript runtime with event loop and asynchronous file/socket I/O bindings #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Node.js & V8 Engine Port: Full JavaScript/TypeScript runtime with event loop and asynchronous file/socket I/O bindings status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Freestanding Python 3.12 Interpreter**: Embedded Python runtime for data science, scripting, and local AI pipeline automation #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Freestanding Python 3.12 Interpreter: Embedded Python runtime for data science, scripting, and local AI pipeline automation status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Rust Standard Library & Cargo Target**: Custom target triple (`x86_64-heaplit-elf`) for native Rust binary compilation #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Rust Standard Library & Cargo Target: Custom target triple (x86_64-heaplit-elf) for native Rust binary compilation status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Ring 1 WebAssembly (Wasm) Container**: High-speed Wasm JIT runtime for sandboxed web microservices and user plugins #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Ring 1 WebAssembly (Wasm) Container: High-speed Wasm JIT runtime for sandboxed web microservices and user plugins status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ## 2. High-Level User Applications
 - [ ] **The Lens 3D Spatial File Explorer (`lens.axf`)**: Interactive 3D force-directed node graph visualizer for VFS directories and files #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `The Lens 3D Spatial File Explorer (lens.axf): Interactive 3D force-directed node graph visualizer for VFS directories and files status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Custom Calendar & Time Service (`calendar.axf`)**: Metal-native calendar app integrated with VFS temporal event cross-referencing #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Custom Calendar & Time Service (calendar.axf): Metal-native calendar app integrated with VFS temporal event cross-referencing status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Retained Web Browser (`browser.axf`)**: WebKit-based lightweight web browser rendering HTML5, CSS3, and JavaScript natively #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Retained Web Browser (browser.axf): WebKit-based lightweight web browser rendering HTML5, CSS3, and JavaScript natively status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Sovereign Email & Messaging Client**: Encrypted P2P messaging and local email client with offline vector search #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Sovereign Email & Messaging Client: Encrypted P2P messaging and local email client with offline vector search status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Personal Project & Task Management Studio**: Kanban board and Gantt chart project manager linked to VFS code repositories #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Personal Project & Task Management Studio: Kanban board and Gantt chart project manager linked to VFS code repositories status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ---
 

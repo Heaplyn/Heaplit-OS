@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "08 - Master Todo & Execution Checklists/07 - Self-Hosting, Testing & CI-CD Pipeline Checklist.md",
+                "file": "08 - Master Todo & Execution Checklists/01 - Master Project Completion Roadmap & Meta Checklist.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07 - Self-Hosting, Testing & CI-CD Pipeline Checklist"
+              "title": "01 - Master Project Completion Roadmap & Meta Checklist"
             }
           }
         ]
@@ -188,16 +188,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "3023e069efd19909",
+  "active": "08623c8c78520023",
   "lastOpenFiles": [
     "08 - Master Todo & Execution Checklists/11 - High-Level Local AI Services & Sovereign Agent Checklist.md",
+    "08 - Master Todo & Execution Checklists/05 - Developer Toolchain, IPC & Packaging Checklist.md",
+    "08 - Master Todo & Execution Checklists/07 - Self-Hosting, Testing & CI-CD Pipeline Checklist.md",
     "08 - Master Todo & Execution Checklists/10 - High-Level Developer Tools & IDE Studio Checklist.md",
     "08 - Master Todo & Execution Checklists/09 - Higher Abstraction Application Ecosystem & Runtimes Checklist.md",
     "08 - Master Todo & Execution Checklists/08 - Higher Abstraction UI Frameworks & Retained Widgets Checklist.md",
     "08 - Master Todo & Execution Checklists/01 - Master Project Completion Roadmap & Meta Checklist.md",
-    "08 - Master Todo & Execution Checklists/05 - Developer Toolchain, IPC & Packaging Checklist.md",
     "rings/ring_0/ring_0/memory/README.md",
-    "08 - Master Todo & Execution Checklists/07 - Self-Hosting, Testing & CI-CD Pipeline Checklist.md",
     "08 - Master Todo & Execution Checklists/06 - Production Hardware Drivers & Network Stack Checklist.md",
     "08 - Master Todo & Execution Checklists/04 - Ring 2 Userland & Spatial UI Checklist.md",
     "08 - Master Todo & Execution Checklists/03 - Ring 1 Freestanding C Runtime & Driver Bridge Checklist.md",

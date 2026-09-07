@@ -8,17 +8,57 @@
 
 ## 1. Self-Hosting C Library & Toolchains (Mid-Term)
 - [ ] **`heaplit-libc` Completeness**: POSIX `pthread` threading, `<math.h>` (`libm`), `<sys/socket.h>`, `<stdio.h>` #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `heaplit-libc Completeness: POSIX pthread threading, <math.h> (libm), <sys/socket.h>, <stdio.h> status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Native Clang / LLVM Port**: Execute Clang compiler natively inside Heaplit OS `.axf` sandbox #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Native Clang / LLVM Port: Execute Clang compiler natively inside Heaplit OS .axf sandbox status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Native NASM Port**: Execute NASM assembler natively to build kernel assembly files without host OS #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Native NASM Port: Execute NASM assembler natively to build kernel assembly files without host OS status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ## 2. Autonomous Testing & Crash Diagnostics
 - [ ] **DWARF Kernel Panic Backtrace**: Parse ELF/DWARF symbols to output human-readable function stack traces #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `DWARF Kernel Panic Backtrace: Parse ELF/DWARF symbols to output human-readable function stack traces status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Headless QEMU Automated Harness**: Automated execution of `.\loader\load_os.ps1` with COM1 serial log assertions #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Headless QEMU Automated Harness: Automated execution of .\loader\load_os.ps1 with COM1 serial log assertions status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **GitHub Actions Automated Pipeline**: Continuous Integration workflow triggering automated QEMU builds on git push #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `GitHub Actions Automated Pipeline: Continuous Integration workflow triggering automated QEMU builds on git push status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ## 3. Far-Future Autonomous Kernel Self-Healing
 - [ ] **Autonomous LLVM Kernel Repair Engine**: Self-diagnosing AI agent that identifies panics and patches Ring 0 source #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Autonomous LLVM Kernel Repair Engine: Self-diagnosing AI agent that identifies panics and patches Ring 0 source status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Fuzzing & Formal Verification Harness**: Automated SMT solver verification of assembly registers and page maps #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Fuzzing & Formal Verification Harness: Automated SMT solver verification of assembly registers and page maps status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ---
 

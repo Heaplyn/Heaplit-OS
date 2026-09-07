@@ -18,16 +18,61 @@ flowchart TD
 
 ## 1. Multi-Language Compiler Studio IDE (`studio.axf`)
 - [ ] **Multi-Tab Code Editor**: High-speed code buffer with syntax highlighting for C, C++, Assembly, C#, Rust, and Python #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Multi-Tab Code Editor: High-speed code buffer with syntax highlighting for C, C++, Assembly, C, Rust, and Python status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **In-Kernel LLVM JIT Integration**: Direct system calls to Ring 1 LLVM service for instant hot-patching and zero-restart compilation #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `In-Kernel LLVM JIT Integration: Direct system calls to Ring 1 LLVM service for instant hot-patching and zero-restart compilation status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **IntelliSense & AI Autocomplete**: Real-time code completion, symbol lookup, and local AI inline code suggestions #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `IntelliSense & AI Autocomplete: Real-time code completion, symbol lookup, and local AI inline code suggestions status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Interactive Visual Debugger**: DWARF symbol mapping, breakpoint management, stack unwinding, and register inspection #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Interactive Visual Debugger: DWARF symbol mapping, breakpoint management, stack unwinding, and register inspection status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Integrated Project Build System**: Visual project settings, target binary packaging (`.axf`), and dependency resolution #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Integrated Project Build System: Visual project settings, target binary packaging (.axf), and dependency resolution status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ## 2. Developer Productivity & Provisioning Utilities
 - [ ] **The Forge Tool Installer GUI (`forge.axf`)**: One-click installer fetching Visual Studio, MinGW, Node, Rust, and Browsers #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `The Forge Tool Installer GUI (forge.axf): One-click installer fetching Visual Studio, MinGW, Node, Rust, and Browsers status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **GPU-Accelerated Terminal Emulator**: Tabbed terminal emulator using SDF fonts with ANSI 24-bit truecolor support #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `GPU-Accelerated Terminal Emulator: Tabbed terminal emulator using SDF fonts with ANSI 24-bit truecolor support status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **System Performance Monitor & Profiler**: Visual GUI monitoring per-CPU load, PMM memory allocation, IPC throughput, and GPU framerates #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `System Performance Monitor & Profiler: Visual GUI monitoring per-CPU load, PMM memory allocation, IPC throughput, and GPU framerates status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 - [ ] **Vector & Raster Graphics Studio**: Native design tool for creating UI icons, textures, and Signed Distance Field glyph atlases #status/future-implementation
+  > 🛠️ **Implementation Protocol**:
+  > 1. **Architectural Design & Struct Definition**: Define target memory layout, header structures, and control contracts for `Vector & Raster Graphics Studio: Native design tool for creating UI icons, textures, and Signed Distance Field glyph atlases status/future-implementation`.
+  > 2. **Hardware Register & API Interface Setup**: Configure hardware ports, CPU registers, or low-level API functions required for operation (Planned / In-Progress).
+  > 3. **Algorithmic Execution & Data Processing**: Implement core execution loop, handling physical memory allocation, state transitions, and IPC/VFS signaling.
+  > 4. **Verification & Error Recovery**: Enforce boundary checking, register preservation, and fault mitigation strategies with explicit diagnostic logging.
 
 ---
 
