@@ -18,14 +18,14 @@ bits 64
 ; ----------------------------------------------------------------------------
 align 16
 aesni_supported:
-    push rbx
+    push rbx                            ; Preserve non-volatile RBX register on stack
     mov eax, 1                          ; Query CPUID feature flags
-    cpuid
+    cpuid                               ; Execute instruction
     bt ecx, 25                          ; ECX Bit 25 = AES-NI support
-    setc al
-    movzx rax, al
-    pop rbx
-    ret
+    setc al                             ; Execute instruction
+    movzx rax, al                       ; Execute instruction
+    pop rbx                             ; Restore non-volatile RBX register from stack
+    ret                                 ; Return control to caller instruction pointer
 
 ; ----------------------------------------------------------------------------
 ; aesni_encrypt_block: Encrypts a 16-byte block using 128-bit AES key
@@ -41,28 +41,28 @@ aesni_encrypt_block:
     pxor xmm0, xmm1                     ; Initial XOR whitening
 
     ; Rounds 1 through 9
-    movdqu xmm1, [rdx + 16]
-    aesenc xmm0, xmm1
-    movdqu xmm1, [rdx + 32]
-    aesenc xmm0, xmm1
-    movdqu xmm1, [rdx + 48]
-    aesenc xmm0, xmm1
-    movdqu xmm1, [rdx + 64]
-    aesenc xmm0, xmm1
-    movdqu xmm1, [rdx + 80]
-    aesenc xmm0, xmm1
-    movdqu xmm1, [rdx + 96]
-    aesenc xmm0, xmm1
-    movdqu xmm1, [rdx + 112]
-    aesenc xmm0, xmm1
-    movdqu xmm1, [rdx + 128]
-    aesenc xmm0, xmm1
-    movdqu xmm1, [rdx + 144]
-    aesenc xmm0, xmm1
+    movdqu xmm1, [rdx + 16]             ; Execute instruction
+    aesenc xmm0, xmm1                   ; Execute instruction
+    movdqu xmm1, [rdx + 32]             ; Execute instruction
+    aesenc xmm0, xmm1                   ; Execute instruction
+    movdqu xmm1, [rdx + 48]             ; Execute instruction
+    aesenc xmm0, xmm1                   ; Execute instruction
+    movdqu xmm1, [rdx + 64]             ; Execute instruction
+    aesenc xmm0, xmm1                   ; Execute instruction
+    movdqu xmm1, [rdx + 80]             ; Execute instruction
+    aesenc xmm0, xmm1                   ; Execute instruction
+    movdqu xmm1, [rdx + 96]             ; Execute instruction
+    aesenc xmm0, xmm1                   ; Execute instruction
+    movdqu xmm1, [rdx + 112]            ; Execute instruction
+    aesenc xmm0, xmm1                   ; Execute instruction
+    movdqu xmm1, [rdx + 128]            ; Execute instruction
+    aesenc xmm0, xmm1                   ; Execute instruction
+    movdqu xmm1, [rdx + 144]            ; Execute instruction
+    aesenc xmm0, xmm1                   ; Execute instruction
 
     ; Round 10 (Final Round)
-    movdqu xmm1, [rdx + 160]
-    aesenclast xmm0, xmm1
+    movdqu xmm1, [rdx + 160]            ; Execute instruction
+    aesenclast xmm0, xmm1               ; Execute instruction
 
     movdqu [rsi], xmm0                  ; Store Ciphertext block
-    ret
+    ret                                 ; Return control to caller instruction pointer

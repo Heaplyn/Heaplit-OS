@@ -26,11 +26,11 @@ spinlock_acquire:
     jnc .acquired                       ; If carry was 0, we acquired the lock
 .loop:
     pause                               ; Reduce power and pipeline stalls
-    test qword [rdi], 1
-    jnz .loop
-    jmp .spin
+    test qword [rdi], 1                 ; Execute instruction
+    jnz .loop                           ; Jump to .loop if condition 'nz' is met
+    jmp .spin                           ; Unconditional jump to target label .spin
 .acquired:
-    ret
+    ret                                 ; Return control to caller instruction pointer
 
 ; ----------------------------------------------------------------------------
 ; spinlock_release: Releases an acquired spinlock
@@ -40,7 +40,7 @@ spinlock_acquire:
 align 16
 spinlock_release:
     mov qword [rdi], 0                  ; Clear lock bit
-    ret
+    ret                                 ; Return control to caller instruction pointer
 
 ; ----------------------------------------------------------------------------
 ; atomic_add64: Atomically adds a value to a 64-bit destination
@@ -49,9 +49,9 @@ spinlock_release:
 ; ----------------------------------------------------------------------------
 align 16
 atomic_add64:
-    mov rax, rsi
+    mov rax, rsi                        ; Copy value from rsi to rax
     lock xadd [rdi], rax                ; Atomic Exchange and Add
-    ret
+    ret                                 ; Return control to caller instruction pointer
 
 ; ----------------------------------------------------------------------------
 ; atomic_cmpxchg16b: Atomic 128-bit compare and exchange
@@ -60,14 +60,14 @@ atomic_add64:
 ; ----------------------------------------------------------------------------
 align 16
 atomic_cmpxchg16b:
-    push rbx
+    push rbx                            ; Preserve non-volatile RBX register on stack
     mov rbx, rcx                        ; Move lower 64-bit new value to RBX
     mov rcx, r8                         ; Move upper 64-bit new value to RCX
-    lock cmpxchg16b [rdi]
+    lock cmpxchg16b [rdi]               ; Execute instruction
     setz al                             ; Return 1 if equal, 0 if not
-    movzx rax, al
-    pop rbx
-    ret
+    movzx rax, al                       ; Execute instruction
+    pop rbx                             ; Restore non-volatile RBX register from stack
+    ret                                 ; Return control to caller instruction pointer
 
 ; ----------------------------------------------------------------------------
 ; enforce_page_sandbox: Configures page directory CR3 isolation flags
@@ -77,4 +77,4 @@ atomic_cmpxchg16b:
 align 16
 enforce_page_sandbox:
     mov cr3, rdi                        ; Load PML4 root into CR3
-    ret
+    ret                                 ; Return control to caller instruction pointer

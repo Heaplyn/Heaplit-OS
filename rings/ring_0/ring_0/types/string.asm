@@ -1,6 +1,6 @@
 ; rings/ring_0/ring_0/string.asm
 ; String Manipulation Utilities for Heaplit OS (16-bit Real Mode)
-[bits 16]
+[bits 16]                               ; Execute instruction
 
 ; -----------------------------------------------------------------------------
 ; strlen16: Measures length of a null-terminated ASCII string.
@@ -12,17 +12,17 @@
 ;   SI, AX, BX, DX, DI
 ; -----------------------------------------------------------------------------
 strlen16:
-    push si
-    xor cx, cx
+    push si                             ; Push SI register onto memory stack
+    xor cx, cx                          ; Zero out CX register
 .loop:
-    cmp byte [si], 0
-    je .done
-    inc si
-    inc cx
-    jmp .loop
+    cmp byte [si], 0                    ; Compare byte [si] with 0 and update CPU EFLAGS
+    je .done                            ; Jump to .done if condition 'e' is met
+    inc si                              ; Increment si by 1
+    inc cx                              ; Increment cx by 1
+    jmp .loop                           ; Unconditional jump to target label .loop
 .done:
-    pop si
-    ret
+    pop si                              ; Pop top stack value into SI register
+    ret                                 ; Return control to caller instruction pointer
 
 ; -----------------------------------------------------------------------------
 ; strcmp16: Compares two null-terminated ASCII strings.
@@ -36,36 +36,36 @@ strlen16:
 ;   SI, DI, BX, CX, DX
 ; -----------------------------------------------------------------------------
 strcmp16:
-    push si
-    push di
-    push bx
+    push si                             ; Push SI register onto memory stack
+    push di                             ; Push DI register onto memory stack
+    push bx                             ; Push BX register onto memory stack
 
 .loop:
-    mov al, byte [si]
-    mov bl, byte [di]
-    cmp al, bl
-    jne .diff
-    test al, al
-    jz .equal
-    inc si
-    inc di
-    jmp .loop
+    mov al, byte [si]                   ; Copy value from byte [si] to al
+    mov bl, byte [di]                   ; Copy value from byte [di] to bl
+    cmp al, bl                          ; Compare al with bl and update CPU EFLAGS
+    jne .diff                           ; Jump to .diff if condition 'ne' is met
+    test al, al                         ; Execute instruction
+    jz .equal                           ; Jump to .equal if condition 'z' is met
+    inc si                              ; Increment si by 1
+    inc di                              ; Increment di by 1
+    jmp .loop                           ; Unconditional jump to target label .loop
 
 .diff:
-    movzx ax, al
-    movzx bx, bl
-    sub ax, bx
-    pop bx
-    pop di
-    pop si
-    ret
+    movzx ax, al                        ; Execute instruction
+    movzx bx, bl                        ; Execute instruction
+    sub ax, bx                          ; Execute instruction
+    pop bx                              ; Pop top stack value into BX register
+    pop di                              ; Pop top stack value into DI register
+    pop si                              ; Pop top stack value into SI register
+    ret                                 ; Return control to caller instruction pointer
 
 .equal:
-    xor ax, ax
-    pop bx
-    pop di
-    pop si
-    ret
+    xor ax, ax                          ; Zero out AX register
+    pop bx                              ; Pop top stack value into BX register
+    pop di                              ; Pop top stack value into DI register
+    pop si                              ; Pop top stack value into SI register
+    ret                                 ; Return control to caller instruction pointer
 
 ; -----------------------------------------------------------------------------
 ; strcpy16: Copies null-terminated string from SI to DI.
@@ -76,22 +76,22 @@ strcmp16:
 ;   SI, DI, AX, CX
 ; -----------------------------------------------------------------------------
 strcpy16:
-    push si
-    push di
-    push ax
+    push si                             ; Push SI register onto memory stack
+    push di                             ; Push DI register onto memory stack
+    push ax                             ; Push AX register onto memory stack
 .loop:
-    mov al, [si]
-    mov [di], al
-    test al, al
-    jz .done
-    inc si
-    inc di
-    jmp .loop
+    mov al, [si]                        ; Copy value from [si] to al
+    mov [di], al                        ; Copy value from al to [di]
+    test al, al                         ; Execute instruction
+    jz .done                            ; Jump to .done if condition 'z' is met
+    inc si                              ; Increment si by 1
+    inc di                              ; Increment di by 1
+    jmp .loop                           ; Unconditional jump to target label .loop
 .done:
-    pop ax
-    pop di
-    pop si
-    ret
+    pop ax                              ; Pop top stack value into AX register
+    pop di                              ; Pop top stack value into DI register
+    pop si                              ; Pop top stack value into SI register
+    ret                                 ; Return control to caller instruction pointer
 
 ; -----------------------------------------------------------------------------
 ; strcat16: Appends string at SI to the end of string at DI.
@@ -102,32 +102,32 @@ strcpy16:
 ;   SI, DI, AX, CX
 ; -----------------------------------------------------------------------------
 strcat16:
-    push si
-    push di
-    push ax
+    push si                             ; Push SI register onto memory stack
+    push di                             ; Push DI register onto memory stack
+    push ax                             ; Push AX register onto memory stack
 
     ; 1. Find end of destination string
 .find_end:
-    cmp byte [di], 0
-    je .copy_source
-    inc di
-    jmp .find_end
+    cmp byte [di], 0                    ; Compare byte [di] with 0 and update CPU EFLAGS
+    je .copy_source                     ; Jump to .copy_source if condition 'e' is met
+    inc di                              ; Increment di by 1
+    jmp .find_end                       ; Unconditional jump to target label .find_end
 
     ; 2. Copy source into end of destination
 .copy_source:
-    mov al, [si]
-    mov [di], al
-    test al, al
-    jz .done
-    inc si
-    inc di
-    jmp .copy_source
+    mov al, [si]                        ; Copy value from [si] to al
+    mov [di], al                        ; Copy value from al to [di]
+    test al, al                         ; Execute instruction
+    jz .done                            ; Jump to .done if condition 'z' is met
+    inc si                              ; Increment si by 1
+    inc di                              ; Increment di by 1
+    jmp .copy_source                    ; Unconditional jump to target label .copy_source
 
 .done:
-    pop ax
-    pop di
-    pop si
-    ret
+    pop ax                              ; Pop top stack value into AX register
+    pop di                              ; Pop top stack value into DI register
+    pop si                              ; Pop top stack value into SI register
+    ret                                 ; Return control to caller instruction pointer
 
 ; -----------------------------------------------------------------------------
 ; to_upper16: Converts an in-place ASCII string at DI to uppercase.
@@ -135,22 +135,22 @@ strcat16:
 ;   DI = Pointer to null-terminated string
 ; -----------------------------------------------------------------------------
 to_upper16:
-    push di
-    push ax
+    push di                             ; Push DI register onto memory stack
+    push ax                             ; Push AX register onto memory stack
 .loop:
-    mov al, [di]
-    test al, al
-    jz .done
-    cmp al, 'a'
-    jb .next
-    cmp al, 'z'
-    ja .next
-    sub al, 32                  ; Convert 'a'..'z' to 'A'..'Z'
-    mov [di], al
+    mov al, [di]                        ; Copy value from [di] to al
+    test al, al                         ; Execute instruction
+    jz .done                            ; Jump to .done if condition 'z' is met
+    cmp al, 'a'                         ; Execute instruction
+    jb .next                            ; Jump to .next if condition 'b' is met
+    cmp al, 'z'                         ; Execute instruction
+    ja .next                            ; Jump to .next if condition 'a' is met
+    sub al, 32                          ; Convert 'a'..'z' to 'A'..'Z'
+    mov [di], al                        ; Copy value from al to [di]
 .next:
-    inc di
-    jmp .loop
+    inc di                              ; Increment di by 1
+    jmp .loop                           ; Unconditional jump to target label .loop
 .done:
-    pop ax
-    pop di
-    ret
+    pop ax                              ; Pop top stack value into AX register
+    pop di                              ; Pop top stack value into DI register
+    ret                                 ; Return control to caller instruction pointer

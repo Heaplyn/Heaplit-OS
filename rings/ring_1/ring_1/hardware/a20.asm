@@ -1,6 +1,6 @@
 ; rings/ring_0/ring_1/a20.asm
 ; A20 Gate Enable & Verification Utilities for Heaplit OS (16-bit Real Mode)
-[bits 16]
+[bits 16]                               ; Execute instruction
 
 ; -----------------------------------------------------------------------------
 ; check_a20: Tests if address line 20 is active by testing memory wrap-around.
@@ -10,47 +10,47 @@
 ;   BX, CX, DX, SI, DI, DS, ES
 ; -----------------------------------------------------------------------------
 check_a20:
-    pushf
-    push ds
-    push es
-    push di
-    push si
-    cli
+    pushf                               ; Execute instruction
+    push ds                             ; Push DS register onto memory stack
+    push es                             ; Push ES register onto memory stack
+    push di                             ; Push DI register onto memory stack
+    push si                             ; Push SI register onto memory stack
+    cli                                 ; Disable hardware interrupts (clear IF bit in EFLAGS)
 
-    xor ax, ax                  ; DS = 0x0000
-    mov ds, ax
-    not ax                      ; ES = 0xFFFF
-    mov es, ax
+    xor ax, ax                          ; DS = 0x0000
+    mov ds, ax                          ; Copy value from ax to ds
+    not ax                              ; ES = 0xFFFF
+    mov es, ax                          ; Copy value from ax to es
 
-    mov di, 0x7dfe              ; 0x0000:0x7DFE
-    mov si, 0x7e0e              ; 0xFFFF:0x7E0E (Physical address 0x107DFE)
+    mov di, 0x7dfe                      ; 0x0000:0x7DFE
+    mov si, 0x7e0e                      ; 0xFFFF:0x7E0E (Physical address 0x107DFE)
 
-    mov al, byte [ds:di]
-    push ax
-    mov al, byte [es:si]
-    push ax
+    mov al, byte [ds:di]                ; Execute instruction
+    push ax                             ; Push AX register onto memory stack
+    mov al, byte [es:si]                ; Execute instruction
+    push ax                             ; Push AX register onto memory stack
 
-    mov byte [ds:di], 0x00
-    mov byte [es:si], 0xFF
+    mov byte [ds:di], 0x00              ; Execute instruction
+    mov byte [es:si], 0xFF              ; Execute instruction
 
-    cmp byte [ds:di], 0xFF
+    cmp byte [ds:di], 0xFF              ; Execute instruction
 
-    pop ax
-    mov byte [es:si], al
-    pop ax
-    mov byte [ds:di], al
+    pop ax                              ; Pop top stack value into AX register
+    mov byte [es:si], al                ; Execute instruction
+    pop ax                              ; Pop top stack value into AX register
+    mov byte [ds:di], al                ; Execute instruction
 
-    mov ax, 0
-    je .done                    ; If equal, memory wrapped -> A20 disabled
-    mov ax, 1                   ; Otherwise A20 is enabled
+    mov ax, 0                           ; Copy value from 0 to ax
+    je .done                            ; If equal, memory wrapped -> A20 disabled
+    mov ax, 1                           ; Otherwise A20 is enabled
 
 .done:
-    pop si
-    pop di
-    pop es
-    pop ds
-    popf
-    ret
+    pop si                              ; Pop top stack value into SI register
+    pop di                              ; Pop top stack value into DI register
+    pop es                              ; Pop top stack value into ES register
+    pop ds                              ; Pop top stack value into DS register
+    popf                                ; Execute instruction
+    ret                                 ; Return control to caller instruction pointer
 
 ; -----------------------------------------------------------------------------
 ; enable_a20: Multi-tier enable (BIOS INT 0x15 -> Fast Port 0x92 -> 8042 Kbd)
@@ -58,77 +58,77 @@ check_a20:
 ;   AX = 1 on success, AX = 0 on failure
 ; -----------------------------------------------------------------------------
 enable_a20:
-    call check_a20
-    test ax, ax
-    jnz .success
+    call check_a20                      ; Execute instruction
+    test ax, ax                         ; Execute instruction
+    jnz .success                        ; Jump to .success if condition 'nz' is met
 
     ; Tier 1: BIOS Fast A20 Service
-    mov ax, 0x2401
-    int 0x15
-    call check_a20
-    test ax, ax
-    jnz .success
+    mov ax, 0x2401                      ; Copy value from 0x2401 to ax
+    int 0x15                            ; Execute instruction
+    call check_a20                      ; Execute instruction
+    test ax, ax                         ; Execute instruction
+    jnz .success                        ; Jump to .success if condition 'nz' is met
 
     ; Tier 2: Fast Port 0x92 (System Control Port A)
-    in al, 0x92
-    or al, 2
-    and al, 0xFE                ; Avoid fast CPU reset bit
-    out 0x92, al
-    call check_a20
-    test ax, ax
-    jnz .success
+    in al, 0x92                         ; Execute instruction
+    or al, 2                            ; Execute instruction
+    and al, 0xFE                        ; Avoid fast CPU reset bit
+    out 0x92, al                        ; Execute instruction
+    call check_a20                      ; Execute instruction
+    test ax, ax                         ; Execute instruction
+    jnz .success                        ; Jump to .success if condition 'nz' is met
 
     ; Tier 3: 8042 PS/2 Keyboard Controller
-    call .enable_a20_kbd
-    call check_a20
-    test ax, ax
-    jnz .success
+    call .enable_a20_kbd                ; Execute instruction
+    call check_a20                      ; Execute instruction
+    test ax, ax                         ; Execute instruction
+    jnz .success                        ; Jump to .success if condition 'nz' is met
 
     ; All methods failed
-    xor ax, ax
-    ret
+    xor ax, ax                          ; Zero out AX register
+    ret                                 ; Return control to caller instruction pointer
 
 .success:
-    mov ax, 1
-    ret
+    mov ax, 1                           ; Copy value from 1 to ax
+    ret                                 ; Return control to caller instruction pointer
 
 .enable_a20_kbd:
-    cli
-    call .wait_kbd_input
-    mov al, 0xAD                ; Disable keyboard
-    out 0x64, al
+    cli                                 ; Disable hardware interrupts (clear IF bit in EFLAGS)
+    call .wait_kbd_input                ; Execute instruction
+    mov al, 0xAD                        ; Disable keyboard
+    out 0x64, al                        ; Execute instruction
 
-    call .wait_kbd_input
-    mov al, 0xD0                ; Read output port command
-    out 0x64, al
+    call .wait_kbd_input                ; Execute instruction
+    mov al, 0xD0                        ; Read output port command
+    out 0x64, al                        ; Execute instruction
 
-    call .wait_kbd_output
-    in al, 0x60                 ; Read current output port state
-    push ax
+    call .wait_kbd_output               ; Execute instruction
+    in al, 0x60                         ; Read current output port state
+    push ax                             ; Push AX register onto memory stack
 
-    call .wait_kbd_input
-    mov al, 0xD1                ; Write output port command
-    out 0x64, al
+    call .wait_kbd_input                ; Execute instruction
+    mov al, 0xD1                        ; Write output port command
+    out 0x64, al                        ; Execute instruction
 
-    call .wait_kbd_input
-    pop ax
-    or al, 2                    ; Set A20 line enable bit
-    out 0x60, al
+    call .wait_kbd_input                ; Execute instruction
+    pop ax                              ; Pop top stack value into AX register
+    or al, 2                            ; Set A20 line enable bit
+    out 0x60, al                        ; Execute instruction
 
-    call .wait_kbd_input
-    mov al, 0xAE                ; Enable keyboard
-    out 0x64, al
-    sti
-    ret
+    call .wait_kbd_input                ; Execute instruction
+    mov al, 0xAE                        ; Enable keyboard
+    out 0x64, al                        ; Execute instruction
+    sti                                 ; Enable hardware interrupts (set IF bit in EFLAGS)
+    ret                                 ; Return control to caller instruction pointer
 
 .wait_kbd_input:
-    in al, 0x64
-    test al, 2                  ; Check input buffer status (0 = empty)
-    jnz .wait_kbd_input
-    ret
+    in al, 0x64                         ; Execute instruction
+    test al, 2                          ; Check input buffer status (0 = empty)
+    jnz .wait_kbd_input                 ; Jump to .wait_kbd_input if condition 'nz' is met
+    ret                                 ; Return control to caller instruction pointer
 
 .wait_kbd_output:
-    in al, 0x64
-    test al, 1                  ; Check output buffer status (1 = full)
-    jz .wait_kbd_output
-    ret
+    in al, 0x64                         ; Execute instruction
+    test al, 1                          ; Check output buffer status (1 = full)
+    jz .wait_kbd_output                 ; Jump to .wait_kbd_output if condition 'z' is met
+    ret                                 ; Return control to caller instruction pointer
