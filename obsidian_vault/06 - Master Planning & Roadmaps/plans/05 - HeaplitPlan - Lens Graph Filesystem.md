@@ -20,8 +20,8 @@ Tags: #HeaplitPlan #Phase2 #Ring1 #Ring2 #MVP
 ---
 
 ## 2. Related Links
-- [[03 - Ring 2 - Userland & Spatial UI/02 - The Lens Graph File Explorer|Lens Explorer]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/03 - Virtual File System (VFS)|VFS Driver]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/spatial_ui/02 - The Lens Graph File Explorer|Lens Explorer]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/03 - Virtual File System (VFS)|VFS Driver]]
 
 ## 🔄 Lens Graph Master Flowchart
 
@@ -189,8 +189,8 @@ During execution, **05 - HeaplitPlan - Lens Graph Filesystem** outputs diagnosti
 ---
 
 ## 📑 Related Architecture Notes & References
-- [[00 - Architecture/System Overview]]
-- [[01 - Ring 0 - Metal Core (Assembly)/07 - Syscall Dispatcher & ABI]]
-- [[01 - Ring 0 - Metal Core (Assembly)/04 - Paging & Virtual Memory]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/01 - Freestanding C Runtime (liba)]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture]]
+- [[00 - Architecture/overview/System Overview|System Overview]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/syscalls/07 - Syscall Dispatcher & ABI|07 - Syscall Dispatcher & ABI]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/cpu/04 - Paging & Virtual Memory|04 - Paging & Virtual Memory]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/liba/01 - Freestanding C Runtime (liba)|01 - Freestanding C Runtime (liba)]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|01 - Heaplit Daemon Architecture]]

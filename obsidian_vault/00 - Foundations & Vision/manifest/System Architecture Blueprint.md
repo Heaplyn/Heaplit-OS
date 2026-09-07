@@ -75,10 +75,10 @@ flowchart TD
 ---
 
 ## 3. Related Links
-- [[01 - Ring 0 - Metal Core (Assembly)/01 - Boot Sequence & Staged Loading|Boot Sequence Specification]]
-- [[01 - Ring 0 - Metal Core (Assembly)/06 - Tickless ASM Scheduler|Tickless Scheduler]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/02 - GGML & Llama.cpp Kernel Port|GGML C Engine]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture|Heaplit Daemon]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/standards/01 - Boot Sequence & Staged Loading|Boot Sequence Specification]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/sched/06 - Tickless ASM Scheduler|Tickless Scheduler]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/02 - GGML & Llama.cpp Kernel Port|GGML C Engine]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|Heaplit Daemon]]
 
 ---
 
@@ -237,8 +237,8 @@ During execution, **System Architecture Blueprint** outputs diagnostic traces to
 ---
 
 ## 📑 Related Architecture Notes & References
-- [[00 - Architecture/System Overview]]
-- [[01 - Ring 0 - Metal Core (Assembly)/07 - Syscall Dispatcher & ABI]]
-- [[01 - Ring 0 - Metal Core (Assembly)/04 - Paging & Virtual Memory]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/01 - Freestanding C Runtime (liba)]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture]]
+- [[00 - Architecture/overview/System Overview|System Overview]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/syscalls/07 - Syscall Dispatcher & ABI|07 - Syscall Dispatcher & ABI]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/cpu/04 - Paging & Virtual Memory|04 - Paging & Virtual Memory]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/liba/01 - Freestanding C Runtime (liba)|01 - Freestanding C Runtime (liba)]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|01 - Heaplit Daemon Architecture]]

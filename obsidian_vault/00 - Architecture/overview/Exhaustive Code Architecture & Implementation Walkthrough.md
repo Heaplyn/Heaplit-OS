@@ -261,8 +261,8 @@ enable_a20:
 ---
 
 ## 6. Related Architecture Documents
-- [[00 - Architecture/System Overview|System Overview & Ring Hierarchy]]
-- [[00 - Architecture/Code Quality & Engineering Guidelines|Code Quality & Engineering Guidelines]]
-- [[01 - Ring 0 - Metal Core (Assembly)/01 - Boot Sequence & Staged Loading|Ring 0 Boot & Staged Loading]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/01 - Freestanding C Runtime (liba)|Ring 1 Freestanding C Runtime]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture|Ring 2 / Ring 3 Userland Architecture]]
+- [[00 - Architecture/overview/System Overview|System Overview & Ring Hierarchy]]
+- [[00 - Architecture/overview/Code Quality & Engineering Guidelines|Code Quality & Engineering Guidelines]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/standards/01 - Boot Sequence & Staged Loading|Ring 0 Boot & Staged Loading]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/liba/01 - Freestanding C Runtime (liba)|Ring 1 Freestanding C Runtime]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|Ring 2 / Ring 3 Userland Architecture]]

@@ -69,9 +69,9 @@ The daemon provides a JSON-over-socket interface for the OS GUI/shell:
 ---
 
 ## 5. Related Notes
-- [[00 - Architecture/Obsidian Integration & 2-Way Sync|Two-Way Obsidian Sync]]
-- [[01 - Planning/Grand Roadmap & Timeline|Roadmap & Timeline]]
-- [[02 - Reference/AI Syscall Specification|AI Syscall Specification]]
+- [[00 - Architecture/tooling/Obsidian Integration & 2-Way Sync|Two-Way Obsidian Sync]]
+- [[06 - Master Planning & Roadmaps/roadmap/01 - Grand Roadmap & Timeline|Roadmap & Timeline]]
+- [[02 - Reference/api/AI Syscall Specification|AI Syscall Specification]]
 
 ---
 
@@ -230,8 +230,8 @@ During execution, **Ring 2 - Heaplit Userland Daemon** outputs diagnostic traces
 ---
 
 ## 📑 Related Architecture Notes & References
-- [[00 - Architecture/System Overview]]
-- [[01 - Ring 0 - Metal Core (Assembly)/07 - Syscall Dispatcher & ABI]]
-- [[01 - Ring 0 - Metal Core (Assembly)/04 - Paging & Virtual Memory]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/01 - Freestanding C Runtime (liba)]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture]]
+- [[00 - Architecture/overview/System Overview|System Overview]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/syscalls/07 - Syscall Dispatcher & ABI|07 - Syscall Dispatcher & ABI]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/cpu/04 - Paging & Virtual Memory|04 - Paging & Virtual Memory]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/liba/01 - Freestanding C Runtime (liba)|01 - Freestanding C Runtime (liba)]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|01 - Heaplit Daemon Architecture]]

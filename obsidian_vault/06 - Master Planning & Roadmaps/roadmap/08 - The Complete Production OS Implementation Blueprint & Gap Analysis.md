@@ -185,8 +185,8 @@ qemu-system-x86_64 -drive file=base.bin,format=raw -m 4G -smp 4 -device nvme,dri
 ---
 
 ## 📑 Related Master Architecture Notes
-- [[00 - Architecture/00 - Comprehensive Project Handover & Architecture Specification]]
-- [[00 - Architecture/System Overview]]
-- [[01 - Ring 0 - Metal Core (Assembly)/06 - Tickless ASM Scheduler]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/03 - Virtual File System (VFS)]]
-- [[04 - Developer Toolchain & Packaging/01 - LLVM Bitcode (.axf) Application Format]]
+- [[00 - Architecture/overview/00 - Comprehensive Project Handover & Architecture Specification|00 - Comprehensive Project Handover & Architecture Specification]]
+- [[00 - Architecture/overview/System Overview|System Overview]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/sched/06 - Tickless ASM Scheduler|06 - Tickless ASM Scheduler]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/03 - Virtual File System (VFS)|03 - Virtual File System (VFS)]]
+- [[04 - Developer Toolchain & Packaging/format/01 - LLVM Bitcode (.axf) Application Format|01 - LLVM Bitcode (.axf) Application Format]]

@@ -15,8 +15,8 @@ Instead of storing raster bitmaps of glyphs at specific point sizes, fonts in He
 ---
 
 ## 2. Related Links
-- [[03 - Ring 2 - Userland & Spatial UI/03 - Spatial Window Compositor|Spatial Compositor]]
-- [[03 - Ring 2 - Userland & Spatial UI/06 - Live Theming & TOML Engine|Live Theming]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/spatial_ui/03 - Spatial Window Compositor|Spatial Compositor]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/spatial_ui/06 - Live Theming & TOML Engine|Live Theming]]
 
 ## 🔄 Vector Glyph SDF Rendering Pipeline
 
@@ -185,8 +185,8 @@ During execution, **04 - GPU Rendering & SDF Fonts** outputs diagnostic traces t
 ---
 
 ## 📑 Related Architecture Notes & References
-- [[00 - Architecture/System Overview]]
-- [[01 - Ring 0 - Metal Core (Assembly)/07 - Syscall Dispatcher & ABI]]
-- [[01 - Ring 0 - Metal Core (Assembly)/04 - Paging & Virtual Memory]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/01 - Freestanding C Runtime (liba)]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture]]
+- [[00 - Architecture/overview/System Overview|System Overview]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/syscalls/07 - Syscall Dispatcher & ABI|07 - Syscall Dispatcher & ABI]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/cpu/04 - Paging & Virtual Memory|04 - Paging & Virtual Memory]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/liba/01 - Freestanding C Runtime (liba)|01 - Freestanding C Runtime (liba)]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|01 - Heaplit Daemon Architecture]]

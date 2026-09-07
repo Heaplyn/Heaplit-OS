@@ -41,9 +41,9 @@ Implement the Long Mode assembly syscall handler in `src/kernel/syscall_ai.asm` 
 ---
 
 ## 3. Related Files & Notes
-- Syscall Spec: [[02 - Reference/AI Syscall Specification]]
-- Ring 0 Spec: [[00 - Architecture/Ring 0 - Metal & Scheduler]]
-- Ring 1 Spec: [[00 - Architecture/Ring 1 - The C Inference Engine]]
+- Syscall Spec: [[02 - Reference/api/AI Syscall Specification|AI Syscall Specification]]
+- Ring 0 Spec: [[00 - Architecture/rings/Ring 0 - Metal & Scheduler|Ring 0 - Metal & Scheduler]]
+- Ring 1 Spec: [[00 - Architecture/rings/Ring 1 - The C Inference Engine|Ring 1 - The C Inference Engine]]
 
 ## 🔄 AI Syscall Subsystem Sequence Flowchart
 
@@ -220,8 +220,8 @@ During execution, **HeaplitPlan - AI Syscall Subsystem** outputs diagnostic trac
 ---
 
 ## 📑 Related Architecture Notes & References
-- [[00 - Architecture/System Overview]]
-- [[01 - Ring 0 - Metal Core (Assembly)/07 - Syscall Dispatcher & ABI]]
-- [[01 - Ring 0 - Metal Core (Assembly)/04 - Paging & Virtual Memory]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/01 - Freestanding C Runtime (liba)]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture]]
+- [[00 - Architecture/overview/System Overview|System Overview]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/syscalls/07 - Syscall Dispatcher & ABI|07 - Syscall Dispatcher & ABI]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/cpu/04 - Paging & Virtual Memory|04 - Paging & Virtual Memory]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/liba/01 - Freestanding C Runtime (liba)|01 - Freestanding C Runtime (liba)]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|01 - Heaplit Daemon Architecture]]

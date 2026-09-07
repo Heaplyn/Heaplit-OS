@@ -37,8 +37,8 @@ Language: [NASM | C | C++]
 ---
 
 ## 3. Related Links
-- [[07 - Heaplit AI Agent Playbooks/01 - Autonomous Build & Test Loop|Build Loop]]
-- [[00 - Architecture/Obsidian Integration & 2-Way Sync|Obsidian 2-Way Sync]]
+- [[07 - Heaplit AI Agent Playbooks/playbooks/01 - Autonomous Build & Test Loop|Build Loop]]
+- [[00 - Architecture/tooling/Obsidian Integration & 2-Way Sync|Obsidian 2-Way Sync]]
 
 ## 🔄 Markdown Processing & Tag Indexing Flowchart
 
@@ -206,8 +206,8 @@ During execution, **02 - Obsidian Markdown Syntax & Directives** outputs diagnos
 ---
 
 ## 📑 Related Architecture Notes & References
-- [[00 - Architecture/System Overview]]
-- [[01 - Ring 0 - Metal Core (Assembly)/07 - Syscall Dispatcher & ABI]]
-- [[01 - Ring 0 - Metal Core (Assembly)/04 - Paging & Virtual Memory]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/01 - Freestanding C Runtime (liba)]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture]]
+- [[00 - Architecture/overview/System Overview|System Overview]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/syscalls/07 - Syscall Dispatcher & ABI|07 - Syscall Dispatcher & ABI]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/cpu/04 - Paging & Virtual Memory|04 - Paging & Virtual Memory]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/liba/01 - Freestanding C Runtime (liba)|01 - Freestanding C Runtime (liba)]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|01 - Heaplit Daemon Architecture]]

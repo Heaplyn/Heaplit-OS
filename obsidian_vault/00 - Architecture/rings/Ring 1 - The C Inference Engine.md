@@ -85,9 +85,9 @@ uint64_t ai_infer_c(uint64_t handle, char* prompt, size_t len, char* output) {
 ---
 
 ## 4. Related Notes
-- [[00 - Architecture/Ring 0 - Metal & Scheduler|Ring 0 Scheduler]]
-- [[00 - Architecture/Ring 2 - Heaplit Userland Daemon|Ring 2 Userland Daemon]]
-- [[01 - Planning/Grand Roadmap & Timeline|Roadmap & Timeline]]
+- [[00 - Architecture/rings/Ring 0 - Metal & Scheduler|Ring 0 Scheduler]]
+- [[00 - Architecture/rings/Ring 2 - Heaplit Userland Daemon|Ring 2 Userland Daemon]]
+- [[06 - Master Planning & Roadmaps/roadmap/01 - Grand Roadmap & Timeline|Roadmap & Timeline]]
 
 ## 🔄 Ring 1 Freestanding C & AI Bridge Pipeline
 
@@ -266,8 +266,8 @@ During execution, **Ring 1 - The C Inference Engine** outputs diagnostic traces 
 ---
 
 ## 📑 Related Architecture Notes & References
-- [[00 - Architecture/System Overview]]
-- [[01 - Ring 0 - Metal Core (Assembly)/07 - Syscall Dispatcher & ABI]]
-- [[01 - Ring 0 - Metal Core (Assembly)/04 - Paging & Virtual Memory]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/01 - Freestanding C Runtime (liba)]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture]]
+- [[00 - Architecture/overview/System Overview|System Overview]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/syscalls/07 - Syscall Dispatcher & ABI|07 - Syscall Dispatcher & ABI]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/cpu/04 - Paging & Virtual Memory|04 - Paging & Virtual Memory]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/liba/01 - Freestanding C Runtime (liba)|01 - Freestanding C Runtime (liba)]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|01 - Heaplit Daemon Architecture]]

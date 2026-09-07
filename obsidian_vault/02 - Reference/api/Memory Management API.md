@@ -62,9 +62,9 @@ Zero-initializes a memory block by invoking `mem_set` with `AL = 0`.
 ---
 
 ## 3. Related Notes
-- [[02 - Reference/Variable System API|Variable System API]]
-- [[01 - Planning/HeaplitPlan - Variable System & Memory|Memory Planning]]
-- [[00 - Architecture/Ring 0 - Metal & Scheduler|Ring 0 Architecture]]
+- [[02 - Reference/api/Variable System API|Variable System API]]
+- [[06 - Master Planning & Roadmaps/plans/HeaplitPlan - Variable System & Memory|Memory Planning]]
+- [[00 - Architecture/rings/Ring 0 - Metal & Scheduler|Ring 0 Architecture]]
 
 ## 🔄 Physical & Virtual Memory Service Pipeline
 
@@ -235,8 +235,8 @@ During execution, **Memory Management API** outputs diagnostic traces to COM1 Se
 ---
 
 ## 📑 Related Architecture Notes & References
-- [[00 - Architecture/System Overview]]
-- [[01 - Ring 0 - Metal Core (Assembly)/07 - Syscall Dispatcher & ABI]]
-- [[01 - Ring 0 - Metal Core (Assembly)/04 - Paging & Virtual Memory]]
-- [[02 - Ring 1 - The C Overhead (Bridge)/01 - Freestanding C Runtime (liba)]]
-- [[03 - Ring 2 - Userland & Spatial UI/01 - Heaplit Daemon Architecture]]
+- [[00 - Architecture/overview/System Overview|System Overview]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/syscalls/07 - Syscall Dispatcher & ABI|07 - Syscall Dispatcher & ABI]]
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/cpu/04 - Paging & Virtual Memory|04 - Paging & Virtual Memory]]
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/liba/01 - Freestanding C Runtime (liba)|01 - Freestanding C Runtime (liba)]]
+- [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|01 - Heaplit Daemon Architecture]]
