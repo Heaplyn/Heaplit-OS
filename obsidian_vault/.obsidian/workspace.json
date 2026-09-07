@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "22d8e69999081d39",
+        "id": "b7bd0a9f78534be1",
         "type": "tabs",
         "children": [
           {
-            "id": "ec5cedb51b3e53b8",
+            "id": "08623c8c78520023",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "08 - Master Todo & Execution Checklists/05 - Developer Toolchain, IPC & Packaging Checklist.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "05 - Developer Toolchain, IPC & Packaging Checklist"
+              "title": "New tab"
             }
           }
         ]
@@ -188,13 +184,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "ec5cedb51b3e53b8",
+  "active": "08623c8c78520023",
   "lastOpenFiles": [
     "08 - Master Todo & Execution Checklists/01 - Master Project Completion Roadmap & Meta Checklist.md",
+    "08 - Master Todo & Execution Checklists/05 - Developer Toolchain, IPC & Packaging Checklist.md",
     "rings/ring_0/ring_0/memory/README.md",
     "08 - Master Todo & Execution Checklists/07 - Self-Hosting, Testing & CI-CD Pipeline Checklist.md",
     "08 - Master Todo & Execution Checklists/06 - Production Hardware Drivers & Network Stack Checklist.md",
-    "08 - Master Todo & Execution Checklists/05 - Developer Toolchain, IPC & Packaging Checklist.md",
     "08 - Master Todo & Execution Checklists/04 - Ring 2 Userland & Spatial UI Checklist.md",
     "08 - Master Todo & Execution Checklists/03 - Ring 1 Freestanding C Runtime & Driver Bridge Checklist.md",
     "08 - Master Todo & Execution Checklists/02 - Ring 0 Metal Core & Microkernel Checklist.md",
