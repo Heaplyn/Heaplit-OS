@@ -1,6 +1,6 @@
 ; =============================================================================
 ; Heaplit OS - Staged Bare-Metal Bootloader
-; Architecture: 16-bit Real Mode -> Staged Protected Mode
+; Architecture: 16-bit Real Mode -> 32-bit Protected Mode -> 64-bit Long Mode
 ; =============================================================================
 [org 0x7c00]
 bits 16
@@ -24,9 +24,9 @@ start:
 
     call clear_screen
 
-    ; Read 4 extended sectors (Sectors 2, 3, 4, 5) from disk into RAM at 0x7E00
+    ; Read 16 extended sectors from disk into RAM starting at 0x7E00 (8KB)
     mov ah, 0x02                ; BIOS read sector function
-    mov al, 4                   ; Number of sectors to read (2048 bytes total)
+    mov al, 16                  ; Number of sectors to read
     mov ch, 0                   ; Cylinder 0
     mov cl, 2                   ; Sector 2 (1-based index)
     mov dh, 0                   ; Head 0
@@ -149,7 +149,7 @@ var_title:        times sizeof_variable db 0
 times (512 * 3) - ($ - $$) db 0
 
 ; =============================================================================
-; Sector 4: Interactive Console & Keyboard Driver (0x8200 - 0x83FF)
+; Sector 4: Interactive Console & Input Trigger (0x8200 - 0x83FF)
 ; =============================================================================
 ; Include keyboard routines in Sector 4
 %include "ring_2/keyboard.asm"
@@ -165,46 +165,44 @@ sector_4_start:
     mov si, msg_sector_4
     call print_string_16
 
-    ; Display interactive input prompt
+    ; Display prompt asking user to proceed
     mov si, msg_prompt
     call print_string_16
 
-    ; Read line with in-place backspace editing
+    ; Read interactive line
     mov di, input_buffer
-    mov cx, 48                  ; Max length
+    mov cx, 48
     call read_line
 
-    ; Echo received command
     mov si, msg_cmd_received
     call print_string_16
     mov si, input_buffer
     call print_string_16
     call print_newline
 
-    mov si, msg_kernel_ready
+    mov si, msg_switching_mode
     call print_string_16
 
-    ; Enter low-power idle halt loop
-    cli
-    hlt
-    jmp $
+    ; Advance to Sector 5: Protected Mode & Long Mode switch!
+    jmp enter_protected_mode
 
-msg_sector_4:     db 'Sector 4 Executing (0x8200): Console & Drivers Online.', 0x0D, 0x0A, 0
-msg_prompt:       db 'HeaplitOS> Type a test command: ', 0
-msg_cmd_received: db '  [Echo]: You typed -> ', 0
-msg_kernel_ready: db 'System Staged. Kernel Ready for Protected Mode.', 0x0D, 0x0A, 0
+msg_sector_4:       db 'Sector 4 Executing (0x8200): Console & Drivers Online.', 0x0D, 0x0A, 0
+msg_prompt:         db 'HeaplitOS> Press Enter to launch Protected & Long Mode: ', 0
+msg_cmd_received:   db '  [Boot Command]: Launching -> ', 0
+msg_switching_mode: db 'Transitioning: Real Mode -> 32-bit PM -> 64-bit Long Mode...', 0x0D, 0x0A, 0
 
-input_buffer:     times 64 db 0
+input_buffer:       times 64 db 0
 
 ; Pad Sector 4 to 512 bytes (total 2048 bytes from base)
 times (512 * 4) - ($ - $$) db 0
 
 ; =============================================================================
-; Sector 5: Kernel Staging & 32-bit Protected Mode Bootstrap (0x8400 - 0x85FF)
+; Sectors 5+: 32-bit Protected Mode & 64-bit Long Mode Kernel Staging
 ; =============================================================================
-sector_5_start:
-    nop
-    ret
+%include "gdt.asm"
+%include "protected_mode.asm"
+%include "paging.asm"
+%include "long_mode.asm"
 
-; Pad Sector 5 to 512 bytes (total 2560 bytes from base)
-times (512 * 5) - ($ - $$) db 0
+; Pad final kernel image to clean 4096-byte boundary
+times 4096 - ($ - $$) db 0
