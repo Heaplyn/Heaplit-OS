@@ -79,6 +79,7 @@ flowchart TD
 - [[01 - Ring 0 - Metal Core (Assembly)/ring_0/types/10 - Dynamic Variable Engine & Types|10 - Dynamic Variable Engine & Types]] — 6-byte packed header layout, typed arithmetic
 - [[01 - Ring 0 - Metal Core (Assembly)/ring_0/memory/11 - Real-Mode Memory & Block Utilities|11 - Real-Mode Memory & Block Utilities]] — Real mode segment arithmetic & word block copies
 - [[01 - Ring 0 - Metal Core (Assembly)/ring_0/cpu/12 - Hardware-Assisted Sandbox Isolation & Concurrency Primitives|12 - Hardware-Assisted Sandbox Isolation & Concurrency Primitives]] — CR3 page table guards & lock-free spinlocks
+- [[01 - Ring 0 - Metal Core (Assembly)/ring_0/cpu/13 - Hardware-Accelerated AES-NI & SHA Cryptography|13 - Hardware-Accelerated AES-NI & SHA Cryptography]] — Direct AES-NI hardware instruction encryption
 
 ### 4. 🌁 Ring 1: The C Overhead (Bridge)
 - [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/liba/01 - Freestanding C Runtime (liba)|01 - Freestanding C Runtime (liba)]] — Freestanding C library (`memset`, `memcpy`, `kprintf`)
@@ -87,6 +88,9 @@ flowchart TD
 - [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/04 - FAT32 & EXT4 Drivers|04 - FAT32 & EXT4 Drivers]] — Boot partition and block storage drivers
 - [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/05 - Device Drivers (PCIe, NVMe, USB)|05 - Device Drivers (PCIe, NVMe, USB)]] — PCIe enumeration, NVMe DMA queues, xHCI
 - [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/06 - VFS Journaling & Exception Translation Pipeline|06 - VFS Journaling & Exception Translation Pipeline]] — RAM write intent journaling & CPU exception translation
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/07 - Win32 PE Compatibility Translation (wincall)|07 - Win32 PE Compatibility Translation (wincall)]] — Win32 PE header validation & syscall translation
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/08 - Linux ELF POSIX Compatibility Translation (posixcall)|08 - Linux ELF POSIX Compatibility Translation (posixcall)]] — Linux ELF64 header validation & POSIX translation
+- [[02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/09 - WebAssembly Runtime Engine (wasm_engine)|09 - WebAssembly Runtime Engine (wasm_engine)]] — Freestanding Wasm binary validation & JIT harness
 
 ### 5. 🖥️ Ring 2: Userland & Spatial UI
 - [[03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture|01 - Heaplit Daemon Architecture]] — `/system/bin/heaplit` daemon & watcher engine
@@ -129,6 +133,7 @@ flowchart TD
 - [[06 - Master Planning & Roadmaps/roadmap/01 - 5-Year Vision & Phased Timeline|01 - 5-Year Vision & Phased Timeline]] — Master roadmap (Phases 0 through 5)
 - [[06 - Master Planning & Roadmaps/roadmap/01 - Grand Roadmap & Timeline|01 - Grand Roadmap & Timeline]] — Comprehensive master timeline
 - [[06 - Master Planning & Roadmaps/roadmap/08 - The Complete Production OS Implementation Blueprint & Gap Analysis|08 - The Complete Production OS Implementation Blueprint & Gap Analysis]] — Bare-metal production gap analysis & 7-domain blueprint
+- [[06 - Master Planning & Roadmaps/roadmap/09 - Next-Gen Operating System Innovations & Architectural Blueprint|09 - Next-Gen Operating System Innovations & Architectural Blueprint]] — Hardware cryptography, local multimodal AI & Wasm/POSIX translation
 - [[06 - Master Planning & Roadmaps/plans/HeaplitPlan - AI Syscall Subsystem|HeaplitPlan - AI Syscall Subsystem]] — AI Syscall specification plan
 - [[06 - Master Planning & Roadmaps/plans/HeaplitPlan - Bootloader & Real Mode|HeaplitPlan - Bootloader & Real Mode]] — Real mode bootloader plan
 - [[06 - Master Planning & Roadmaps/plans/HeaplitPlan - Variable System & Memory|HeaplitPlan - Variable System & Memory]] — Memory and variable engine plan
@@ -143,6 +148,15 @@ flowchart TD
 - [[07 - Heaplit AI Agent Playbooks/playbooks/01 - Autonomous Build & Test Loop|01 - Autonomous Build & Test Loop]] — Autonomous build & QEMU test execution loop
 - [[07 - Heaplit AI Agent Playbooks/playbooks/02 - Obsidian Markdown Syntax & Directives|02 - Obsidian Markdown Syntax & Directives]] — Directive parsing & tag conventions
 - [[07 - Heaplit AI Agent Playbooks/playbooks/03 - Crash Diagnostics & Rollback Playbook|03 - Crash Diagnostics & Rollback Playbook]] — Watchdog, register dumps & auto-rollback
+
+### 11. 📋 Master Todo & Execution Checklists
+- [[08 - Master Todo & Execution Checklists/01 - Master Project Completion Roadmap & Meta Checklist|01 - Master Project Completion Roadmap & Meta Checklist]] — Master project tracking matrix across all 7 execution domains
+- [[08 - Master Todo & Execution Checklists/02 - Ring 0 Metal Core & Microkernel Checklist|02 - Ring 0 Metal Core & Microkernel Checklist]] — Bootloader, PMM, scheduler, syscalls, AES-NI, APIC/SMP checklist
+- [[08 - Master Todo & Execution Checklists/03 - Ring 1 Freestanding C Runtime & Driver Bridge Checklist|03 - Ring 1 Freestanding C Runtime & Driver Bridge Checklist]] — `liba`, VFS, PCIe, WinCall, PosixCall, Wasm, NVMe/AHCI driver checklist
+- [[08 - Master Todo & Execution Checklists/04 - Ring 2 Userland & Spatial UI Checklist|04 - Ring 2 Userland & Spatial UI Checklist]] — Lens explorer, window compositor, SDF fonts, Forge GUI, IDE checklist
+- [[08 - Master Todo & Execution Checklists/05 - Developer Toolchain, IPC & Packaging Checklist|05 - Developer Toolchain, IPC & Packaging Checklist]] — `.axf` format, CoreCLR, zero-copy IPC bus, dynamic linker, `hpkg` checklist
+- [[08 - Master Todo & Execution Checklists/06 - Production Hardware Drivers & Network Stack Checklist|06 - Production Hardware Drivers & Network Stack Checklist]] — VirtIO-Net, e1000, TCP/IP stack, USB 3.0 xHCI, Intel HD Audio checklist
+- [[08 - Master Todo & Execution Checklists/07 - Self-Hosting, Testing & CI-CD Pipeline Checklist|07 - Self-Hosting, Testing & CI-CD Pipeline Checklist]] — `heaplit-libc`, native Clang/NASM port, DWARF panic traces, QEMU harness checklist
 
 ---
 *Created and maintained autonomously by Heaplit AI Agent for Heaplit OS.*

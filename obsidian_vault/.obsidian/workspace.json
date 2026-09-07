@@ -186,6 +186,14 @@
   },
   "active": "3023e069efd19909",
   "lastOpenFiles": [
+    "08 - Master Todo & Execution Checklists/07 - Self-Hosting, Testing & CI-CD Pipeline Checklist.md",
+    "08 - Master Todo & Execution Checklists/06 - Production Hardware Drivers & Network Stack Checklist.md",
+    "08 - Master Todo & Execution Checklists/05 - Developer Toolchain, IPC & Packaging Checklist.md",
+    "08 - Master Todo & Execution Checklists/04 - Ring 2 Userland & Spatial UI Checklist.md",
+    "08 - Master Todo & Execution Checklists/03 - Ring 1 Freestanding C Runtime & Driver Bridge Checklist.md",
+    "08 - Master Todo & Execution Checklists/01 - Master Project Completion Roadmap & Meta Checklist.md",
+    "08 - Master Todo & Execution Checklists/02 - Ring 0 Metal Core & Microkernel Checklist.md",
+    "08 - Master Todo & Execution Checklists",
     "02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/09 - WebAssembly Runtime Engine (wasm_engine).md",
     "02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/08 - Linux ELF POSIX Compatibility Translation (posixcall).md",
     "02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/07 - Win32 PE Compatibility Translation (wincall).md",
@@ -205,22 +213,14 @@
     "03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture.md",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/console/07 - Console & Display Subsystem.md",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/applications/12 - Kernel-Level Antivirus & Integrity Guard.md",
-    "03 - Ring 2 - Userland & Spatial UI/ring_2/applications/11 - Custom Calendar & Native Time Service.md",
-    "03 - Ring 2 - Userland & Spatial UI/ring_2/applications/10 - Built-In Multi-Language Compiler Studio.md",
-    "03 - Ring 2 - Userland & Spatial UI/ring_2/applications/09 - The Forge Tool Installer GUI.md",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/spatial_ui",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/input",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/daemon",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/console",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/applications",
     "03 - Ring 2 - Userland & Spatial UI/ring_2",
-    "02 - Reference/api/Memory Management API.md",
-    "02 - Reference/api/Keyboard & Input Service.md",
-    "02 - Reference/api/AI Syscall Specification.md",
-    "02 - Reference/api/Variable System API.md",
     "02 - Reference/api",
     "01 - Ring 0 - Metal Core (Assembly)/ring_0/standards",
-    "01 - Ring 0 - Metal Core (Assembly)/ring_0/types",
-    "01 - Ring 0 - Metal Core (Assembly)/ring_0/syscalls"
+    "01 - Ring 0 - Metal Core (Assembly)/ring_0/types"
   ]
 }
