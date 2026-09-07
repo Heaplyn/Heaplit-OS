@@ -7,6 +7,7 @@
 stage2_entry:
     mov si, msg_sector_2                ; Copy value from msg_sector_2 to si
     call print_string_16                ; Execute instruction
+    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
 
     ; 1. Test Ring 0 Dynamic Variable System: Integer Creation & Addition
     mov di, var_num1                    ; Copy value from var_num1 to di
@@ -29,6 +30,7 @@ stage2_entry:
     mov di, var_num1                    ; Copy value from var_num1 to di
     call print_variable                 ; Execute instruction
     call print_newline                  ; Execute instruction
+    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
 
     ; 2. Test Ring 0 String Variable Creation & Printing
     mov di, var_title                   ; Copy value from var_title to di
@@ -40,6 +42,7 @@ stage2_entry:
     mov di, var_title                   ; Copy value from var_title to di
     call print_variable                 ; Execute instruction
     call print_newline                  ; Execute instruction
+    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
 
     ; 3. Test Ring 1 Hardware A20 Gate Activation
     call enable_a20                     ; Execute instruction
@@ -48,12 +51,7 @@ stage2_entry:
 
     mov si, msg_a20_success             ; Copy value from msg_a20_success to si
     call print_string_16                ; Execute instruction
-
-    ; 16-bit BIOS Wait Delay (500ms = 0x0007A120 microseconds)
-    mov ah, 0x86
-    mov cx, 0x0007
-    mov dx, 0xA120
-    int 0x15
+    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
 
     jmp .continue_boot                  ; Unconditional jump to target label .continue_boot
 
@@ -67,6 +65,15 @@ stage2_entry:
 .continue_boot:
     ; Transfer control to Sector 4 (Interactive Console)
     jmp stage4_console_entry            ; Unconditional jump to target label stage4_console_entry
+
+sleep_500ms_16:
+    pusha
+    mov ah, 0x86
+    mov cx, 0x0007                      ; 500,000 microseconds = 0x0007A120
+    mov dx, 0xA120
+    int 0x15
+    popa
+    ret
 
 msg_sector_2:     db 'Sectors 2-3 Executing (0x7E00): Initializing Subsystems...', 0x0D, 0x0A, 0 ; Execute instruction
 msg_calc_label:   db '  [Ring 0 Variable] 120 + 35 = ', 0 ; Execute instruction

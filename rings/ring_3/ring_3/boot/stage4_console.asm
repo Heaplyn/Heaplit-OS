@@ -2,7 +2,7 @@
 ; =============================================================================
 ; Sector 4: Interactive Console & Input Trigger (0x8200 - 0x83FF)
 ; =============================================================================
-[bits 16]                               ; Execute instruction
+[bits 16]                               ; 16-bit Real Mode Execution
 
 stage4_console_entry:
     ; Set video cursor position at Row 7, Col 0
@@ -14,6 +14,7 @@ stage4_console_entry:
 
     mov si, msg_sector_4                ; Copy value from msg_sector_4 to si
     call print_string_16                ; Execute instruction
+    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
 
     ; Display prompt asking user to proceed
     mov si, msg_prompt                  ; Copy value from msg_prompt to si
@@ -24,14 +25,17 @@ stage4_console_entry:
     mov cx, 48                          ; Copy value from 48 to cx
     call read_line                      ; Execute instruction
 
+    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
     mov si, msg_cmd_received            ; Copy value from msg_cmd_received to si
     call print_string_16                ; Execute instruction
     mov si, input_buffer                ; Copy value from input_buffer to si
     call print_string_16                ; Execute instruction
     call print_newline                  ; Execute instruction
+    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
 
     mov si, msg_switching_mode          ; Copy value from msg_switching_mode to si
     call print_string_16                ; Execute instruction
+    call sleep_500ms_16                 ; 0.5s visual diagnostic sleep
 
     ; Advance to Protected Mode & Long Mode switch
     jmp enter_protected_mode            ; Unconditional jump to target label enter_protected_mode
