@@ -1,6 +1,7 @@
 ; =============================================================================
 ; Heaplit OS - Staged Bare-Metal Bootloader
 ; Architecture: 16-bit Real Mode -> 32-bit Protected Mode -> 64-bit Long Mode
+; Ring Placement: rings/ring_0/base.asm
 ; =============================================================================
 [org 0x7c00]
 bits 16
@@ -59,9 +60,9 @@ boot_drive:      db 0
 msg_sector_1:    db 'Heaplit OS Sector 1 Loaded (MBR 0x7C00)', 0x0D, 0x0A, 0
 msg_disk_error:  db 'FATAL: Disk Read Failed!', 0x0D, 0x0A, 0
 
-; Include core console and memory routines in Sector 1
-%include "ring_1/memory.asm"
-%include "ring_2/console.asm"
+; Include Ring 1 (Memory) and Ring 2 (Console) in Sector 1
+%include "../ring_1/memory.asm"
+%include "../ring_2/console.asm"
 
 ; Pad Sector 1 to 510 bytes and append boot signature
 times 510 - ($ - $$) db 0
@@ -70,11 +71,11 @@ dw 0xaa55
 ; =============================================================================
 ; Sectors 2 & 3: Extended Loader & Variable Diagnostics (0x7E00 - 0x81FF)
 ; =============================================================================
-; Include variable, math, string, and A20 libraries
-%include "ring_0/variable.asm"
-%include "ring_0/math.asm"
-%include "ring_0/string.asm"
-%include "ring_1/a20.asm"
+; Include Ring 0 (Variable, Math, String) and Ring 1 (A20 Gate)
+%include "variable.asm"
+%include "math.asm"
+%include "string.asm"
+%include "../ring_1/a20.asm"
 
 sector_2_start:
     mov si, msg_sector_2
@@ -134,11 +135,11 @@ sector_2_start:
     jmp sector_4_start
 
 msg_sector_2:     db 'Sectors 2-3 Executing (0x7E00): Initializing Subsystems...', 0x0D, 0x0A, 0
-msg_calc_label:   db '  [Dynamic Variable] 120 + 35 = ', 0
-msg_str_label:    db '  [String Variable] Loaded: ', 0
+msg_calc_label:   db '  [Ring 0 Variable] 120 + 35 = ', 0
+msg_str_label:    db '  [Ring 0 Variable] Loaded: ', 0
 str_os_name:      db 'Heaplit OS Kernel Core v0.1', 0
-msg_a20_success:  db '  [Hardware Line] A20 Gate: Verified Active.', 0x0D, 0x0A, 0
-msg_a20_error:    db '  [Hardware Line] FATAL: A20 Gate Failed!', 0x0D, 0x0A, 0
+msg_a20_success:  db '  [Ring 1 Hardware] A20 Gate: Verified Active.', 0x0D, 0x0A, 0
+msg_a20_error:    db '  [Ring 1 Hardware] FATAL: A20 Gate Failed!', 0x0D, 0x0A, 0
 
 ; Variable buffers (6 bytes each)
 var_num1:         times sizeof_variable db 0
@@ -151,8 +152,8 @@ times (512 * 3) - ($ - $$) db 0
 ; =============================================================================
 ; Sector 4: Interactive Console & Input Trigger (0x8200 - 0x83FF)
 ; =============================================================================
-; Include keyboard routines in Sector 4
-%include "ring_2/keyboard.asm"
+; Include Ring 2 (Keyboard) in Sector 4
+%include "../ring_2/keyboard.asm"
 
 sector_4_start:
     ; Set video cursor position at Row 7, Col 0
@@ -186,7 +187,7 @@ sector_4_start:
     ; Advance to Sector 5: Protected Mode & Long Mode switch!
     jmp enter_protected_mode
 
-msg_sector_4:       db 'Sector 4 Executing (0x8200): Console & Drivers Online.', 0x0D, 0x0A, 0
+msg_sector_4:       db 'Sector 4 Executing (0x8200): Ring 2 Console Online.', 0x0D, 0x0A, 0
 msg_prompt:         db 'HeaplitOS> Press Enter to launch Protected & Long Mode: ', 0
 msg_cmd_received:   db '  [Boot Command]: Launching -> ', 0
 msg_switching_mode: db 'Transitioning: Real Mode -> 32-bit PM -> 64-bit Long Mode...', 0x0D, 0x0A, 0
@@ -197,7 +198,7 @@ input_buffer:       times 64 db 0
 times (512 * 4) - ($ - $$) db 0
 
 ; =============================================================================
-; Sectors 5+: 32-bit Protected Mode & 64-bit Long Mode Kernel Staging
+; Sectors 5+: 32-bit Protected Mode & 64-bit Long Mode Kernel Staging (Ring 0)
 ; =============================================================================
 %include "gdt.asm"
 %include "protected_mode.asm"
