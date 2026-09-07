@@ -153,7 +153,7 @@ Heaplit OS/
 ```
 
 This automates:
-1. Assembling `rings/ring_3/ring_3/boot/base.asm` with full ring include paths into `base.bin` (4,096 bytes / 8 sectors).
+1. Assembling `rings/ring_3/boot/base.asm` with full ring include paths into `base.bin` (4,096 bytes / 8 sectors).
 2. Terminating any running QEMU instances.
 3. Launching QEMU with std VGA and 512MB RAM.
 

@@ -2,7 +2,7 @@
 
 # ⏱️ Tickless Sub-100-Cycle ASM Scheduler
 
-> **Ring Placement:** `rings/ring_0/ring_0/sched/`  
+> **Ring Placement:** `rings/ring_0/sched/`  
 > **Source File:** `scheduler.asm`  
 > **Privilege Level:** Ring 0 ($M = 0$)
 

@@ -2,7 +2,7 @@
 
 # 🔌 A20 Gate & Physical Address Line 20
 
-> **Ring Placement:** `rings/ring_1/ring_1/hardware/`  
+> **Ring Placement:** `rings/ring_1/hardware/`  
 > **Source File:** `a20.asm`  
 > **Privilege Level:** Ring 1 ($M \le 1$)
 

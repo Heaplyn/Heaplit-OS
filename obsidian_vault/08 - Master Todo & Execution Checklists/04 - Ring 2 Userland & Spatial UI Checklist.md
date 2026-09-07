@@ -2,7 +2,7 @@
 
 # 🖥️ Ring 2 Userland & Spatial UI Checklist (Exhaustive Implementation Protocol)
 
-> **Target Components:** `rings/ring_2/ring_2/` (`console`, `input`, `spatial_ui`, `applications`)
+> **Target Components:** `rings/ring_2/` (`console`, `input`, `spatial_ui`, `applications`)
 
 ---
 

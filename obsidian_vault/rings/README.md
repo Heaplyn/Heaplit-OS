@@ -12,10 +12,10 @@ Heaplit OS enforces a strict mathematical dependency hierarchy across all module
 
 $$\text{A module in Ring } N \text{ can depend on / require modules from Ring } M \iff M \le N$$
 
-- **Ring 0 (`rings/ring_0/ring_0/`)**: Pure metal utilities, data types, memory operations, CPU tables (GDT/IDT/Paging), scheduler, fast syscalls. Strictly independent ($M = 0$).
-- **Ring 1 (`rings/ring_1/ring_1/`)**: Hardware line gate (A20), freestanding C standard library (`liba`), device drivers (PCIe, VFS, AI inference bridge). Can require Ring 0 and Ring 1 ($M \le 1$).
-- **Ring 2 (`rings/ring_2/ring_2/`)**: Presentation and input services (VGA console, cursor, hex/string printers, interactive keyboard buffer editor). Can require Ring 0, Ring 1, Ring 2 ($M \le 2$).
-- **Ring 3 (`rings/ring_3/ring_3/`)**: Staged bootloader orchestrator (`base.asm`, `mbr.asm`, `stage2.asm`, `stage4_console.asm`), userland CPL=3 shell (`entry.asm`), and userland daemons. Can require Ring 0, 1, 2, 3 ($M \le 3$).
+- **Ring 0 (`rings/ring_0/`)**: Pure metal utilities, data types, memory operations, CPU tables (GDT/IDT/Paging), scheduler, fast syscalls. Strictly independent ($M = 0$).
+- **Ring 1 (`rings/ring_1/`)**: Hardware line gate (A20), freestanding C standard library (`liba`), device drivers (PCIe, VFS, AI inference bridge). Can require Ring 0 and Ring 1 ($M \le 1$).
+- **Ring 2 (`rings/ring_2/`)**: Presentation and input services (VGA console, cursor, hex/string printers, interactive keyboard buffer editor). Can require Ring 0, Ring 1, Ring 2 ($M \le 2$).
+- **Ring 3 (`rings/ring_3/`)**: Staged bootloader orchestrator (`base.asm`, `mbr.asm`, `stage2.asm`, `stage4_console.asm`), userland CPL=3 shell (`entry.asm`), and userland daemons. Can require Ring 0, 1, 2, 3 ($M \le 3$).
 
 ---
 

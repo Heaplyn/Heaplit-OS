@@ -13,10 +13,10 @@ Every file in Heaplit OS must strictly adhere to the layered privilege hierarchy
 $$\\text{A module in Ring } N \\text{ can depend on / require modules from Ring } M \\iff M \\le N$$
 
 ### Ring Placement Matrix
-- **Ring 0 (`rings/ring_0/ring_0/`)**: ONLY independent metal utilities (math, string, variable, memory, GDT/Paging/PMM structures). **MUST NOT** include or require any modules from Ring 1, Ring 2, or Ring 3 ($M \le 0$).
-- **Ring 1 (`rings/ring_1/ring_1/`)**: Hardware lines, A20, disk, device drivers, freestanding C (`liba`), GGML inference bridge. Can require Ring 0 and Ring 1 ($M \le 1$). **MUST NOT** require Ring 2 or 3.
-- **Ring 2 (`rings/ring_2/ring_2/`)**: Console presentation, keyboard input services. Can require Ring 0, Ring 1, Ring 2 ($M \le 2$). **MUST NOT** require Ring 3.
-- **Ring 3 (`rings/ring_3/ring_3/`)**: Staged boot orchestrator (`base.asm`, `mbr.asm`, `stage2.asm`, `stage4_console.asm`), userland shell (`entry.asm`), applications. Can require Ring 0, 1, 2, 3 ($M \le 3$).
+- **Ring 0 (`rings/ring_0/`)**: ONLY independent metal utilities (math, string, variable, memory, GDT/Paging/PMM structures). **MUST NOT** include or require any modules from Ring 1, Ring 2, or Ring 3 ($M \le 0$).
+- **Ring 1 (`rings/ring_1/`)**: Hardware lines, A20, disk, device drivers, freestanding C (`liba`), GGML inference bridge. Can require Ring 0 and Ring 1 ($M \le 1$). **MUST NOT** require Ring 2 or 3.
+- **Ring 2 (`rings/ring_2/`)**: Console presentation, keyboard input services. Can require Ring 0, Ring 1, Ring 2 ($M \le 2$). **MUST NOT** require Ring 3.
+- **Ring 3 (`rings/ring_3/`)**: Staged boot orchestrator (`base.asm`, `mbr.asm`, `stage2.asm`, `stage4_console.asm`), userland shell (`entry.asm`), applications. Can require Ring 0, 1, 2, 3 ($M \le 3$).
 
 ### Anti-Monolithic Scaffolding Mandate
 - No single file may exceed 300 lines of active logic unless it is a machine-generated lookup table.

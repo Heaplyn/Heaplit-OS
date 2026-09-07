@@ -2,7 +2,7 @@
 
 # 🧼 Real-Mode Memory & Block Utilities
 
-> **Ring Placement:** `rings/ring_0/ring_0/memory/`, `rings/ring_0/ring_0/types/`  
+> **Ring Placement:** `rings/ring_0/memory/`, `rings/ring_0/types/`  
 > **Source Files:** `memory.asm`, `string.asm`, `math.asm`  
 > **Privilege Level:** Ring 0 ($M = 0$)
 

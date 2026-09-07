@@ -2,7 +2,7 @@
 
 # 🧠 GGML & Llama.cpp Local AI Kernel Port
 
-> **Ring Placement:** `rings/ring_1/ring_1/drivers/`  
+> **Ring Placement:** `rings/ring_1/drivers/`  
 > **Source File:** `ai_engine.c`  
 > **Privilege Level:** Ring 1 ($M \le 1$)
 

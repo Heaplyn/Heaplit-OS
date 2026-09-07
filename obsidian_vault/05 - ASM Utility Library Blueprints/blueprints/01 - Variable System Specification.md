@@ -2,7 +2,7 @@
 
 # 🧱 Variable System Specification Blueprint
 
-> **Source File:** `rings/ring_0/ring_0/types/variable.asm`  
+> **Source File:** `rings/ring_0/types/variable.asm`  
 > **Structure Size:** 6 Bytes
 
 ---

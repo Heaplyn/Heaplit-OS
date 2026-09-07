@@ -37,7 +37,7 @@ Tags: #HeaplitPlan #ASM #Ring0 #MVP
 
 ```markdown
 @Heaplit:
-Expand `rings/ring_0/ring_0/variable.asm` to support subtraction, multiplication, division, string variable initialization, and typed printing via `print_variable`.
+Expand `rings/ring_0/variable.asm` to support subtraction, multiplication, division, string variable initialization, and typed printing via `print_variable`.
 ```
 
 ---
@@ -45,7 +45,7 @@ Expand `rings/ring_0/ring_0/variable.asm` to support subtraction, multiplication
 ## 3. Related Files & Notes
 - API Reference: [[02 - Reference/api/Variable System API|Variable System API]]
 - Memory Reference: [[02 - Reference/api/Memory Management API|Memory Management API]]
-- Source File: [`rings/ring_0/ring_0/variable.asm`](file:///C:/Users/Kyle/Downloads/Projects/Heaplit%20OS/rings/ring_0/ring_0/variable.asm)
+- Source File: [`rings/ring_0/variable.asm`](file:///C:/Users/Kyle/Downloads/Projects/Heaplit%20OS/rings/ring_0/variable.asm)
 
 ## 🔄 Dynamic Variable System Flowchart
 

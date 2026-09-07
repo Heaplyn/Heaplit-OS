@@ -2,7 +2,7 @@
 
 # ⚡ AVX-512 & XSAVE Vector State Preservation
 
-> **Ring Placement:** `rings/ring_0/ring_0/syscalls/`  
+> **Ring Placement:** `rings/ring_0/syscalls/`  
 > **Source File:** `syscall_ai.asm`  
 > **Privilege Level:** Ring 0 ($M = 0$)
 

@@ -2,7 +2,7 @@
 
 # 🔤 String & Buffer Utilities
 
-> **Target Source:** `rings/ring_0/ring_0/string.asm`  
+> **Target Source:** `rings/ring_0/string.asm`  
 > **Modes:** 16-bit Real Mode / 64-bit Long Mode
 
 ---

@@ -2,7 +2,7 @@
 
 # 🧱 Variable System API Reference
 
-> **Ring Placement:** `rings/ring_0/ring_0/types/`  
+> **Ring Placement:** `rings/ring_0/types/`  
 > **Source File:** `variable.asm`
 
 ---

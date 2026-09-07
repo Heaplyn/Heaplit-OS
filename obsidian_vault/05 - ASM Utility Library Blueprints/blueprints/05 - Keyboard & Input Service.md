@@ -2,7 +2,7 @@
 
 # ⌨️ Keyboard & Input Service Blueprint
 
-> **Source File:** `rings/ring_2/ring_2/input/keyboard.asm`
+> **Source File:** `rings/ring_2/input/keyboard.asm`
 
 ---
 

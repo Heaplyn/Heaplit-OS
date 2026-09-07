@@ -2,7 +2,7 @@
 
 # 🔐 Hardware-Accelerated AES-NI & SHA Cryptography
 
-> **Ring Placement:** `rings/ring_0/ring_0/cpu/`  
+> **Ring Placement:** `rings/ring_0/cpu/`  
 > **Source File:** `crypto_aesni.asm`  
 > **Compiled Target:** Core Kernel Module (Ring 0)
 

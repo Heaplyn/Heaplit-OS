@@ -2,7 +2,7 @@
 
 # 📡 Fast Syscall Dispatcher & System V ABI
 
-> **Ring Placement:** `rings/ring_0/ring_0/syscalls/`  
+> **Ring Placement:** `rings/ring_0/syscalls/`  
 > **Source File:** `syscall.asm`, `syscall_ai.asm`  
 > **Privilege Level:** Ring 0 ($M = 0$)
 

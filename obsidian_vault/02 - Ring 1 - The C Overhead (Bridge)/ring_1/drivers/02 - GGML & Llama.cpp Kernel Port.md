@@ -2,7 +2,7 @@
 
 # 🤖 Freestanding GGML Local AI Vector Embedding Kernel
 
-> **Ring Placement:** `rings/ring_1/ring_1/drivers/`  
+> **Ring Placement:** `rings/ring_1/drivers/`  
 > **Source File:** `ai_engine.c`  
 > **Compiled Target:** Ring 1 Driver Module
 

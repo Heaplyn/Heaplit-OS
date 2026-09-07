@@ -2,7 +2,7 @@
 
 # 📑 GDT, IDT & Processor Descriptor Tables
 
-> **Ring Placement:** `rings/ring_0/ring_0/cpu/`  
+> **Ring Placement:** `rings/ring_0/cpu/`  
 > **Source Files:** `gdt.asm`, `idt.asm`  
 > **Privilege Level:** Ring 0 ($M = 0$)
 

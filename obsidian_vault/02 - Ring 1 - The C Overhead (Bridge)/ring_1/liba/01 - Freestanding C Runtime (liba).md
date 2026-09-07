@@ -2,7 +2,7 @@
 
 # 📚 Freestanding C Runtime (`liba`)
 
-> **Ring Placement:** `rings/ring_1/ring_1/liba/`  
+> **Ring Placement:** `rings/ring_1/liba/`  
 > **Source Files:** `string.c`, `kprintf.c`  
 > **Privilege Level:** Ring 1 ($M \le 1$)
 

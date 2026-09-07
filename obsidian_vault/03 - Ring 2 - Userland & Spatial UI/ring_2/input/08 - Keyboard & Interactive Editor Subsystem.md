@@ -2,7 +2,7 @@
 
 # ⌨️ Keyboard & Interactive Line Editor
 
-> **Ring Placement:** `rings/ring_2/ring_2/input/`  
+> **Ring Placement:** `rings/ring_2/input/`  
 > **Source File:** `keyboard.asm`  
 > **Privilege Level:** Ring 2 ($M \le 2$)
 

@@ -2,7 +2,7 @@
 
 # 📺 Console & Display Subsystem
 
-> **Ring Placement:** `rings/ring_2/ring_2/console/`  
+> **Ring Placement:** `rings/ring_2/console/`  
 > **Source File:** `console.asm`  
 > **Privilege Level:** Ring 2 ($M \le 2$)
 

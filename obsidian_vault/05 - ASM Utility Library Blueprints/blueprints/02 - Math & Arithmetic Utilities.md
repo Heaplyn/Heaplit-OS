@@ -2,7 +2,7 @@
 
 # 🔢 Math & Arithmetic Utilities Blueprint
 
-> **Source File:** `rings/ring_0/ring_0/types/math.asm`
+> **Source File:** `rings/ring_0/types/math.asm`
 
 ---
 

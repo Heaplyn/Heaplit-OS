@@ -2,7 +2,7 @@
 
 # 💾 Physical Memory Allocator (PMM 4KB Bitmap Allocator)
 
-> **Ring Placement:** `rings/ring_0/ring_0/memory/`  
+> **Ring Placement:** `rings/ring_0/memory/`  
 > **Source File:** `pmm.asm`  
 > **Compiled Target:** Core Kernel Module (Ring 0)  
 > **Hardware Alignment:** 4KB Page Frame Boundary (`0x1000`)

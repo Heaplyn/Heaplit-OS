@@ -2,7 +2,7 @@
 
 # 🏎️ Device Drivers (PCIe, NVMe, USB)
 
-> **Ring Placement:** `rings/ring_1/ring_1/drivers/`  
+> **Ring Placement:** `rings/ring_1/drivers/`  
 > **Source File:** `pci.c`  
 > **Privilege Level:** Ring 1 ($M \le 1$)
 

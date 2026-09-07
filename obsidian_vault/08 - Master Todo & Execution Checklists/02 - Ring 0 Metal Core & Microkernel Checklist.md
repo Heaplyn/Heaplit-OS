@@ -2,7 +2,7 @@
 
 # ⚡ Ring 0 Metal Core & Microkernel Checklist (Exhaustive Implementation Protocol)
 
-> **Target Components:** `rings/ring_0/ring_0/` (`cpu`, `memory`, `sched`, `syscalls`, `types`)
+> **Target Components:** `rings/ring_0/` (`cpu`, `memory`, `sched`, `syscalls`, `types`)
 
 ---
 

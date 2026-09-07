@@ -2,7 +2,7 @@
 
 # 🔒 Hardware Sandbox Isolation & Concurrency Primitives
 
-> **Ring Placement:** `rings/ring_0/ring_0/cpu/`  
+> **Ring Placement:** `rings/ring_0/cpu/`  
 > **Source File:** `sandbox.asm`  
 > **Compiled Target:** Core Kernel Module (Ring 0)
 

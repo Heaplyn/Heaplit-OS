@@ -3,7 +3,7 @@
 # 🖱️ Hardware Cursor, SDF Fonts & Visual Buffer Compositor
 
 > **Layer:** Ring 2 Presentation Subsystem  
-> **Source Files:** `rings/ring_2/ring_2/console/console.asm`, `vbe_compositor.c`
+> **Source Files:** `rings/ring_2/console/console.asm`, `vbe_compositor.c`
 
 ---
 

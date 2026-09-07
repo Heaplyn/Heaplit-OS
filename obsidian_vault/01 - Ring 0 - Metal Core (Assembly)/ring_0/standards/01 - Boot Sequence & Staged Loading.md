@@ -2,7 +2,7 @@
 
 # 🚀 Staged Boot Sequence & Multi-Sector Orchestration
 
-> **Ring Placement:** `rings/ring_3/ring_3/boot/`  
+> **Ring Placement:** `rings/ring_3/boot/`  
 > **Source Files:** `base.asm`, `mbr.asm`, `stage2.asm`, `stage4_console.asm`  
 > **Compiled Output:** `base.bin` (4,096 bytes / 8 sectors)
 
@@ -54,7 +54,7 @@ sequenceDiagram
 1. **Interrupt Suspension:** Executes `cli` immediately upon BIOS jump.
 2. **Drive ID Preservation:** Stores BIOS drive number passed in register `DL` into `[boot_drive]`.
 3. **Segment Normalization:** Sets `DS = 0`, `ES = 0`, `SS = 0`, and stack pointer `SP = 0x7C00`.
-4. **Teletype Clear Screen:** Invokes `clear_screen` from `rings/ring_2/ring_2/console/console.asm`.
+4. **Teletype Clear Screen:** Invokes `clear_screen` from `rings/ring_2/console/console.asm`.
 5. **Disk Read Service:** Sets `AH = 0x02`, `AL = 7` (reads remaining 7 sectors of `base.bin`), `CH = 0`, `CL = 2` (start sector 2), `DH = 0`, `DL = [boot_drive]`, `ES:BX = 0x0000:0x7E00`.
 6. **Error Trap:** If Carry Flag is set (`jc disk_error`), prints fatal diagnostic message and halts.
 7. **Stage 2 Jump:** Transfers execution to `0x7E00`.
@@ -66,7 +66,7 @@ sequenceDiagram
 
 ### Sector 4: Interactive Console Prompt (`stage4_console.asm`)
 1. Displays system banner and prompt string (`HeaplitOS Prompt> `).
-2. Captures user line using `read_line` from `rings/ring_2/ring_2/input/keyboard.asm` with full backspace handling.
+2. Captures user line using `read_line` from `rings/ring_2/input/keyboard.asm` with full backspace handling.
 3. Echoes command line and stages processor for Protected Mode transition.
 
 ---

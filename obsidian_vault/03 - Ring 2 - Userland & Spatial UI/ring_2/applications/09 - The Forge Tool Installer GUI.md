@@ -4,7 +4,7 @@
 
 > **Layer:** Ring 2 Userland & Presentation Subsystem  
 > **Binary Container:** `forge.axf`  
-> **Source Directory:** `rings/ring_3/ring_3/userland/forge/`  
+> **Source Directory:** `rings/ring_3/userland/forge/`  
 > **Dependencies:** Ring 1 Freestanding C Runtime (`liba`), Ring 0 Syscall Gateway, `hpkg` Package Subsystem
 
 ---

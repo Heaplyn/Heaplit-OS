@@ -2,7 +2,7 @@
 
 # 📁 Virtual File System (VFS) with xattr Graph Hooks
 
-> **Ring Placement:** `rings/ring_1/ring_1/drivers/`  
+> **Ring Placement:** `rings/ring_1/drivers/`  
 > **Source File:** `vfs.c`, `include/heaplit/vfs.h`  
 > **Privilege Level:** Ring 1 ($M \le 1$)
 

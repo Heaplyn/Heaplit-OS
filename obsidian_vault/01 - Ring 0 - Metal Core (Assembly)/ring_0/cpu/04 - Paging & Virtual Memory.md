@@ -2,7 +2,7 @@
 
 # 🌐 4-Level Paging & Virtual Memory
 
-> **Ring Placement:** `rings/ring_0/ring_0/cpu/`  
+> **Ring Placement:** `rings/ring_0/cpu/`  
 > **Source File:** `paging.asm`  
 > **Privilege Level:** Ring 0 ($M = 0$)
 

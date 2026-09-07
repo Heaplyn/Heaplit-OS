@@ -88,7 +88,7 @@ The Ring 0 scheduler operates ticklessly using the Local APIC Timer. When no tas
 The PMM manages up to 512 GB of physical RAM using a 4KB page bitmap. Bit allocation is accelerated via x86-64 Bit Scan Forward (`bsf`) and atomic Bit Test and Set (`lock bts`) instructions.
 
 ### 2.4 Freestanding C Runtime (`liba`)
-Located in Ring 1 (`rings/ring_1/ring_1/liba/`), `liba` provides a freestanding implementation of standard C services without requiring host OS headers:
+Located in Ring 1 (`rings/ring_1/liba/`), `liba` provides a freestanding implementation of standard C services without requiring host OS headers:
 - Memory Management: `malloc()`, `free()`, `realloc()`, `calloc()`.
 - Formatting & I/O: `kprintf()`, `snprintf()`, `vsnprintf()`.
 - String & Memory Primitives: `memcpy()`, `memset()`, `memmove()`, `strcmp()`, `strlen()`.
@@ -135,7 +135,7 @@ The Lens is Heaplit OS's native 3D spatial file explorer. Files are rendered as 
 ## 4. AI & Local Offline Embedding Engine
 
 ### 4.1 Embedded GGML / Llama.cpp Kernel Port
-Heaplit OS features a native port of GGML residing in Ring 1 (`rings/ring_1/ring_1/drivers/ai_engine.c`). The engine accesses hardware SIMD features (AVX-512 FMA) directly from C/Assembly to perform tensor matrix multiplications without overhead.
+Heaplit OS features a native port of GGML residing in Ring 1 (`rings/ring_1/drivers/ai_engine.c`). The engine accesses hardware SIMD features (AVX-512 FMA) directly from C/Assembly to perform tensor matrix multiplications without overhead.
 
 ```mermaid
 flowchart LR
@@ -255,6 +255,6 @@ Heaplit OS/
    .\loader\load_os.ps1
    ```
 3. **Execution Pipeline**:
-   - Assembles `rings/ring_3/ring_3/boot/base.asm` into `base.bin` (4,096 bytes / 8 sectors).
+   - Assembles `rings/ring_3/boot/base.asm` into `base.bin` (4,096 bytes / 8 sectors).
    - Validates multi-sector alignment and binary size.
    - Launches headless or graphical QEMU instance booting directly from `base.bin`.

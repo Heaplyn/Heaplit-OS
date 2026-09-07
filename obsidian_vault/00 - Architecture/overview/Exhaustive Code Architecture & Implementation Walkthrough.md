@@ -160,7 +160,7 @@ sequenceDiagram
 
 ## 5. Subsystem Code Snippets
 
-### 5.1. Master Staged Bootloader (`rings/ring_3/ring_3/boot/base.asm`)
+### 5.1. Master Staged Bootloader (`rings/ring_3/boot/base.asm`)
 
 ```nasm
 [org 0x7c00]
@@ -200,7 +200,7 @@ times (512 * 4) - ($ - $$) db 0
 times 4096 - ($ - $$) db 0
 ```
 
-### 5.2. Ring 0 Dynamic Variable Engine (`rings/ring_0/ring_0/types/variable.asm`)
+### 5.2. Ring 0 Dynamic Variable Engine (`rings/ring_0/types/variable.asm`)
 
 ```nasm
 struc variable
@@ -231,7 +231,7 @@ create_variable:
     ret
 ```
 
-### 5.3. Ring 1 A20 Gate Multi-Method Enabler (`rings/ring_1/ring_1/hardware/a20.asm`)
+### 5.3. Ring 1 A20 Gate Multi-Method Enabler (`rings/ring_1/hardware/a20.asm`)
 
 ```nasm
 enable_a20:

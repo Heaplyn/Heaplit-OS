@@ -2,7 +2,7 @@
 
 # 📺 Console & Display API Reference
 
-> **Ring Placement:** `rings/ring_2/ring_2/console/`  
+> **Ring Placement:** `rings/ring_2/console/`  
 > **Source File:** `console.asm`
 
 ---

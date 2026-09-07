@@ -2,7 +2,7 @@
 
 # 🐧 Linux ELF POSIX Compatibility Translation Wrapper (posixcall)
 
-> **Ring Placement:** `rings/ring_1/ring_1/drivers/`  
+> **Ring Placement:** `rings/ring_1/drivers/`  
 > **Source File:** `posixcall.c`  
 > **Compiled Target:** Ring 1 Driver Module
 

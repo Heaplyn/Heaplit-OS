@@ -3,7 +3,7 @@
 # 🛡️ Kernel-Level Antivirus & Integrity Guard – Technical Specification
 
 > **Layer:** Ring 1 / Ring 0 Security Boundary Service  
-> **Source Files:** `rings/ring_1/ring_1/drivers/integrity_guard.c`  
+> **Source Files:** `rings/ring_1/drivers/integrity_guard.c`  
 > **Protection Domains:** `.axf` LLVM Bitcode Validation, Page Table W^X, Syscall Whitelisting
 
 ---

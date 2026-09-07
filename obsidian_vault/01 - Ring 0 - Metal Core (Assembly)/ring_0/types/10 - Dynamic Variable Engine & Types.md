@@ -2,7 +2,7 @@
 
 # 🧱 Dynamic Variable Engine & Types
 
-> **Ring Placement:** `rings/ring_0/ring_0/types/`  
+> **Ring Placement:** `rings/ring_0/types/`  
 > **Source File:** `variable.asm`, `math.asm`, `string.asm`  
 > **Privilege Level:** Ring 0 ($M = 0$)
 

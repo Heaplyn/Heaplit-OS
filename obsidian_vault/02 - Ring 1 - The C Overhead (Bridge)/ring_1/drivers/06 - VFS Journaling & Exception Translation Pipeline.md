@@ -3,7 +3,7 @@
 # 📜 VFS Journaling & Exception Translation Pipeline – Technical Specification
 
 > **Layer:** Ring 1 Freestanding C Bridge  
-> **Source Files:** `rings/ring_1/ring_1/drivers/vfs_journal.c`, `exception_signal.c`
+> **Source Files:** `rings/ring_1/drivers/vfs_journal.c`, `exception_signal.c`
 
 ---
 
