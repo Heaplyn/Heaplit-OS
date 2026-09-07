@@ -11,10 +11,14 @@
             "id": "ec5cedb51b3e53b8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "08 - Master Todo & Execution Checklists/05 - Developer Toolchain, IPC & Packaging Checklist.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "05 - Developer Toolchain, IPC & Packaging Checklist"
             }
           }
         ]
@@ -184,14 +188,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "3023e069efd19909",
+  "active": "ec5cedb51b3e53b8",
   "lastOpenFiles": [
+    "08 - Master Todo & Execution Checklists/01 - Master Project Completion Roadmap & Meta Checklist.md",
+    "rings/ring_0/ring_0/memory/README.md",
     "08 - Master Todo & Execution Checklists/07 - Self-Hosting, Testing & CI-CD Pipeline Checklist.md",
     "08 - Master Todo & Execution Checklists/06 - Production Hardware Drivers & Network Stack Checklist.md",
     "08 - Master Todo & Execution Checklists/05 - Developer Toolchain, IPC & Packaging Checklist.md",
     "08 - Master Todo & Execution Checklists/04 - Ring 2 Userland & Spatial UI Checklist.md",
     "08 - Master Todo & Execution Checklists/03 - Ring 1 Freestanding C Runtime & Driver Bridge Checklist.md",
-    "08 - Master Todo & Execution Checklists/01 - Master Project Completion Roadmap & Meta Checklist.md",
     "08 - Master Todo & Execution Checklists/02 - Ring 0 Metal Core & Microkernel Checklist.md",
     "08 - Master Todo & Execution Checklists",
     "02 - Ring 1 - The C Overhead (Bridge)/ring_1/drivers/09 - WebAssembly Runtime Engine (wasm_engine).md",
@@ -212,7 +217,6 @@
     "03 - Ring 2 - Userland & Spatial UI/ring_2/input/08 - Keyboard & Interactive Editor Subsystem.md",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/daemon/01 - Heaplit Daemon Architecture.md",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/console/07 - Console & Display Subsystem.md",
-    "03 - Ring 2 - Userland & Spatial UI/ring_2/applications/12 - Kernel-Level Antivirus & Integrity Guard.md",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/spatial_ui",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/input",
     "03 - Ring 2 - Userland & Spatial UI/ring_2/daemon",
