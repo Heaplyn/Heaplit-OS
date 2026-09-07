@@ -1,8 +1,8 @@
-; Ring0/Console.asm
+; ring_0/console.asm
 
 ; Initialize Stack safely at 0x9000 (grows down, safely above 0x7C00)
 [bits 16]
-InitStack:
+init_stack:
     cli                     ; Disable interrupts during setup
     xor ax, ax              ; AX = 0
     mov ss, ax              ; SS = 0
@@ -10,7 +10,7 @@ InitStack:
     sti                     ; Re-enable interrupts
     ret
 ; Clear Screen by resetting to 80x25 text mode
-ClearScreen:
+clear_screen:
     pusha
     mov ah, 0x00            ; Set video mode
     mov al, 0x03            ; 80x25 color text
@@ -18,7 +18,7 @@ ClearScreen:
     popa
     ret
 [bits 16]
-PrintString16:
+print_string_16:
     pusha
     mov ah, 0x0e
 .loop:
@@ -31,10 +31,18 @@ PrintString16:
     popa
     ret
 
+[bits 16]
+set_cursor:
+    pusha
+    mov ah, 0x02        ; Set cursor position
+    int 0x10
+    popa
+    ret
+
 [bits 32]
 ; VGA Text Mode Buffer: 0xB8000 (Row * 80 + Col) * 2
 ; Arguments: ESI = String Pointer, EDI = Video Memory Offset (e.g. 0xB8000)
-PrintString32:
+print_string_32:
     pusha
     mov edx, 0x0f           ; White text on Black background attribute
 .loop:
@@ -50,4 +58,3 @@ PrintString32:
     popa
     ret
 
-[bits 16]

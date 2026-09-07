@@ -1,7 +1,7 @@
-; Ring1/Memory.asm
+; ring_1/memory.asm
 [bits 16]
 
-SegmentTimes: db 0
+segment_times: db 0
 
 ; -----------------------------------------------------------------------------
 ; Memory Utilities
@@ -13,7 +13,7 @@ SegmentTimes: db 0
 ; Output:
 ;   es:di = Original destination pointer (restored)
 
-MemSet:
+mem_set:
     push    di                ; Save original offset for restoration
     
     ; 1. Duplicate the byte in al across both al and ah
@@ -22,13 +22,13 @@ MemSet:
     ; 2. Adjust count for 16-bit words
     mov     bx, cx            ; Keep a copy of the original byte count in bx
     shr     cx, 1             ; Divide byte count by 2 to get word count (cx = cx / 2)
-    jz      .HandleOdd       ; If length was 0 or 1, skip the word loop
+    jz      .handle_odd       ; If length was 0 or 1, skip the word loop
 
     ; 3. Perform fast word-sized fill
     cld                       ; Clear direction flag (di increments forward)
     rep     stosw             ; Store 16-bit word in ax to [es:di], cx times (di advances by 2 * cx)
 
-.HandleOdd:
+.handle_odd:
     ; 4. Handle remaining single byte if original count was odd
     test    bx, 1             ; Test if the lowest bit of original count was set
     jz      .done             
@@ -37,27 +37,27 @@ MemSet:
 .done:
     pop     di                ; Restore original destination offset
     ret
-.Loop:
+.loop:
     mov byte [di], al
     inc di
     dec cx
-    jnz short .Loop
+    jnz short .loop
 
-MemCopy:
+mem_copy:
     test cx, cx
     jz short .done
-.Loop:
+.loop:
     mov al, byte [si]
     mov byte [di], al
     inc di
     inc si
     dec cx
-    jnz short .Loop
+    jnz short .loop
 .done:
     ret
 
-MemZero:
+mem_zero:
     xor al, al
-    call MemSet
+    call mem_set
     ret
 
